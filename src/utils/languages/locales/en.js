@@ -180,6 +180,7 @@ export default {
     featured_products: 'Featured products',
     reviews_lower: 'reviews',
     create_account: 'Sign up now',
+    unlock_subscription_continue: 'Continue',
     settings: 'Settings',
     social_network: 'Social network',
     my_account: 'My profile',
