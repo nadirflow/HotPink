@@ -61,7 +61,7 @@ export const ViewRefine = ({
         iconRight_1={"none"}
         onPressLeft_1={onFunction.onPressBack}
       />
-
+      
       <FlatList contentContainerStyle={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}
         data={state._arrAccordionSort}
         renderItem={({ item, index }) => renderAccordionSort(item, state, onFunction.onPressItem)}

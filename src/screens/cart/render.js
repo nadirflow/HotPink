@@ -70,7 +70,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
           }
           rightComp={
             <View style={[styles.con_products_item_name, Configs.supportRTL && cStyles.column_align_end]}>
-              <CText style={styles.txt_products_title} numberOfLines={2}>{data.name}</CText>
+              <CText style={[styles.txt_products_title, {color: '#E83B55'}]} numberOfLines={2}>{data.name}</CText>
               {data.variation && data.variation.attributes &&
                 <View style={[cStyles.row_align_center, cStyles.mt_5]}>
                   <CText style={styles.txt_products_option} i18nKey={'option'} />
@@ -94,7 +94,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
                       onPress={() => data.numberOfProduct === 1 ? null : onPressMinusAmount(indexProduct)}
                     />
                     <View style={styles.con_input_amount}>
-                      <CText style={styles.txt_amount_item}>{data.numberOfProduct}</CText>
+                      <CText style={[styles.txt_amount_item, {color:'#000'}]}>{data.numberOfProduct}</CText>
                     </View>
                     <IconF
                       name={"plus"}
@@ -129,7 +129,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
               {currencyPosition === Currency.left &&
                 <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
 
-              <CText style={styles.txt_products_price}>{price}</CText>
+              <CText style={[styles.txt_products_price, {color: '#E83B55'}]}>{price}</CText>
 
               {currencyPosition === Currency.right &&
                 <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
@@ -196,12 +196,12 @@ export const ViewCart = ({
       <CHeader
         titleComponent={
           <Body style={styles.con_header_center}>
-            <Title><CText style={cStyles.txt_title_header} i18nKey={'cart'} /></Title>
+            <Title><CText style={[cStyles.txt_title_header, {color: '#E83B55'}]} i18nKey={'cart'} /></Title>
             {state._products.length > 0 &&
               <View style={[cStyles.row_align_center, cStyles.mt_5]}>
-                <CText style={styles.txt_num_cart_header}>{data.totalProducts}</CText>
-                <CText style={styles.txt_num_cart_header}>{" "}</CText>
-                <CText style={styles.txt_num_cart_header} i18nKey={'items'} />
+                <CText style={[styles.txt_num_cart_header, {color:'#000'}]}>{data.totalProducts}</CText>
+                <CText style={[styles.txt_num_cart_header, {color:'#000'}]}>{" "}</CText>
+                <CText style={[styles.txt_num_cart_header, {color:'#000'}]} i18nKey={'items'} />
               </View>
             }
           </Body>
@@ -240,7 +240,7 @@ export const ViewCart = ({
                   leftComp={
                     <IconF containerStyle={[Configs.supportRTL ? cStyles.ml_10 : cStyles.mr_10]}
                       name={"tags"}
-                      color={Colors.PRIMARY_COLOR}
+                      color={'#E83B55'}
                       size={Devices.fS(25)}
                       type={"solid"} />
                   }
@@ -265,10 +265,10 @@ export const ViewCart = ({
               }
               rightComp={
                 <View style={{ flex: .3 }}>
-                  <Button style={[styles.con_btn_apply, { borderColor: Colors.PRIMARY_COLOR }]}
+                  <Button style={[styles.con_btn_apply, { borderColor: '#E83B55' }]}
                     block disabled={state._loadingCoupon} onPress={onFunction.onPressApply}>
-                    {state._loadingCoupon && <BallIndicator color={Colors.PRIMARY_COLOR} size={20} />}
-                    {!state._loadingCoupon && <CText style={[styles.txt_btn, styles.txt_btn_apply]} i18nKey={"apply"} />}
+                    {state._loadingCoupon && <BallIndicator color={'#E83B55'} size={20} />}
+                    {!state._loadingCoupon && <CText style={[styles.txt_btn, styles.txt_btn_apply, {color:'#E83B55'}]} i18nKey={"apply"} />}
                   </Button>
                 </View>
               }
@@ -331,7 +331,7 @@ export const ViewCart = ({
 
             <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
               between
-              leftComp={<CText style={styles.txt_summary_content} i18nKey={"total"} />}
+              leftComp={<CText style={[styles.txt_summary_content, {color: '#000'}]} i18nKey={"total"} />}
               rightComp={
                 <View style={styles.con_price_product}>
                   {currencyPosition === Currency.left && <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
@@ -343,11 +343,11 @@ export const ViewCart = ({
 
             <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
               between
-              leftComp={<CText style={styles.txt_summary_content} i18nKey={"discount"} />}
+              leftComp={<CText style={[styles.txt_summary_content, {color:'#000'}]} i18nKey={"discount"} />}
               rightComp={
                 <View style={styles.con_price_product}>
                   {state._discountPrice > 0 && currencyPosition === Currency.left && <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
-                  <CText style={styles.txt_products_price}>{state._discountPrice === 0 ? '-' : discountPrice}</CText>
+                  <CText style={[styles.txt_products_price, {color:'#000'}]}>{state._discountPrice === 0 ? '-' : discountPrice}</CText>
                   {state._discountPrice > 0 && currencyPosition === Currency.right && <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
                 </View>
               }
@@ -364,15 +364,15 @@ export const ViewCart = ({
                 { flex: .6 }
                 ]}>
                   {currencyPosition === Currency.left &&
-                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>
+                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
                       {symbol}
                     </Text>
                   }
-                  <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>
+                  <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
                     {provisionalPrice}
                   </Text>
                   {currencyPosition === Currency.right &&
-                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>
+                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
                       {symbol}
                     </Text>
                   }
@@ -401,7 +401,7 @@ export const ViewCart = ({
 
       {state._products.length > 0 &&
         <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <Button block style={[styles.con_btn, { backgroundColor: Colors.PRIMARY_COLOR }]}
+          <Button block style={[styles.con_btn, { backgroundColor: '#E83B55' }]}
             disabled={state._loadingNextPage || state._loadingCheckProducts ? true : false}
             onPress={onFunction.onPressOrder} >
             {state._loadingNextPage || state._loadingCheckProducts ?

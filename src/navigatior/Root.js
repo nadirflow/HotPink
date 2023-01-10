@@ -70,6 +70,8 @@ import WebviewPaymentScreen from '~/screens/webview_payment';
 import WebviewThankYouScreen from '~/screens/webview_thankyou';
 import Welcome from '~/screens/authentication/welcome';
 import Welcom from '~/screens/Welcom';
+import Self from '~/screens/Self';
+
 /** INIT NAVIGATOR OF APP */
 const StackMain = createStackNavigator();
 const TabMain = createBottomTabNavigator();
@@ -93,7 +95,7 @@ export class VendorTab extends React.Component {
             return <Icon name={iconName} size={Devices.fS(22)} color={color} type={focused ? "regular" : 'light'} />
           },
           tabBarLabel: ({ focused, color, size }) => {
-            let title = 'home';
+            let title = 'Home';
             switch (route.name) {
               case 'Account':
                 title = 'account';
@@ -125,13 +127,13 @@ export class RootTab extends React.Component {
         
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName = 'home';
+            let iconName = 'search';
             switch (route.name) {
               case 'Service':
-                iconName = 'spa';
+                iconName = 'store';
                 break;
               case 'News':
-                iconName = 'newspaper';
+                iconName = 'heart';
                 break;
               case 'Account':
                 iconName = 'user-alt';
@@ -170,9 +172,9 @@ export class RootTab extends React.Component {
         }
         }}
       >
-        <TabMain.Screen name={"Home"} component={HomeScreen} />
-        <TabMain.Screen name={"Service"} component={ServiceScreen} />
+        <TabMain.Screen name={"Home"} component={HomeScreen} /> 
         <TabMain.Screen name={"News"} component={NewsScreen} />
+        <TabMain.Screen name={"Service"} component={ServiceScreen} />
         <TabMain.Screen name={"Account"} component={AccountScreen} />
       </TabMain.Navigator>
     )
@@ -241,6 +243,7 @@ class RootMain extends React.Component {
           <StackMain.Screen name="WebviewCheckout" component={WebviewCheckoutScreen} />
           <StackMain.Screen name="WebviewPayment" component={WebviewPaymentScreen} />
           <StackMain.Screen name="WebviewThankyou" component={WebviewThankYouScreen} />
+          <StackMain.Screen name="Self" component={Self} />
         </StackMain.Navigator>
       </Root>
     )

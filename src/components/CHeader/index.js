@@ -54,7 +54,7 @@ const CHeader = ({
       searchBar={searchBar}
       rounded={rounded}
       translucent={false}
-      style={[cStyles.con_header, {
+      style={[ {
         paddingLeft: Devices.pH(layoutWidth.width),
         paddingRight: Devices.pH(layoutWidth.width)
       }, style]}
@@ -136,7 +136,7 @@ const CHeader = ({
           <View style={styles.con_title}>
             <Title>
               {isI18n ?
-                <CText style={cStyles.txt_title_header} i18nKey={title} />
+                <CText style={[cStyles.txt_title_header, {color: '#fff'}]} i18nKey={title} />
                 :
                 <CText style={cStyles.txt_title_header}>{title}</CText>
               }

@@ -288,11 +288,14 @@ class Home extends React.Component {
   _onPressCart = () => {
     this.props.navigation.navigate("Cart");
   }
+  _onPressSelf = () => {
+    this.props.navigation.navigate("Self");
+  }
 
   _onFocusSearch = () => {
     this.props.navigation.navigate("Search");
   }
-
+ 
   _onPressProductItem = async (product) => {
     /** Check product seen */
     let tmp = await Helpers.getDataStorage(Keys.KEY_HOME_VIEWED_PRODUCT);
@@ -712,7 +715,8 @@ class Home extends React.Component {
             onToggleModalRating: this._onToggleModalRating,
             onPressStartRating: this._onPressStartRating,
             onPressAddCart: this._onPressAddCart,
-            onPressVendor: this._onPressVendor
+            onPressVendor: this._onPressVendor,
+            onPressSelf: this._onPressSelf
           }}
         />
       </Drawer>

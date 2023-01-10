@@ -262,7 +262,7 @@ export const ViewProductDetail = ({
                                 containerStyle={[cStyles.mv_20, cStyles.mr_20]}
                                 name={"angle-left"}
                                 size={Devices.fS(20)}
-                                color={Colors.BLACK_COLOR}
+                                color={'#E83B55'}
                                 type={"regular"}
                             />
                         </TouchableOpacity>
@@ -276,7 +276,7 @@ export const ViewProductDetail = ({
                         <Button transparent onPress={onFunctions.onPressCart}>
                             <Icon containerStyle={[cStyles.mv_20, cStyles.ml_20]}
                                 name={'shopping-cart'}
-                                color={Colors.BLACK_COLOR}
+                                color={'#E83B55'}
                                 size={Devices.fS(20)}
                                 type={'regular'}
                             />
@@ -342,7 +342,7 @@ export const ViewProductDetail = ({
                     }]}>
                         <CViewRow style={styles.con_category_star} between
                             leftComp={state._categories !== "" ?
-                                <CText style={styles.txt_content_categories} numberOfLines={1}>{state._categories}</CText> :
+                                <CText style={[styles.txt_content_categories,{color:'#E83B55'}]} numberOfLines={1}>{state._categories}</CText> :
                                 <View />
                             }
                             rightComp={state._product.reviews_allowed ?
@@ -352,7 +352,7 @@ export const ViewProductDetail = ({
                             }
                         />
 
-                        <CText style={[styles.txt_content_title, { color: Colors.TEXT_HEADLINE_COLOR }]} numberOfLines={3}>
+                        <CText style={[styles.txt_content_title, { color: '#E83B55' }]} numberOfLines={3}>
                             {state._product ? state._product.name : ""}
                         </CText>
 
@@ -390,7 +390,7 @@ export const ViewProductDetail = ({
                                 }
                                 rightComp={
                                     <CViewRow style={[Configs.supportRTL ? cStyles.mr_5 : cStyles.ml_5]}
-                                        leftComp={<View style={styles.con_sale}>
+                                        leftComp={<View style={[styles.con_sale, {backgroundColor:'#E83B55'}]}>
                                             <CText style={styles.txt_sale_tag} i18nKey={'sale'} />
                                             <CText style={styles.txt_sale_tag}>{" " + percentSale + "%"}</CText>
                                         </View>
@@ -564,7 +564,7 @@ export const ViewProductDetail = ({
                         <View style={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}>
                             <TouchableOpacity onPress={onFunctions.onPressDescription}>
                                 <CViewRow style={[styles.con_header_accordion, { paddingTop: 0 }]}
-                                    leftComp={<CText style={styles.txt_header_accordion} i18nKey={'description'} />}
+                                    leftComp={<CText style={[styles.txt_header_accordion, {color:'#E83B55'}]} i18nKey={'description'} />}
                                     rightComp={
                                         <Icon name={state._isShowDescription ? 'angle-up' : 'angle-down'}
                                             color={cStyles.ic_right_detail.color}
@@ -581,7 +581,7 @@ export const ViewProductDetail = ({
                     {state._product.reviews_allowed &&
                         <TouchableOpacity onPress={onFunctions.onPressReviews}>
                             <CViewRow style={[styles.con_header_accordion, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
-                                leftComp={<CText style={styles.txt_header_accordion} i18nKey={'reviews'} />}
+                                leftComp={<CText style={[styles.txt_header_accordion, {color:'#E83B55'}]} i18nKey={'reviews'} />}
                                 rightComp={
                                     <Icon name={'angle-down'}
                                         color={cStyles.ic_right_detail.color}
@@ -627,7 +627,7 @@ export const ViewProductDetail = ({
                         state._product.stock_status === Configs.stockStatus.IN_STOCK ?
                             <Button style={[styles.con_btn,
                             !Configs.supportRTL ? cStyles.mr_5 : cStyles.ml_5,
-                            { backgroundColor: Colors.PRIMARY_COLOR }]}
+                            { backgroundColor: '#E83B55' }]}
                             onPress={onFunctions.onAddOrUpdate}
                             disabled={state._loadingBtnWebview || state._loading}
                             >
@@ -645,7 +645,7 @@ export const ViewProductDetail = ({
                         state._isAdd ?
                             <Button style={[styles.con_btn,
                             !Configs.supportRTL ? cStyles.ml_5 : cStyles.mr_5,
-                            { backgroundColor: Colors.PRIMARY_COLOR }]}
+                            { backgroundColor: '#E83B55' }]}
                                 onPress={onFunctions.onPressCart}
                                 disabled={state._loading}
                             >

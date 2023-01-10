@@ -191,6 +191,7 @@ export const ViewHome = ({
     onToggleModalRating: () => { },
     onPressStartRating: () => { },
     onPressAddCart: () => { },
+    onPressSelf: () => { },
     onPressVendor: () => { }
   },
 }) => {
@@ -216,7 +217,7 @@ export const ViewHome = ({
             </View>
           </View>
         }
-        iconLeft_1={'bars'}
+        iconLeft_1={'heart'}
         iconRight_1={'shopping-cart'}
         iconRight_2={'search'}
         onPressLeft_1={onFunction.onOpenDrawer}
@@ -231,7 +232,7 @@ export const ViewHome = ({
               <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color: '#E63B57'}}>Private Psychotherapy Practice </Text>
               <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3)}}>
                 <View style={{width:Devices.sW('44%')}}>
-                    <TouchableOpacity>  
+                    <TouchableOpacity onPress={onFunction.onPressSelf}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im1} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(25), borderRadius:10,}}>
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', }}>Self</Text>
                       </ImageBackground>

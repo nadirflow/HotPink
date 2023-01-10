@@ -113,9 +113,11 @@ class NewsCategories extends React.Component {
   _onRefresh = () => {
     let { routes, index, _categoryId } = this.state;
     routes[index].page = 1;
+    console.log(routes);
     let params = {
       page: routes[index].page,
       categories: routes[index].id ? routes[index].id : _categoryId,
+    
       per_page: this._limit,
     };
     this.setState({ _refreshing: true, _loadmore: true }, () => {
@@ -200,6 +202,7 @@ class NewsCategories extends React.Component {
                   {Configs.html5Entities.decode(props.item.name)}
                 </CText>
               </TouchableOpacity>
+              
             )
           }}
           keyExtractor={(item, index) => index.toString()}

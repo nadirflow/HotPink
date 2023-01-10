@@ -299,12 +299,13 @@ class Service extends React.Component {
         {!this.state._loadForList &&
           route.products.length > 0 ? (
             <Column
+              contentStyle={{ backgroundColor:'#F6B1BB',  }}
               data={route.products}
               render={{
                 header: null,
                 footer: this.state._loadmore ?
                   <View style={styles.con_footer_loading}>
-                    <SkypeIndicator color={Colors.PRIMARY_COLOR} />
+                    <SkypeIndicator color={Colors.WHITE_COLOR} />
                   </View> : null,
                 empty: null
               }}
@@ -322,7 +323,7 @@ class Service extends React.Component {
             />
           ) : (
             <View style={cStyles.full_center}>
-              <CText style={cStyles.txt_no_data} i18nKey={'no_data'} />
+              <CText style={cStyles.WHITE_COLOR} i18nKey={'no_data'} />
             </View>
           )
         }
@@ -352,11 +353,11 @@ class Service extends React.Component {
     return (
       <TouchableOpacity
         style={[styles.con_tabbar_item,
-        propsItem.index === indexActive && [styles.con_tabbar_active_item, { borderBottomColor: Colors.PRIMARY_COLOR }],
+        propsItem.index === indexActive && [styles.con_tabbar_active_item, { borderBottomColor: Colors.WHITE_COLOR }],
         propsItem.index === routesLength - 1 && styles.con_tabbar_last_item
         ]}
         onPress={() => this._onPressTabbar(propsItem.item, propsItem.index)}>
-        <CText style={[styles.txt_tabbar, indexActive === propsItem.index && [cStyles.large, { fontFamily: Devices.zsBodySemiBold, color: Colors.PRIMARY_COLOR }]]}>
+        <CText style={[styles.txt_tabbar, indexActive === propsItem.index && [cStyles.large, { fontFamily: Devices.zsBodySemiBold, color: '#ffffff' }]]}>
           {Configs.html5Entities.decode(propsItem.item.name)}
         </CText>
       </TouchableOpacity>

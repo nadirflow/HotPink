@@ -100,6 +100,7 @@ class News extends React.Component {
       id: item.id,
       name: item.name,
       dataFull: item
+      
     })
   }
 
