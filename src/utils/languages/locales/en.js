@@ -40,6 +40,7 @@ export default {
     update_cart: 'Update cart',
     view_cart: 'View cart',
     news: 'News',
+    home: 'Home',
     hours: 'hours ago',
     minutes: 'minutes ago',
     delete: 'Delete',
@@ -57,7 +58,7 @@ export default {
     invite_friends: 'Invite friends',
     help_center: 'Help center',
     sign_out: 'Sign out',
-    home: 'Home',
+    
     profile: 'Profile',
     address: 'Address',
     save: 'Save',

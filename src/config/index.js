@@ -396,6 +396,7 @@ export const Assets = {
     im4: require('../../assets/images/img4.png'),
     im2: require('../../assets/images/img2.png'),
     im5: require('../../assets/images/img5.png'),
+    hot: require('../../assets/images/hot.png'),
 };
 
 export const Keys = {

@@ -91,31 +91,29 @@ const Self = () => {
       <>
         <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    paddingLeft:'5%', paddingRight:'5%'}}>
         <CHeader
-              
-              style={{backgroundColor:'#E83B55', color:'#fff'}}
-              titleComponent={
-                
-                <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
-                  <Icon name='chevron-left' color='#fff' size={20} ></Icon>
-                  <View
-                    style={[
-                      cStyles.column_align_center,
-                      cStyles.column_justify_center,
-                      { width: '100%' },
-                    ]}>
-                    {/* <CImage
-                      style={{width:90, height:40}}
-                      source={Assets.log}
-                      resizeMode={'contain'}
-                  
-                    /> */}
-                  </View>
-                </View>
-              }
-              iconLeft_1={'bars'}
-              
-             
-            />
+        
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
+        titleComponent={
+          <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+            <View
+              style={[
+                cStyles.column_align_center,
+                cStyles.column_justify_center,
+                { width: '100%' },
+              ]}>
+              <CImage
+                style={{width:90, height:40}}
+                source={Assets.log}
+                resizeMode={'contain'}
+              />
+            </View>
+          </View>
+        }
+        iconLeft_1={'heart'}
+        iconRight_1={'shopping-cart'}
+        iconRight_2={'search'}
+       
+      />
           
             <View style={{paddingVertical:15, flex:1}}>
               <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700'}}>Self</Text>
@@ -129,7 +127,7 @@ const Self = () => {
                     console.log(item.item);
                     return(
                     <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") }}>
-                      <Image source={{uri: item.item.image}} style={{width:100, height:100, }} />
+                      <Image source={{uri: item.item.image}} style={{width:'100%', height:80, }} />
                       <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.name}</Text>
                     </TouchableOpacity>
                     );
