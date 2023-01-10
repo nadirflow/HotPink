@@ -21,6 +21,7 @@ import CouponsDetailScreen from '~/screens/home/coupons_detail';
 import ProductDetailScreen from '~/screens/product_detail';
 import ReviewsScreen from '~/screens/reviews';
 import HelpInfoScreen from '~/screens/account/help_info';
+import UnlockSubscriptionScreen from '~/screens/account/unlock_subscription';
 import ContactUsScreen from '~/screens/account/contact_us';
 import SearchScreen from '~/screens/search';
 import ServiceScreen from '~/screens/service';
@@ -227,6 +228,7 @@ class RootMain extends React.Component {
           <StackMain.Screen name="PayFastPayment" component={PayFastPaymentScreen} />
           <StackMain.Screen name="MercadoPayment" component={MercadoPaymentScreen} />
           <StackMain.Screen name="PayStackPayment" component={PayStackPaymentScreen} />
+          <StackMain.Screen name="UnlockSubscription" component={UnlockSubscriptionScreen} />
           <StackMain.Screen name="ViewedProducts" component={ViewedProductsScreen} />
           <StackMain.Screen name="Vendors" component={ViewVendorsScreen} />
           <StackMain.Screen name="VendorDetail" component={VendorDetailScreen} />
