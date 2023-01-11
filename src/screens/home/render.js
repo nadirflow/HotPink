@@ -192,6 +192,9 @@ export const ViewHome = ({
     onPressStartRating: () => { },
     onPressAddCart: () => { },
     onPressSelf: () => { },
+    onPressSelf: () => { },
+    onPressPartner: () => { },
+    onPressLifeStyles: () => { },
     onPressVendor: () => { }
   },
 }) => {
@@ -237,19 +240,19 @@ export const ViewHome = ({
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', }}>Self</Text>
                       </ImageBackground>
                     </TouchableOpacity>
-                    <TouchableOpacity>  
+                    <TouchableOpacity onPress={onFunction.onPressLifeStyles}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im3} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(20), borderRadius:10,}}>
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Life Styles</Text>
                       </ImageBackground>
                     </TouchableOpacity>
-                    <TouchableOpacity>  
+                    <TouchableOpacity >  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im4} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'center', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(16), borderRadius:10,}}>
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Upcoming Products</Text>
                       </ImageBackground>
                     </TouchableOpacity>
                 </View>
                 <View style={{width:Devices.sW('44%')}}>
-                    <TouchableOpacity>  
+                    <TouchableOpacity onPress={onFunction.onPressPartner}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im2} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(36), borderRadius:10,}}>
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Sex With Your Partner</Text>
                       </ImageBackground>

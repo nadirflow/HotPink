@@ -78,15 +78,57 @@ const persons = [
   },
   
 ];
+// const ItemDivider = () => {
+//   return (
+//     <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
+//       <View style={{width:'20%'}}>
+//         <Image source={Assets.audio} resizeMode="contain" />
+//       </View>
+//       <View style={{width:'75%', paddingHorizontal:15,}}>
+//           <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>A Candle Visualization</Text>
+//           <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
+//           <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this._onPressAudio}>
+//             <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
+//           </TouchableOpacity>
+//       </View>
+//     </View>
+//   );
+// }
 
-const Self = () => {
+
+
+class Self extends React.Component {
   
+  constructor(props) {
   
-  
-  
-  
-   
-   
+    super(props);
+  }
+  _onPressAudio = () => {
+    console.log('----------------------------------');
+    console.log('----------------------------------');
+    console.log('----------------------------------');
+    console.log(this.props);
+    console.log('----------------------------------');
+    console.log('----------------------------------');
+    console.log('----------------------------------');
+     this.props.navgation.navigate('AudioPlayer');
+    
+  }
+  _onRenderSeparatorItem = () => (
+    <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
+      <View style={{width:'20%'}}>
+        <Image source={Assets.audio} resizeMode="contain" />
+      </View>
+      <View style={{width:'75%', paddingHorizontal:15,}}>
+          <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>A Candle Visualization</Text>
+          <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
+          <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this._onPressAudio()}>
+            <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
+          </TouchableOpacity>
+      </View>
+    </View>
+  );
+  render() {
     return (
       <>
         <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    paddingLeft:'5%', paddingRight:'5%'}}>
@@ -123,16 +165,17 @@ const Self = () => {
                   data={persons}
                   columnWrapperStyle={{  flex: 1,justifyContent: "space-between", marginTop:20,}}
                     numColumns={3}
-                  renderItem={(item) => { 
-                    console.log(item.item);
-                    return(
-                    <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") }}>
-                      <Image source={{uri: item.item.image}} style={{width:'100%', height:80, }} />
-                      <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.name}</Text>
-                    </TouchableOpacity>
-                    );
+                    ItemSeparatorComponent={this._onRenderSeparatorItem}
+                    renderItem={(item) => { 
+                      
+                      return(
+                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") }}>
+                        <Image source={{uri: item.item.image}} style={{width:'100%', height:80, }} />
+                        <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.name}</Text>
+                      </TouchableOpacity>
+                      );
 
-                  }
+                    }
                   }
                   // renderItem={({ item }) => this.renderItem(item)}
                   keyExtractor={(item) => item.id}
@@ -144,7 +187,8 @@ const Self = () => {
         </ImageBackground>
       </>
     );
-  
+  };
 };
+
 
 export default Self;

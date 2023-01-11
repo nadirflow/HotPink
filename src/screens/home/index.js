@@ -291,6 +291,12 @@ class Home extends React.Component {
   _onPressSelf = () => {
     this.props.navigation.navigate("Self");
   }
+  _onPressPartner = () => {
+    this.props.navigation.navigate("PartnerWith");
+  }
+  _onPressLifeStyles = () => {
+    this.props.navigation.navigate("LifeStyles");
+  }
 
   _onFocusSearch = () => {
     this.props.navigation.navigate("Search");
@@ -716,7 +722,9 @@ class Home extends React.Component {
             onPressStartRating: this._onPressStartRating,
             onPressAddCart: this._onPressAddCart,
             onPressVendor: this._onPressVendor,
-            onPressSelf: this._onPressSelf
+            onPressSelf: this._onPressSelf,
+            onPressPartner: this._onPressPartner,
+            onPressLifeStyles: this._onPressLifeStyles
           }}
         />
       </Drawer>

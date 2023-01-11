@@ -70,7 +70,12 @@ import WebviewPaymentScreen from '~/screens/webview_payment';
 import WebviewThankYouScreen from '~/screens/webview_thankyou';
 import Welcome from '~/screens/authentication/welcome';
 import Welcom from '~/screens/Welcom';
+
+import PartnerMain from '~/screens/PartnerMain'
+import LifeStyles from '~/screens/LifeStyles';
+import AudioPlayer from '~/screens/AudioPlayer';
 import Self from '~/screens/Self';
+
 
 /** INIT NAVIGATOR OF APP */
 const StackMain = createStackNavigator();
@@ -244,6 +249,9 @@ class RootMain extends React.Component {
           <StackMain.Screen name="WebviewPayment" component={WebviewPaymentScreen} />
           <StackMain.Screen name="WebviewThankyou" component={WebviewThankYouScreen} />
           <StackMain.Screen name="Self" component={Self} />
+          <StackMain.Screen name="PartnerWith" component={PartnerMain} />
+          <StackMain.Screen name="LifeStyles" component={LifeStyles} />
+          <StackMain.Screen name="AudioPlayer" component={AudioPlayer} />
         </StackMain.Navigator>
       </Root>
     )

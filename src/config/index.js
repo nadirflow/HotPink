@@ -397,6 +397,15 @@ export const Assets = {
     im2: require('../../assets/images/img2.png'),
     im5: require('../../assets/images/img5.png'),
     hot: require('../../assets/images/hot.png'),
+    sp1: require('../../assets/images/sp1.png'),
+    sp2: require('../../assets/images/sp2.png'),
+    sp3: require('../../assets/images/sp3.png'),
+    sp4: require('../../assets/images/sp4.png'),
+    sp5: require('../../assets/images/sp5.png'),
+    ls1: require('../../assets/images/ls1.png'),
+    ls2: require('../../assets/images/ls2.png'),
+    ls3: require('../../assets/images/ls3.png'),
+    audio: require('../../assets/images/audio.png'),
 };
 
 export const Keys = {
