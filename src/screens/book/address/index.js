@@ -543,7 +543,7 @@ class BookAddress extends React.Component {
     /* RENDER */
     render() {
 
-        console.log('object', this.state._dataCountry)
+        // console.log('object', this.state._dataCountry)
         return (
             <ViewBookAddress
                 props={this.props}

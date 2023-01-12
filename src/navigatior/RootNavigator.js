@@ -145,8 +145,8 @@ function Navigator(props) {
 
   const onGetToken = async () => {
     let fcmToken = await firebase.messaging().getToken();
-    console.log('------------------------------');
-    console.log(fcmToken.register);
+    // console.log('------------------------------');
+    // console.log(fcmToken.register);
     if (fcmToken) {
       // Register token
       onRegisterTokenFCM(fcmToken);
