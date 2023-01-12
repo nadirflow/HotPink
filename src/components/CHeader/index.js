@@ -72,7 +72,7 @@ const CHeader = ({
                   <Icon
                     containerStyle={{ marginLeft: iconLeft_1 === "angle-left" ? -5 : 0 }}
                     name={iconLeft_1}
-                    color={[cStyles.txt_title_header, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={"regular"} />
                 </Button>
@@ -81,7 +81,7 @@ const CHeader = ({
               {iconLeft_2 &&
                 <Button transparent onPress={onPressLeft_2}>
                   <Icon name={iconLeft_2}
-                    color={[cStyles.txt_title_header, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header, {color:'#fff',  backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={"regular"} />
                 </Button>
@@ -98,7 +98,7 @@ const CHeader = ({
               {iconRight_1 &&
                 <Button style={cStyles.pr_20} transparent onPress={onPressRight_1}>
                   <Icon name={iconRight_1}
-                    color={[cStyles.txt_title_header, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={'regular'} />
 
@@ -118,7 +118,7 @@ const CHeader = ({
               {iconRight_2 &&
                 <Button transparent onPress={onPressRight_2}>
                   <Icon name={iconRight_2}
-                   color={[cStyles.txt_title_header, {color:'#fff'}]}
+                   color={[cStyles.txt_title_header, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={'regular'} />
                 </Button>
@@ -155,7 +155,7 @@ const CHeader = ({
               {iconRight_2 &&
                 <Button style={cStyles.pr_20} transparent onPress={onPressRight_2}>
                   <Icon name={iconRight_2}
-                    color={[cStyles.txt_title_header, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={'regular'} />
                 </Button>
@@ -164,7 +164,7 @@ const CHeader = ({
               {iconRight_1 &&
                 <Button transparent onPress={onPressRight_1}>
                   <Icon name={iconRight_1}
-                    color={[cStyles.txt_title_header, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={'regular'} />
 
@@ -192,7 +192,7 @@ const CHeader = ({
               {iconLeft_2 &&
                 <Button transparent onPress={onPressLeft_2}>
                   <Icon name={iconLeft_2}
-                    color={[cStyles.txt_title_header.color, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header.color, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={"regular"} />
                 </Button>
@@ -201,7 +201,7 @@ const CHeader = ({
               {iconLeft_1 &&
                 <Button style={{ marginRight: -17 }} transparent onPress={onPressLeft_1}>
                   <Icon name={iconLeft_1}
-                    color={[cStyles.txt_title_header.color, {color:'#fff'}]}
+                    color={[cStyles.txt_title_header.color, {color:'#fff', backgroundColor:'#000'}]}
                     size={Devices.fS(20)}
                     type={"regular"} />
                 </Button>

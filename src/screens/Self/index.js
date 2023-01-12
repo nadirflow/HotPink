@@ -15,6 +15,7 @@ import CImage from '~/components/CImage';
 import CHeader from '~/components/CHeader';
 import { cStyles } from '~/utils/styles';
 import Icon from 'react-native-fontawesome-pro';
+import { useNavigation } from '@react-navigation/native';
 const persons = [
   {
     id: '1',
@@ -102,6 +103,7 @@ class Self extends React.Component {
   constructor(props) {
   
     super(props);
+    
   }
   _onPressAudio = () => {
     console.log('----------------------------------');
@@ -114,6 +116,7 @@ class Self extends React.Component {
      this.props.navgation.navigate('AudioPlayer');
     
   }
+  
   _onRenderSeparatorItem = () => (
     <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
       <View style={{width:'20%'}}>
@@ -122,13 +125,14 @@ class Self extends React.Component {
       <View style={{width:'75%', paddingHorizontal:15,}}>
           <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>A Candle Visualization</Text>
           <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
-          <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this._onPressAudio()}>
+          <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this.props.navigation.navigate('AudioPlayer')}>
             <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
           </TouchableOpacity>
       </View>
     </View>
   );
   render() {
+    
     return (
       <>
         <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    paddingLeft:'5%', paddingRight:'5%'}}>
@@ -169,7 +173,7 @@ class Self extends React.Component {
                     renderItem={(item) => { 
                       
                       return(
-                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") }}>
+                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") } } onPress={() => this.props.navigation.navigate('ArticleSelf')}>
                         <Image source={{uri: item.item.image}} style={{width:'100%', height:80, }} />
                         <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.name}</Text>
                       </TouchableOpacity>

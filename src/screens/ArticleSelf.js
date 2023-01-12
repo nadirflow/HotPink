@@ -17,7 +17,7 @@ import { cStyles } from '~/utils/styles';
 import Icon from 'react-native-fontawesome-pro';
 
 
-class AudioPlayer extends React.Component {
+class ArticleSelf extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -51,7 +51,7 @@ class AudioPlayer extends React.Component {
       />
           
             <View style={{paddingVertical:15, flex:1}}>
-                <Text>Article Self</Text>
+                <Text>Audio</Text>
             </View>
           
         </ImageBackground>
@@ -60,4 +60,4 @@ class AudioPlayer extends React.Component {
   };
 };
 
-export default AudioPlayer;
+export default ArticleSelf;

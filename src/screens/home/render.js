@@ -220,7 +220,7 @@ export const ViewHome = ({
             </View>
           </View>
         }
-        iconLeft_1={'heart'}
+        iconLeft_1={'bars'}
         iconRight_1={'shopping-cart'}
         iconRight_2={'search'}
         onPressLeft_1={onFunction.onOpenDrawer}
