@@ -102,6 +102,10 @@ class WebviewCheckoutScreen extends Component {
     const { canGoForward} = this.state;
     const { language, cartKey, theme } = this.props;
     const { token } = this.props.route.params;
+    console.log('22====================================');
+    console.log(this.props);
+    console.log(`${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`);
+    console.log('22====================================');
     return (
       <Container style={cStyles.container}>
         <CHeader
@@ -114,9 +118,9 @@ class WebviewCheckoutScreen extends Component {
         <WebView
           source={{
             uri: `${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`,
-            // headers: {
-            //   'Authorization': `Bearer ${token}`,
-            // },
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
           }}
           ref={ref => (this.webview = ref)}
           onNavigationStateChange={this.handleResponse}
