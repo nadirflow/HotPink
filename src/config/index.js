@@ -294,8 +294,8 @@ export const Configs = {
 
     /** STRIPE */
     stripeMethod: 'stripe',
-    stripePublishKey: 'pk_test_tlh7gpOTCB0CrulG3u1qOQVO002ZtUJruB',
-    stripeSecret: 'sk_test_rGARQzzCIWDzqfSzEt94gnFD00mhijMPYQ',
+    stripePublishKey: 'pk_test_51Ln1FOKuCK7IZWA1CJ1vYDdjZfg3OQoeNtiS9WBf03vgokIOGp39qgZu5hRPRZ6u40nfMfCtBuQOU4PVhY01FHPr00TUAGql7G',
+    stripeSecret: 'sk_test_51Ln1FOKuCK7IZWA1vd9zIZ2Y6VwbkpbhLbcxTco51LgDRFYYApWMBMzPh3hf4ZUlQTZqipZLEqlzj6es4TgDuq5S00ampXF67h',
 
     avatarUrlDefault: 'http://1.gravatar.com/avatar/4456f23e6de5424fb8ca08be40e30cb7?s=192&d=mm&r=g',
     customLayout: LAYOUT,

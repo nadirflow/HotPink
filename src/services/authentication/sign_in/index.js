@@ -37,13 +37,23 @@ export default {
       wpAPI: true,
       version: Configs.versionApiForLogin,
       queryStringAuth: true,
-      wpAPIPrefix: Configs.wpAPIPrefixForLogin
+      wpAPIPrefix: Configs.wpAPIPrefixForLogin,
+      email : params.email
     });
 
     try {
-      let newURL = Routes.auth.signIn + "/email/" + params.email;
-      let results = await WooCommerce.get(newURL);
-      return results;
+      let newURL = Routes.auth.signIn;
+      let results = await WooCommerce.get(newURL , {'email' : params.email});
+      // console.log('5====================================');
+      // console.log(results);
+      // console.log('5====================================');
+      if(results && results.customers && results.customers[0]){
+        let resultTemp = {
+          customer: results.customers[0]
+        };
+        return resultTemp;
+      }
+      return {errors: true};
     } catch (error) {
       return null;
     }

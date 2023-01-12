@@ -625,7 +625,10 @@ class Home extends React.Component {
   _onCheckForUpdate = async () => {
     VersionCheck.needUpdate()
       .then(resUpdate => {
-        if (resUpdate.isNeeded) {
+
+        //Library Issue 
+        // https://github.com/kimxogus/react-native-version-check/issues/141
+        if (resUpdate && resUpdate.isNeeded) {
           this.setState({ _isNeedUpdate: true });
           Alert.alert(
             Languages[this.props.language].update_software,
