@@ -76,6 +76,7 @@ import LifeStyles from '~/screens/LifeStyles';
 import AudioPlayer from '~/screens/AudioPlayer';
 import Self from '~/screens/Self';
 import ArticleSelf from '~/screens/ArticleSelf';
+import LSArticle from '~/screens/LSArticle';
 
 
 /** INIT NAVIGATOR OF APP */
@@ -254,6 +255,7 @@ class RootMain extends React.Component {
           <StackMain.Screen name="LifeStyles" component={LifeStyles} />
           <StackMain.Screen name="AudioPlayer" component={AudioPlayer} />
           <StackMain.Screen name="ArticleSelf" component={ArticleSelf} />
+          <StackMain.Screen name="LSArticle" component={LSArticle} />
         </StackMain.Navigator>
       </Root>
     )

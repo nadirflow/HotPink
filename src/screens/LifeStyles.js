@@ -59,7 +59,7 @@ class LifeStyles extends React.Component {
                         
                         <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3)}}>
                             <View style={{width:Devices.sW('44%')}}>
-                                <TouchableOpacity >  
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('LSArticle')}>  
                                 <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.ls1} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(26), borderRadius:10,}}>
                                     <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center' }}>Married Life</Text>
                                 </ImageBackground>
@@ -67,7 +67,7 @@ class LifeStyles extends React.Component {
                                 
                             </View>
                             <View style={{width:Devices.sW('44%')}}>
-                                <TouchableOpacity >  
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('LSArticle')}>  
                                     <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.ls2} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(26), borderRadius:10,}}>
                                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center' }}>Dating Websites</Text>
                                     </ImageBackground>
@@ -75,11 +75,11 @@ class LifeStyles extends React.Component {
                             </View>
                             
                         </View>
-                        <TouchableOpacity>  
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('LSArticle')}>  
                                 <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.ls3} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2),  paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(23), borderRadius:10,}}>
                                     <View style={{backgroundColor:'rgba(119, 12, 85, 0.8)', height:'100%', justifyContent:'center', borderRadius:10,}}>
                                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>PORN-GOOD/BAD</Text>
-                                        <Text style={{fontSize:Devices.fS(16), fontWeight:'200', color: '#fff', textAlign:'center',}}>Lorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiu smod tempor incididunt ut labo</Text>
+                                        <Text style={{fontSize:Devices.fS(16), fontWeight:'200', color: '#fff', textAlign:'center',}}>Lorem ipsum dolor sit amet, cons ectetur adipiscing elit, sed do eiu smod tempor incididunt ut labo. </Text>
                                         <Button style={{ backgroundColor:'#fff', textAlign:'center', alignSelf:'center', paddingVertical:1, paddingHorizontal:15, height:25, marginTop:5,}}><Text style={{fontSize:Devices.fS(14), color: '#610C47', fontWeight:'600'}}>Read Now</Text></Button>
                                     </View>
                                 </ImageBackground>
