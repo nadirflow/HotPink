@@ -32,6 +32,8 @@ import { Assets, Configs, Devices, Languages } from '~/config';
 /* STYLES */
 import styles from './style';
 import TopBar from '~/screens/TopBar';
+import CImage from '~/components/CImage';
+import CHeader from '~/components/CHeader';
 
 
 const inputFields = {
@@ -62,9 +64,35 @@ export const ViewSignUp = ({
   let colorScheme = useColorScheme();
 
   return (
+    <>
     
+    <CHeader
+        
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
+        titleComponent={
+          <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+            <View
+              style={[
+                cStyles.column_align_center,
+                cStyles.column_justify_center,
+                { width: '100%' },
+              ]}>
+              <CImage
+                style={{width:90, height:40}}
+                source={Assets.log}
+                resizeMode={'contain'}
+              />
+            </View>
+          </View>
+        }
+        iconLeft_1={'chevron-left'}
+        iconRight_1={'none'}
+        
+        onPressLeft_1={onFunction.onPressBack}
+        
+      />
     <ImageBackground source={Assets.back} resizeMode='cover' style={{flex:1,   }}>
-      <TopBar></TopBar>
+    
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>
           <Form >
             
@@ -266,5 +294,6 @@ export const ViewSignUp = ({
           onClose={onFunction.onTogglePicker}
         />
   </ImageBackground>
+  </>
   )
 }

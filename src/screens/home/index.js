@@ -297,6 +297,9 @@ class Home extends React.Component {
   _onPressLifeStyles = () => {
     this.props.navigation.navigate("LifeStyles");
   }
+  _onPressChat = () => {
+    this.props.navigation.navigate("ChatScreen");
+  }
 
   _onFocusSearch = () => {
     this.props.navigation.navigate("Search");
@@ -727,7 +730,9 @@ class Home extends React.Component {
             onPressVendor: this._onPressVendor,
             onPressSelf: this._onPressSelf,
             onPressPartner: this._onPressPartner,
-            onPressLifeStyles: this._onPressLifeStyles
+            onPressLifeStyles: this._onPressLifeStyles,
+            onPressChat: this._onPressChat
+
           }}
         />
       </Drawer>

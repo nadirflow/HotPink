@@ -44,7 +44,7 @@ class LSArticle extends React.Component {
           </View>
         }
         iconLeft_1={'chevron-left'}
-        iconRight_1={' '}
+        iconRight_1={'none'}
         
         onPressLeft_1={() => this.props.navigation.goBack()}
         
@@ -62,8 +62,11 @@ class LSArticle extends React.Component {
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
                   <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
-                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}}>
-                        <Text style={{color:'#000'}}>Buy Subscription</Text>
+                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  
+                             return;
+                         }
+                     }}>
+                        <Text style={{color:'#610C47'}}>Buy Subscription</Text>
                     </TouchableOpacity>
                   </View>
                 </View>

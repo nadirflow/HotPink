@@ -28,7 +28,7 @@ import styles from './style';
 const RenderSectionHeader = (title) => {
   return (
     <Separator bordered style={styles.con_section_list}>
-      <CText style={[cStyles.txt_title_group, Configs.supportRTL && cStyles.txt_RTL]}>
+      <CText style={[cStyles.txt_title_group, Configs.supportRTL && cStyles.txt_RTL, {color: '#E83B55'}]}>
         {moment(title, "YYYY-MM").format("MMMM YYYY")}
       </CText>
     </Separator>
@@ -38,7 +38,7 @@ const RenderSectionHeader = (title) => {
 const RenderAppointmentEmpty = () => {
   return (
     <View style={[cStyles.column_align_center, { marginTop: Devices.sW('40%') }]}>
-      <Icon name={'comment-alt-exclamation'} color={Colors.BORDER_COLOR} size={Devices.fS(50)} type={'light'} />
+      <Icon name={'comment-alt-exclamation'} color={'#E83B55'} size={Devices.fS(50)} type={'light'} />
       <CText style={cStyles.txt_no_data_1} i18nKey={'empty_list'} />
     </View>
   )
@@ -118,20 +118,20 @@ const RenderAppointmentItem = (index, data, onPress) => {
     <TouchableOpacity onPress={() => onPress(data)}>
       <Card style={styles.con_content_item}>
         <CViewRow between
-          leftComp={<CText style={styles.txt_title_item} numberOfLines={5}>{title}</CText>}
+          leftComp={<CText style={[styles.txt_title_item, {color:'#E83B55'}]} numberOfLines={5}>{title}</CText>}
           rightComp={
             <Badge warning={statusHeader.color === "warning"} success={statusHeader.color === "success"}
               info={statusHeader.color === "info"} danger={statusHeader.color === "danger"}
               style={[statusHeader.color === "grey" && { backgroundColor: "grey" }]}>
-              <CText style={styles.txt_status_header} i18nKey={statusHeader.title} />
+              <CText style={[styles.txt_status_header, {color:'#fff'}]} i18nKey={statusHeader.title} />
             </Badge>
           }
         />
 
         <View style={styles.con_footer_item}>
           <View style={styles.con_row_item}>
-            <CText style={styles.txt_row_item} i18nKey={Configs.allowBooking ? "booking_code" : "order_code"} />
-            <CText style={styles.txt_row_item}>{': ' + data.number}</CText>
+            <CText style={[styles.txt_row_item, {color:'#000'}]} i18nKey={Configs.allowBooking ? "booking_code" : "order_code"} />
+            <CText style={[styles.txt_row_item, {color:'#000'}]}>{': ' + data.number}</CText>
           </View>
           {Configs.allowBooking &&
             <View style={styles.con_row_item}>
@@ -162,6 +162,7 @@ export const ViewAppointment = ({
         iconLeft_1={Configs.supportRTL ? "angle-right" : "angle-left"}
         iconRight_1={"none"}
         onPressLeft_1={onFunction.onPressBack}
+        style={{backgroundColor:'#E83B55'}}
       />
 
       {!state._loading &&

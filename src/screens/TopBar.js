@@ -11,7 +11,7 @@ class TopBar extends React.Component {
     return (
       <View style={styles.container}>
         
-        <Text><Button style={{backgroundColor:'transparent', shadowOpacity:0, borderWidth:0, borderColor:'transparent', shadowColor:'transparent', }}><Icon
+        <Text><Button style={{backgroundColor:'transparent', shadowOpacity:0, borderWidth:0, borderColor:'transparent', shadowColor:'transparent', }} onPress={onPressBack}><Icon
               name={"chevron-left"}
               size={Devices.fS(25)} 
               color={Colors.WHITE_COLOR}

@@ -44,7 +44,7 @@ class PartnerMain extends React.Component {
           </View>
         }
         iconLeft_1={'chevron-left'}
-        iconRight_1={' '}
+        iconRight_1={'none'}
         
         onPressLeft_1={() => this.props.navigation.goBack()}
         

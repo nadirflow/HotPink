@@ -44,7 +44,7 @@ class ArticleSelf extends React.Component {
           </View>
         }
         iconLeft_1={'chevron-left'}
-        iconRight_1={' '}
+        iconRight_1={'none'}
         
          onPressLeft_1={() => this.props.navigation.goBack()}
         
@@ -66,8 +66,11 @@ class ArticleSelf extends React.Component {
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, id sodales risus gravida. Curabitur nisi eros, vulputate ut pulvinar ac, fermentum sagittis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam velit tellus, fringilla vitae libero quis, faucibus venenatis sem. Donec dapibus nulla ex, eu egestas metus consequat eget. Phasellus sit amet lectus eget arcu dapibus porttitor. Cras tempor vulputate massa vulputate facilisis. Vivamus a massa tristique, tristique sem in, lobortis lacus. Donec quis porta ipsum. 
                   Aliquam a justo tempus, volutpat velit id, euismod dui. Integer feugiat diam velit, in viverra risus laoreet vitae. Integer nec commodo quam. </Text>
                   <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
-                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}}>
-                        <Text style={{color:'#000'}}>Buy Subscription</Text>
+                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  
+                             return;
+                         }
+                     }}>
+                        <Text style={{color:'#610C47'}}>Buy Subscription</Text>
                     </TouchableOpacity>
                   </View>
               </ScrollView>

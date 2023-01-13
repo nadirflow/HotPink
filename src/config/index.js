@@ -289,8 +289,8 @@ export const Configs = {
     },
 
     /** RATING */
-    ratingAppleAppID: '345345656',
-    ratingGooglePackageName: 'com.zinistore', 
+    ratingAppleAppID: '',
+    ratingGooglePackageName: '', 
 
     /** STRIPE */
     stripeMethod: 'stripe',

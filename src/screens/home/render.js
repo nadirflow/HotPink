@@ -195,6 +195,7 @@ export const ViewHome = ({
     onPressSelf: () => { },
     onPressPartner: () => { },
     onPressLifeStyles: () => { },
+    onPressChat: () => { },
     onPressVendor: () => { }
   },
 }) => {
@@ -257,7 +258,7 @@ export const ViewHome = ({
                         <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Sex With Your Partner</Text>
                       </ImageBackground>
                     </TouchableOpacity>
-                    <TouchableOpacity>  
+                    <TouchableOpacity onPress={onFunction.onPressChat}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im5} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(25), borderRadius:10,}}>
                         <Icon
                         name='comment-dots'
