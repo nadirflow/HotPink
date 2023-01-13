@@ -135,8 +135,7 @@ class Self extends React.Component {
     
     return (
       <>
-        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    paddingLeft:'5%', paddingRight:'5%'}}>
-        <CHeader
+      <CHeader
         
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
@@ -155,11 +154,14 @@ class Self extends React.Component {
             </View>
           </View>
         }
-        iconLeft_1={'heart'}
-        iconRight_1={'shopping-cart'}
-        iconRight_2={'search'}
-       
+        iconLeft_1={'chevron-left'}
+        iconRight_1={' '}
+        
+        onPressLeft_1={() => this.props.navigation.goBack()}
+        
       />
+        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    paddingLeft:'5%', paddingRight:'5%'}}>
+        
           
             <View style={{paddingVertical:15, flex:1}}>
               <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700'}}>Self</Text>

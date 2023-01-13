@@ -24,8 +24,7 @@ class LSArticle extends React.Component {
   render() {
     return (
       <>
-        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
-        <CHeader
+       <CHeader
         
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
@@ -44,11 +43,14 @@ class LSArticle extends React.Component {
             </View>
           </View>
         }
-        iconLeft_1={'heart'}
-        iconRight_1={'shopping-cart'}
-        iconRight_2={'search'}
-       
+        iconLeft_1={'chevron-left'}
+        iconRight_1={' '}
+        
+        onPressLeft_1={() => this.props.navigation.goBack()}
+        
       />
+        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
+        
           
             <View style={{paddingVertical:Devices.sH(5), flex:1, paddingHorizontal:Devices.sW(5)}}>
               <ScrollView>
@@ -59,7 +61,11 @@ class LSArticle extends React.Component {
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt,</Text>
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
-                  <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
+                  <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
+                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}}>
+                        <Text style={{color:'#000'}}>Buy Subscription</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </ScrollView>
             </View>

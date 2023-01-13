@@ -24,8 +24,7 @@ class AudioPlayer extends React.Component {
   render() {
     return (
       <>
-        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
-        <CHeader
+       <CHeader
         
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
@@ -44,14 +43,17 @@ class AudioPlayer extends React.Component {
             </View>
           </View>
         }
-        iconLeft_1={'heart'}
-        iconRight_1={'shopping-cart'}
-        iconRight_2={'search'}
-       
+        iconLeft_1={'chevron-left'}
+        iconRight_1={' '}
+        
+        onPressLeft_1={() => this.props.navigation.goBack()}
+        
       />
+        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
+        
           
             <View style={{paddingVertical:15, flex:1}}>
-                <Text>Article Self</Text>
+                <Text>Audio</Text>
             </View>
           
         </ImageBackground>

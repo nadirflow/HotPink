@@ -38,6 +38,31 @@ class UnlockSubscription extends React.PureComponent {
   render() {
     return (
     <SafeAreaView style={{flex:1}}>
+      <CHeader
+        
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
+        titleComponent={
+          <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+            <View
+              style={[
+                cStyles.column_align_center,
+                cStyles.column_justify_center,
+                { width: '100%' },
+              ]}>
+              {/* <CImage
+                style={{width:90, height:40}}
+                source={Assets.log}
+                resizeMode={'contain'}
+              /> */}
+            </View>
+          </View>
+        }
+        iconLeft_1={'times'}
+       
+        
+        onPressLeft_1={() => this.props.navigation.goBack()}
+        
+      />
       <ImageBackground   source={Assets.back} resizeMode="cover" style={{flex:1,  paddingLeft:'8%', paddingRight:'8%', justifyContent:'center', alignItems:'center'}}>
         <Image source={Assets.hot} />
         <View style={{marginVertical:30, justifyContent:'space-between', alignItems:'center', alignContent:'center',}}>

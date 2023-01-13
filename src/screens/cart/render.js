@@ -392,7 +392,7 @@ export const ViewCart = ({
           </Content>
 
           <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-            <Button block style={[styles.con_btn, { backgroundColor: Colors.PRIMARY_COLOR }]} onPress={onFunction.onPressBack} >
+            <Button block style={[styles.con_btn, { backgroundColor: '#E83B55' }]} onPress={onFunction.onPressBack} >
               <CText style={styles.txt_btn} i18nKey={'go_back_to_shopping'} />
             </Button>
           </Footer>
