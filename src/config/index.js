@@ -409,6 +409,8 @@ export const Assets = {
     lob: require('../../assets/images/logo-big.png'),
     t1: require('../../assets/images/text1.png'),
     t2: require('../../assets/images/text2.png'),
+    abg: require('../../assets/images/abg.png'),
+    album: require('../../assets/images/album.png'),
 };
 
 export const Keys = {

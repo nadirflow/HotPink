@@ -26,9 +26,11 @@ import { layoutWidth } from '~/utils/layout_width';
 import styles from './style'; 
 
 const RenderCategory = (index, item, onPress) => {
+  
   let source = Assets.image_failed;
   if (typeof(item.thumbnail) !== 'undefined' && item.thumbnail.length) {
     source = { uri: item.thumbnail.sizes.thumbnail };
+    
   }
 
   return (

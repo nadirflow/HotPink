@@ -136,6 +136,7 @@ android {
         versionCode 25
         versionName "2.0.0"
         multiDexEnabled true
+        missingDimensionStrategy ('store', 'play') //<-- add this
     }
     splits {
         abi {
