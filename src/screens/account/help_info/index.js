@@ -94,6 +94,7 @@ class HelpInfo extends React.PureComponent {
           iconRight_1={"shopping-cart"}
           onPressLeft_1={this._onPressBack}
           onPressRight_1={this._onPressCart}
+          style={{backgroundColor:'#E83B55'}}
         />
 
         <FlatList
@@ -107,7 +108,7 @@ class HelpInfo extends React.PureComponent {
                     <CViewRow
                       leftComp={
                         <Icon name={item.icon}
-                          color={cStyles.ic_left_detail.color}
+                          color={'#E83B55'}
                           size={cStyles.ic_left_detail.size}
                           type={cStyles.ic_left_detail.type} />
                       }
@@ -117,7 +118,7 @@ class HelpInfo extends React.PureComponent {
                           Configs.supportRTL ? cStyles.column_align_end : cStyles.column_align_start
                         ]}>
                           <CText style={[styles.txt_row,
-                          Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20]}
+                          Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20, {color:'#000'}]}
                             i18nKey={item.title} />
                         </Body>
                       }

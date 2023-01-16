@@ -289,8 +289,8 @@ export const Configs = {
     },
 
     /** RATING */
-    ratingAppleAppID: '345345656',
-    ratingGooglePackageName: 'com.zinistore', 
+    ratingAppleAppID: '',
+    ratingGooglePackageName: '', 
 
     /** STRIPE */
     stripeMethod: 'stripe',
@@ -406,6 +406,9 @@ export const Assets = {
     ls2: require('../../assets/images/ls2.png'),
     ls3: require('../../assets/images/ls3.png'),
     audio: require('../../assets/images/audio.png'),
+    lob: require('../../assets/images/logo-big.png'),
+    t1: require('../../assets/images/text1.png'),
+    t2: require('../../assets/images/text2.png'),
 };
 
 export const Keys = {

@@ -79,6 +79,7 @@ export const ViewProfile = ({
         iconLeft_1={Configs.supportRTL ? "angle-right" : "angle-left"}
         iconRight_1={"none"}
         onPressLeft_1={onFunction.onPressBack}
+        style={{backgroundColor:'#E83B55'}}
       />
 
       <Content>
@@ -89,10 +90,10 @@ export const ViewProfile = ({
                 <Item style={styles.con_row} error={state._errorFirstName !== ""}>
                   <IconF containerStyle={cStyles.pr_10}
                     name={"user"}
-                    color={cStyles.ic_left_detail.color}
+                    color={'#E83B55'}
                     size={cStyles.ic_left_detail.size}
                     type={state._focusField === "name" ? "solid" : cStyles.ic_left_detail.type} />
-                  <Input style={styles.con_input}
+                  <Input style={[styles.con_input, {color:'#000'}]}
                     ref={ref => inputs[inputFields.firstname] = ref}
                     disabled={state._loading}
                     removeClippedSubviews={Devices.OS === 'android'}
@@ -109,7 +110,7 @@ export const ViewProfile = ({
                 </Item>
                 :
                 <Item style={styles.con_row} error={state._errorFirstName !== ""}>
-                  <Input style={[styles.con_input, cStyles.pr_10, cStyles.txt_RTL]}
+                  <Input style={[styles.con_input, cStyles.pr_10, cStyles.txt_RTL, {color:'#000'}]}
                     ref={ref => inputs[inputFields.firstname] = ref}
                     disabled={state._loading}
                     removeClippedSubviews={Devices.OS === 'android'}
@@ -131,7 +132,7 @@ export const ViewProfile = ({
             }
             rightComp={
               <Item style={styles.con_row_last_name} error={state._errorLastName !== ""}>
-                <Input style={[styles.con_input, Configs.supportRTL && cStyles.txt_RTL]}
+                <Input style={[styles.con_input, Configs.supportRTL && cStyles.txt_RTL, {color:'#000'}]}
                   ref={ref => inputs[inputFields.lastname] = ref}
                   disabled={state._loading}
                   removeClippedSubviews={Devices.OS === 'android'}
@@ -153,12 +154,12 @@ export const ViewProfile = ({
             leftComp={
               <IconF containerStyle={[styles.con_row_left, Configs.supportRTL && { paddingRight: 0 }]}
                 name={"map-marker-alt"}
-                color={cStyles.ic_left_detail.color}
+                color={'#E83B55'}
                 size={cStyles.ic_left_detail.size}
                 type={state._focusField === "address" ? "solid" : cStyles.ic_left_detail.type} />
             }
             rightComp={
-              <Input style={[styles.con_input, Configs.supportRTL && cStyles.pr_15]}
+              <Input style={[styles.con_input, Configs.supportRTL && cStyles.pr_15, {color:'#000'}]}
                 ref={ref => inputs[inputFields.address] = ref}
                 disabled={state._loading}
                 removeClippedSubviews={Devices.OS === 'android'}
@@ -180,7 +181,7 @@ export const ViewProfile = ({
             leftComp={
               <IconF containerStyle={[styles.con_row_left, Configs.supportRTL && { paddingRight: 0 }]}
                 name={"envelope"}
-                color={cStyles.ic_left_detail.color}
+                color={'#E83B55'}
                 size={cStyles.ic_left_detail.size}
                 type={cStyles.ic_left_detail.type} />
             }
@@ -200,7 +201,7 @@ export const ViewProfile = ({
                   }
                   rightComp={
                     <View style={cStyles.row_align_center}>
-                      <CText style={[styles.txt_input, { marginLeft: 0 }]}>{state._callingCode}</CText>
+                      <CText style={[styles.txt_input, { marginLeft: 0, color: '#000' }]}>{state._callingCode}</CText>
                       <IconF containerStyle={{ marginTop: -10 }} name={"sort-down"} color={Colors.BLACK_COLOR} size={Devices.fS(20)} type={"solid"} />
                     </View>
                   }
@@ -208,7 +209,7 @@ export const ViewProfile = ({
               </TouchableOpacity>
             }
             rightComp={
-              <Input style={[styles.con_input, Configs.supportRTL && cStyles.mr_10]}
+              <Input style={[styles.con_input, Configs.supportRTL && cStyles.mr_10, {color:'#000'}]}
                 keyboardType={"phone-pad"}
                 ref={ref => inputs[inputFields.phone] = ref}
                 disabled={state._loading}
@@ -232,7 +233,7 @@ export const ViewProfile = ({
             leftComp={
               <IconF containerStyle={[styles.con_row_left, Configs.supportRTL && { paddingRight: 0 }]}
                 name={"birthday-cake"}
-                color={cStyles.ic_left_detail.color}
+                color={'#E83B55'}
                 size={cStyles.ic_left_detail.size}
                 type={state._visibleDatePicker ? "solid" : cStyles.ic_left_detail.type} />
             }
@@ -240,7 +241,7 @@ export const ViewProfile = ({
               <Body style={styles.con_row_right}>
                 <TouchableOpacity onPress={onFunction.onPressShowDatePicker}>
                   <View style={styles.con_input}>
-                    <CText style={[styles.txt_birthday, Configs.supportRTL && cStyles.txt_RTL]}>
+                    <CText style={[styles.txt_birthday, Configs.supportRTL && cStyles.txt_RTL, {color:'#000'}]}>
                       {DOB ?
                         moment(DOB.value).format(Configs.formatDate) :
                         moment().format(Configs.formatDate)
@@ -254,7 +255,7 @@ export const ViewProfile = ({
         </Form>
 
         <Button block
-          style={[styles.con_btn, { backgroundColor: Colors.PRIMARY_COLOR, marginHorizontal: Devices.pH(layoutWidth.width) }]}
+          style={[styles.con_btn, { backgroundColor: '#E83B55', marginHorizontal: Devices.pH(layoutWidth.width) }]}
           onPress={onFunction.onPressEdit} >
           {state._loading && <Spinner style={styles.spi_loading} color={Colors.WHITE_COLOR} size={'small'} />}
           <CText style={styles.txt_btn} i18nKey={'save'} />

@@ -190,7 +190,7 @@ class Search extends React.Component {
                 !Configs.supportRTL && cStyles.pl_10,
                 Configs.supportRTL && cStyles.pr_10
                 ]}>
-                  <CText style={[styles.txt_name_item, Configs.supportRTL && cStyles.txt_RTL]} numberOfLines={2}>
+                  <CText style={[styles.txt_name_item, Configs.supportRTL && cStyles.txt_RTL, {color:'#000'}]} numberOfLines={2}>
                     {data.name}
                   </CText>
 
@@ -215,7 +215,7 @@ class Search extends React.Component {
             />
           }
           rightComp={
-            <View style={[Configs.supportRTL ? cStyles.column_align_start : cStyles.column_align_end]}>
+            <View style={[Configs.supportRTL ? cStyles.column_align_start : cStyles.column_align_end, {color:'#000'}]}>
               {data.variations.length > 0 &&
                 <CText style={cStyles.txt_body_meta_item} i18nKey={"from_price"} />
               }
@@ -274,6 +274,7 @@ class Search extends React.Component {
     return (
       <Container>
         <CHeader
+          style={{backgroundColor:'#E83B55'}}
           searchBar={true}
           rounded={true}
           titleComponent={
@@ -339,10 +340,11 @@ class Search extends React.Component {
         {_dataHistorySearch.length > 0 &&
           <View style={[styles.con_history_search, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
             <CViewRow between
-              leftComp={<CText style={cStyles.txt_title_group} i18nKey={"history_search"} />}
+              leftComp={<CText style={[cStyles.txt_title_group, {color:'#E83B55'}]} i18nKey={"history_search"} />}
               rightComp={
                 <Icon name={'trash-alt'}
-                  color={Colors.BLACK_COLOR}
+
+                  color={'#E83B55'}
                   size={Devices.fS(20)}
                   type={"regular"}
                   onPress={this._onPressRemoveHistory} />
@@ -375,7 +377,7 @@ class Search extends React.Component {
         <View style={styles.con_list_search}>
           {_dataSearch.length > 0 &&
             <CText style={[cStyles.txt_title_group, cStyles.pv_10,
-            { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
+            { paddingHorizontal: Devices.pH(layoutWidth.width), color: '#E83B55' }]}
               i18nKey={"search_results"} />
           }
 

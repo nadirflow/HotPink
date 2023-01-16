@@ -26,13 +26,17 @@ import { cStyles } from '~/utils/styles';
 /* STYLES */
 import styles from './style';
 import TopBar from '~/screens/TopBar';
+import CHeader from '~/components/CHeader';
+import CImage from '~/components/CImage';
 
 const inputFields = {
   email: "email",
   password: "password"
 }
 
+console
 export const ViewSignIn = ({
+  
   state = null,
   props = null,
   inputs = {},
@@ -48,9 +52,37 @@ export const ViewSignIn = ({
     onPressLoginAP: () => { }
   }
 }) => {
+  console.log(props.user);
   return (
+    <>
+    
+    <CHeader
+        
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
+        titleComponent={
+          <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+            <View
+              style={[
+                cStyles.column_align_center,
+                cStyles.column_justify_center,
+                { width: '100%' },
+              ]}>
+              <CImage
+                style={{width:90, height:40}}
+                source={Assets.log}
+                resizeMode={'contain'}
+              />
+            </View>
+          </View>
+        }
+        iconLeft_1={'chevron-left'}
+        iconRight_1={'none'}
+        
+        onPressLeft_1={onFunction.onPressBack}
+        
+      />
     <ImageBackground source={Assets.back} resizeMode='cover' style={{flex:1, paddingTop:25,  }}>
-      <TopBar></TopBar>
+      
       
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>
           
@@ -164,6 +196,7 @@ export const ViewSignIn = ({
         </Content>
       
     </ImageBackground>
+    </>
 
   )
 }

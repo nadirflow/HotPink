@@ -24,8 +24,7 @@ class ArticleSelf extends React.Component {
   render() {
     return (
       <>
-        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
-        <CHeader
+       <CHeader
         
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
@@ -44,11 +43,14 @@ class ArticleSelf extends React.Component {
             </View>
           </View>
         }
-        iconLeft_1={'heart'}
-        iconRight_1={'shopping-cart'}
-        iconRight_2={'search'}
-       
+        iconLeft_1={'chevron-left'}
+        iconRight_1={'none'}
+        
+         onPressLeft_1={() => this.props.navigation.goBack()}
+        
       />
+        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
+        
           
             <View style={{paddingVertical:Devices.sH(5), flex:1, paddingHorizontal:Devices.sW(5)}}>
               <ScrollView>
@@ -62,9 +64,15 @@ class ArticleSelf extends React.Component {
                 <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, id sodales risus gravida. Curabitur nisi eros, vulputate ut pulvinar ac, fermentum sagittis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam velit tellus, fringilla vitae libero quis, faucibus venenatis sem. Donec dapibus nulla ex, eu egestas metus consequat eget. Phasellus sit amet lectus eget arcu dapibus porttitor. Cras tempor vulputate massa vulputate facilisis. Vivamus a massa tristique, tristique sem in, lobortis lacus. Donec quis porta ipsum. 
                   Aliquam a justo tempus, volutpat velit id, euismod dui. Integer feugiat diam velit, in viverra risus laoreet vitae. Integer nec commodo quam. Donec mauris augue, cursus et vulputate nec, scelerisque eget lorem. Nunc euismod, enim et interdum dignissim, lectus massa pharetra ligula, vitae auctor libero orci at nulla. Aliquam id tellus fermentum, molestie erat quis, bibendum orci. Nulla facilisi.</Text>
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, id sodales risus gravida. Curabitur nisi eros, vulputate ut pulvinar ac, fermentum sagittis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam velit tellus, fringilla vitae libero quis, faucibus venenatis sem. Donec dapibus nulla ex, eu egestas metus consequat eget. Phasellus sit amet lectus eget arcu dapibus porttitor. Cras tempor vulputate massa vulputate facilisis. Vivamus a massa tristique, tristique sem in, lobortis lacus. Donec quis porta ipsum. 
-                  Aliquam a justo tempus, volutpat velit id, euismod dui. Integer feugiat diam velit, in viverra risus laoreet vitae. Integer nec commodo quam. Donec mauris augue, cursus et vulputate nec, scelerisque eget lorem. Nunc euismod, enim et interdum dignissim, lectus massa pharetra ligula, vitae auctor libero orci at nulla. Aliquam id tellus fermentum, molestie erat quis, bibendum orci. Nulla facilisi.</Text>
-                  <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, id sodales risus gravida. Curabitur nisi eros, vulputate ut pulvinar ac, fermentum sagittis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam velit tellus, fringilla vitae libero quis, faucibus venenatis sem. Donec dapibus nulla ex, eu egestas metus consequat eget. Phasellus sit amet lectus eget arcu dapibus porttitor. Cras tempor vulputate massa vulputate facilisis. Vivamus a massa tristique, tristique sem in, lobortis lacus. Donec quis porta ipsum. 
-                  Aliquam a justo tempus, volutpat velit id, euismod dui. Integer feugiat diam velit, in viverra risus laoreet vitae. Integer nec commodo quam. Donec mauris augue, cursus et vulputate nec, scelerisque eget lorem. Nunc euismod, enim et interdum dignissim, lectus massa pharetra ligula, vitae auctor libero orci at nulla. Aliquam id tellus fermentum, molestie erat quis, bibendum orci. Nulla facilisi.</Text>
+                  Aliquam a justo tempus, volutpat velit id, euismod dui. Integer feugiat diam velit, in viverra risus laoreet vitae. Integer nec commodo quam. </Text>
+                  <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
+                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  
+                             return;
+                         }
+                     }}>
+                        <Text style={{color:'#610C47'}}>Buy Subscription</Text>
+                    </TouchableOpacity>
+                  </View>
               </ScrollView>
             </View>
           
