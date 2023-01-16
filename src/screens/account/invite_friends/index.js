@@ -74,6 +74,7 @@ class ShareScreen extends React.Component {
           iconLeft_1={Configs.supportRTL ? "angle-right" : "angle-left"}
           iconRight_1={"none"}
           onPressLeft_1={this._onPressBack}
+          style={{backgroundColor: '#E83B55'}}
         />
 
         <Content>
@@ -85,7 +86,7 @@ class ShareScreen extends React.Component {
           <Button block
             style={[styles.con_btn,
             {
-              backgroundColor: Colors.PRIMARY_COLOR,
+              backgroundColor: '#E83B55',
               marginHorizontal: Devices.pH(layoutWidth.width)
             }]}
             onPress={this._onPressShare}>

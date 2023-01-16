@@ -34,6 +34,7 @@ export const ViewBookmark = ({
         iconRight_1={state._news.length > 0 ? "align-slash" : "none"}
         onPressLeft_1={onFunctions.onPressBack}
         onPressRight_1={onFunctions.onPressDeleteAll}
+        style={{backgroundColor:'#E83B55'}}
       />
 
       {!state._loading &&

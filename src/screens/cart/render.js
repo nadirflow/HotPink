@@ -194,9 +194,10 @@ export const ViewCart = ({
   return (
     <Container>
       <CHeader
+        style={{backgroundColor:'#E83B55'}}
         titleComponent={
           <Body style={styles.con_header_center}>
-            <Title><CText style={[cStyles.txt_title_header, {color: '#E83B55'}]} i18nKey={'cart'} /></Title>
+            <Title><CText style={[cStyles.txt_title_header, {color: '#fff'}]} i18nKey={'cart'} /></Title>
             {state._products.length > 0 &&
               <View style={[cStyles.row_align_center, cStyles.mt_5]}>
                 <CText style={[styles.txt_num_cart_header, {color:'#000'}]}>{data.totalProducts}</CText>
@@ -392,7 +393,7 @@ export const ViewCart = ({
           </Content>
 
           <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-            <Button block style={[styles.con_btn, { backgroundColor: Colors.PRIMARY_COLOR }]} onPress={onFunction.onPressBack} >
+            <Button block style={[styles.con_btn, { backgroundColor: '#E83B55' }]} onPress={onFunction.onPressBack} >
               <CText style={styles.txt_btn} i18nKey={'go_back_to_shopping'} />
             </Button>
           </Footer>

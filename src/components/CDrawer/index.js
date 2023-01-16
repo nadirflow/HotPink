@@ -68,8 +68,8 @@ class CDrawer extends React.Component {
   _renderHeaderAccordionHelper = (item, expanded) => {
     return (
       <TouchableOpacity onPress={() => this._onPressRoute(item)}>
-        <View style={styles.con_header_accordion}>
-          <CText style={styles.txt_header_accordion} i18nKey={item.title} />
+        <View style={[styles.con_header_accordion, {backgroundColor:'#F9CBD1', borderBottomColor: '#E83B55'}]}>
+          <CText style={[styles.txt_header_accordion, {color:'#000'}]} i18nKey={item.title} />
         </View>
       </TouchableOpacity>
     )
@@ -77,10 +77,10 @@ class CDrawer extends React.Component {
 
   _renderHeaderAccordionCate = (item, expanded) => {
     return (
-      <CViewRow style={styles.con_header_accordion} between
+      <CViewRow style={[styles.con_header_accordion, {backgroundColor:'#F9CBD1', borderBottomColor: '#E83B55'}]} between
         leftComp={
           <TouchableOpacity onPress={() => this._onPressCategory(item)}>
-            <CText style={styles.txt_header_accordion}>{Configs.html5Entities.decode(item.title)}</CText>
+            <CText style={[styles.txt_header_accordion, {color:'#000'}]}>{Configs.html5Entities.decode(item.title)}</CText>
           </TouchableOpacity>
         }
         rightComp={
@@ -103,12 +103,12 @@ class CDrawer extends React.Component {
           {e.subs.map((item, index) => {
             return (
               <TouchableOpacity key={index.toString()} onPress={() => this._onPressCategory(item)}>
-                <View style={styles.con_header_accordion}>
+                <View style={[styles.con_header_accordion, {backgroundColor:'#F9CBD1'}]}>
                   {!Configs.supportRTL &&
-                    <CText style={[styles.txt_sub_header_accordion, cStyles.pl_10]}>&#8627;  {Configs.html5Entities.decode(item.name)}</CText>
+                    <CText style={[styles.txt_sub_header_accordion, cStyles.pl_10, {color:'#000'}]}>&#8627;  {Configs.html5Entities.decode(item.name)}</CText>
                   }
                   {Configs.supportRTL &&
-                    <CText style={[styles.txt_sub_header_accordion, cStyles.pr_10]}>{Configs.html5Entities.decode(item.name)}  &#8626;</CText>
+                    <CText style={[styles.txt_sub_header_accordion, cStyles.pr_10, {color:'#000'}]}>{Configs.html5Entities.decode(item.name)}  &#8626;</CText>
                   }
                 </View>
               </TouchableOpacity>
@@ -158,10 +158,10 @@ class CDrawer extends React.Component {
   render() {
     return (
       <Container>
-        <ScrollView style={styles.con_content} showsVerticalScrollIndicator={false}>
+        <ScrollView style={[styles.con_content, {backgroundColor: '#F9CBD1'} ]} showsVerticalScrollIndicator={false}>
           <View>
             <View style={styles.con_title_group}>
-              <CText style={cStyles.txt_title_group} i18nKey={'categories'} upperCase />
+              <CText style={[cStyles.txt_title_group, {color:'#E83B55'}]} i18nKey={'categories'} upperCase />
             </View>
             <Accordion style={styles.con_accordion}
               expanded={[0]}
@@ -173,7 +173,7 @@ class CDrawer extends React.Component {
 
           <View style={styles.con_group_2}>
             <View style={styles.con_title_group}>
-              <CText style={cStyles.txt_title_group} i18nKey={'help_info'} upperCase />
+              <CText style={[cStyles.txt_title_group, {color:'#E83B55'}]} i18nKey={'help_info'} upperCase />
             </View>
             <Accordion style={styles.con_accordion}
               expanded={[0]}

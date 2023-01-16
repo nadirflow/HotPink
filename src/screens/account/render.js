@@ -180,7 +180,7 @@ export const ViewAccount = ({
                       rightComp={
                         <Right style={[Configs.supportRTL ? cStyles.column_align_start : cStyles.column_align_end]}>
                           <Icon name={Configs.supportRTL ? "angle-left" : cStyles.ic_right_detail.name}
-                            color={cStyles.ic_right_detail.color}
+                           color={'#C73A66'}
                             size={cStyles.ic_right_detail.size}
                             type={cStyles.ic_right_detail.type} />
                         </Right>
@@ -245,7 +245,7 @@ export const ViewAccount = ({
                         <CViewRow
                           leftComp={
                             <Icon name={item.icon}
-                              color={cStyles.ic_left_detail.color}
+                              color={'#C73A66'}
                               size={cStyles.ic_left_detail.size}
                               type={cStyles.ic_left_detail.type} />
                           }
@@ -254,7 +254,7 @@ export const ViewAccount = ({
                               styles.con_content_center_row
                             ]}>
                               <CText style={[styles.txt_row,
-                              Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20]} i18nKey={item.title} />
+                              Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20, {color:'#E83B55'}]} i18nKey={item.title} />
                             </View>
                           }
                         />

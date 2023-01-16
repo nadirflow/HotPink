@@ -48,13 +48,13 @@ class Account extends React.Component {
         Helpers.showToastDuration({}, "Error call", "error");
       }
     } else {
-      if (true){
-          this.props.navigation.navigate("UnlockSubscription");  
-          return;
-      }
-      console.log('1---------------');
-      console.log(data.routeName);
-      console.log('1---------------');
+      // if (true){
+      //     this.props.navigation.navigate("UnlockSubscription");  
+      //     return;
+      // }
+      // console.log('1---------------');
+      // console.log(data.routeName);
+      // console.log('1---------------');
       this.props.navigation.navigate(data.routeName);
     }
   }

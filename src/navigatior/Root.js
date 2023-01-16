@@ -77,6 +77,8 @@ import AudioPlayer from '~/screens/AudioPlayer';
 import Self from '~/screens/Self';
 import ArticleSelf from '~/screens/ArticleSelf';
 import LSArticle from '~/screens/LSArticle';
+import ChatScreen from '~/screens/ChatScreen';
+import welcome from '~/screens/authentication/welcome';
 
 
 /** INIT NAVIGATOR OF APP */
@@ -192,15 +194,31 @@ class RootMain extends React.Component {
 
   /** RENDER */
   render() {
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log(this.props.user)
+    console.log(this.props.initRoute)
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+    console.log('---------------------')
+
     return (
       <Root>
         
         <StackMain.Navigator
           initialRouteName={this.props.initRoute}
+         //initialRouteName={this.props.user ?this.props.initRoute :  Welcom}
           headerMode={'none'}
           screenOptions={{ gestureEnabled: false }}>
          
-          {/* <StackMain.Screen name="Welcom" component={Welcom} /> */}
+     <StackMain.Screen name="Welcom" component={Welcom} />
           <StackMain.Screen name="SignUp" component={SignUpScreen} />
           <StackMain.Screen name="SignIn" component={SignInScreen} />
           <StackMain.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
@@ -256,6 +274,7 @@ class RootMain extends React.Component {
           <StackMain.Screen name="AudioPlayer" component={AudioPlayer} />
           <StackMain.Screen name="ArticleSelf" component={ArticleSelf} />
           <StackMain.Screen name="LSArticle" component={LSArticle} />
+          <StackMain.Screen name="ChatScreen" component={ChatScreen} />
         </StackMain.Navigator>
       </Root>
     )
