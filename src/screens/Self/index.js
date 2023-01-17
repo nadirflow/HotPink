@@ -105,14 +105,16 @@ class Self extends React.Component {
     super(props);
     
   }
+  state = {
+    data: [],
+  }
+  componentDidMount() {
+    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=48')
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+  }
   _onPressAudio = () => {
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log(this.props);
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log('----------------------------------');
+    
      this.props.navgation.navigate('AudioPlayer');
     
   }
@@ -168,23 +170,41 @@ class Self extends React.Component {
               <Text style={{fontSize: Devices.fS(12), color:'#fff', fontWeight:'400'}}>Private Psychotherapy Practice </Text>
               <View style={{justifyContent:'space-between'}}>
                 <FlatList
-                  data={persons}
+                  data={this.state.data}
                   columnWrapperStyle={{  flex: 1,justifyContent: "space-between", marginTop:20,}}
                     numColumns={3}
                     ItemSeparatorComponent={this._onRenderSeparatorItem}
                     renderItem={(item) => { 
+                      console.log('-------------------------------------')
+                      console.log(item.item)
+                      console.log('--------------sssssss-----------------------')
+                      
+                      // if(item.item.featured_media.sizes){
+                      //   console.log('--------------if 1 -----------------------')
+                      //   console.log(item.item.featured_media.sizes)
+                      //   console.log(item.item.featured_media.sizes['woocommerce_thumbnail']);
+                      // }
+                      // if(item.item.featured_media.sizes.woocommerce_thumbnail !== 'undefined'){
+                      //   console.log('--------------if 2 -----------------------')
+                      //   console.log(item.item.featured_media.sizes.woocommerce_thumbnail)  
+                      // }
                       
                       return(
-                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") } } onPress={() => this.props.navigation.navigate('ArticleSelf')}>
-                        <Image source={{uri: item.item.image}} style={{width:'100%', height:80, }} />
-                        <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.name}</Text>
+                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") } } onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.item.id})}>
+                       {item.item.featured_media.sizes && item.item.featured_media.sizes['woocommerce_thumbnail'] ?
+                         <Image source={{uri: item.item.featured_media.sizes['woocommerce_thumbnail']}} style={{width:'100%', height:80, }} />  
+                        :
+                        <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
+                      }
+                         
+                        <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.title.rendered}</Text>
                       </TouchableOpacity>
                       );
 
                     }
                   }
                   // renderItem={({ item }) => this.renderItem(item)}
-                  keyExtractor={(item) => item.id}
+                  keyExtractor={item => item.id.toString()}
                   
                 />
               </View>
