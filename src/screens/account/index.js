@@ -88,8 +88,9 @@ class Account extends React.Component {
     await Helpers.removeKeyStorage(Keys.AS_DATA_USER);
     await Helpers.removeKeyStorage(Keys.AS_DATA_CART);
 
-    Helpers.resetNavigation(this.props.navigation, "RootTab");
+    // Helpers.resetNavigation(this.props.navigation, "RootTab");
     /** If done => Navigate to homepage */
+    this.props.navigation.navigate('Welcom');
     this.setState({ _loading: false });
   }
 

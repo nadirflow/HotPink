@@ -30,7 +30,7 @@ class Welcom extends React.Component {
     return (
       
      
-        <ImageBackground  source={Assets.back} resizeMode="cover" style={{flex:1,   alignItems:'center', justifyContent:'center', alignContent:'center', paddingLeft:'5%', paddingRight:'5%'}}>
+        <ImageBackground  source={Assets.wel} resizeMode="cover" style={{flex:1,   alignItems:'center', justifyContent:'center', alignContent:'center', paddingLeft:'5%', paddingRight:'5%'}}>
             
                 <CImage source={Assets.big}  resizeMode={'contain'} style={{width:Devices.sW(100), height:Devices.sH(20), marginBottom:Devices.sH(10)}} />
                 <Button onPress={this._onPressSignIn} style={{width:Devices.sW('90%'), justifyContent:'center', backgroundColor:'#fff', borderRadius:8, marginBottom:15, marginTop:15, paddingVertical:25,}}><Text style={{fontSize:Devices.fS(16), color:'#A93A75', textTransform:'capitalize', fontWeight:'700'}}>Login</Text></Button>

@@ -16,6 +16,7 @@ import CHeader from '~/components/CHeader';
 import { cStyles } from '~/utils/styles';
 import Icon from 'react-native-fontawesome-pro';
 import { useNavigation } from '@react-navigation/native';
+import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
 const persons = [
   {
     id: '1',
@@ -103,38 +104,77 @@ class Self extends React.Component {
   constructor(props) {
   
     super(props);
+   
     
   }
   state = {
     data: [],
+    audio: [],
+    loading: true,
   }
   componentDidMount() {
     fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=48')
       .then(response => response.json())
-      .then(data => this.setState({ data }));
+      .then(data => this.setState({ data: data, loading: false, }));
+
+    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=58')
+      .then(response => response.json())
+      .then(audio => this.setState({ audio }));
   }
+  
   _onPressAudio = () => {
     
      this.props.navgation.navigate('AudioPlayer');
     
   }
   
-  _onRenderSeparatorItem = () => (
-    <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
-      <View style={{width:'20%'}}>
-        <Image source={Assets.audio} resizeMode="contain" />
+  _onRenderSeparatorItem = (item) => (
+      <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
+        <View style={{width:'20%'}}>
+          <Image source={Assets.audio} resizeMode="contain" />
+        </View>
+        <View style={{width:'75%', paddingHorizontal:15,}}>
+            <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>{item.title.rendered}</Text>
+            <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
+            <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this.props.navigation.navigate('AudioPlayer')}>
+              <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
+            </TouchableOpacity>
+        </View>
       </View>
-      <View style={{width:'75%', paddingHorizontal:15,}}>
-          <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>A Candle Visualization</Text>
-          <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</Text>
-          <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this.props.navigation.navigate('AudioPlayer')}>
-            <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
-          </TouchableOpacity>
-      </View>
-    </View>
   );
   render() {
-    
+    if (this.state.loading) {
+      return(
+        <>
+            <CHeader
+            
+            style={{backgroundColor:'#E83B55', color:'#fff'}}
+            titleComponent={
+              <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+                <View
+                  style={[
+                    cStyles.column_align_center,
+                    cStyles.column_justify_center,
+                    { width: '100%' },
+                  ]}>
+                  <CImage
+                    style={{width:90, height:40}}
+                    source={Assets.log}
+                    resizeMode={'contain'}
+                  />
+                </View>
+              </View>
+            }
+            iconLeft_1={'chevron-left'}
+            iconRight_1={'none'}
+            
+            onPressLeft_1={() => this.props.navigation.goBack()}
+            
+          />
+          <CLoadingPlaceholder />
+        </>
+      )
+    }
     return (
       <>
       <CHeader
@@ -168,12 +208,37 @@ class Self extends React.Component {
             <View style={{paddingVertical:15, flex:1}}>
               <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700'}}>Self</Text>
               <Text style={{fontSize: Devices.fS(12), color:'#fff', fontWeight:'400'}}>Private Psychotherapy Practice </Text>
-              <View style={{justifyContent:'space-between'}}>
+              <View style={{justifyContent:'space-between', }}>
                 <FlatList
                   data={this.state.data}
-                  columnWrapperStyle={{  flex: 1,justifyContent: "space-between", marginTop:20,}}
+                  style={{marginBottom:40}}
+                  columnWrapperStyle={{  flex: 1,justifyContent: "space-between", marginTop:10, }}
                     numColumns={3}
-                    ItemSeparatorComponent={this._onRenderSeparatorItem}
+                    ItemSeparatorComponent={() => {
+                      return(
+                        <View>
+                          {this.state.audio.map((item, index) => {
+                             if (index % 3 === 0) {
+                                return(
+                                  <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>
+                                    <View style={{width:'20%'}}>
+                                      <Image source={Assets.audio} resizeMode="contain" />
+                                    </View>
+                                    <View style={{width:'75%', paddingHorizontal:15,}}>
+                                        <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>{item.title.rendered}</Text>
+                                        <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>{item.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '')}</Text>
+                                        <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this.props.navigation.navigate('AudioPlayer', {audioId: item.id})}>
+                                          <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                  </View>
+                                )
+                              }
+                            })}
+                        </View>
+                      )
+                    }
+                  }
                     renderItem={(item) => { 
                       console.log('-------------------------------------')
                       console.log(item.item)

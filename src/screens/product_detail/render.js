@@ -73,7 +73,7 @@ const RenderContentAccordion = (content) => {
                     p: {
                         fontFamily: cStyles.txt_base_item.fontFamily,
                         fontSize: cStyles.txt_base_item.fontSize,
-                        color: cStyles.txt_base_item.color,
+                        color: '#000',
                         textAlign: Configs.supportRTL ? "right" : "left"
                     }
                 }}
@@ -254,7 +254,7 @@ export const ViewProductDetail = ({
 
             {!Configs.supportRTL ?
                 <View style={[styles.con_header_fixed, {
-                    backgroundColor: "transparent", borderBottomWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width)
+                    backgroundColor: "#E83B55", borderBottomWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width)
                 }]}>
                     <Left style={styles.con_header_left}>
                         <TouchableOpacity onPress={onFunctions.onPressBack}>
@@ -262,21 +262,21 @@ export const ViewProductDetail = ({
                                 containerStyle={[cStyles.mv_20, cStyles.mr_20]}
                                 name={"angle-left"}
                                 size={Devices.fS(20)}
-                                color={'#E83B55'}
+                                color={'#fff'}
                                 type={"regular"}
                             />
                         </TouchableOpacity>
                     </Left>
                     <Body style={styles.con_header_title}>
                         <Animated.View style={{ opacity: headerOpacity }}>
-                            <CText style={styles.txt_title_header_fixed}>{state._product ? state._product.name : ""}</CText>
+                            <CText style={[styles.txt_title_header_fixed, {color:'#fff'}]}>{state._product ? state._product.name : ""}</CText>
                         </Animated.View>
                     </Body>
                     <Right style={styles.con_header_right}>
                         <Button transparent onPress={onFunctions.onPressCart}>
                             <Icon containerStyle={[cStyles.mv_20, cStyles.ml_20]}
                                 name={'shopping-cart'}
-                                color={'#E83B55'}
+                                color={'#fff'}
                                 size={Devices.fS(20)}
                                 type={'regular'}
                             />
@@ -352,7 +352,7 @@ export const ViewProductDetail = ({
                             }
                         />
 
-                        <CText style={[styles.txt_content_title, { color: '#E83B55' }]} numberOfLines={3}>
+                        <CText style={[styles.txt_content_title, { color: '#000' }]} numberOfLines={3}>
                             {state._product ? state._product.name : ""}
                         </CText>
 
@@ -363,13 +363,13 @@ export const ViewProductDetail = ({
                                         leftComp={
                                             <View style={styles.con_content_price_2}>
                                                 {currencyPosition === Currency.left &&
-                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price]}>
+                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price, {color: '#E83B55'}]}>
                                                         {currency}
                                                     </CText>
                                                 }
-                                                <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price]}>{price}</CText>
+                                                <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price, {color: '#E83B55'}]}>{price}</CText>
                                                 {currencyPosition === Currency.right &&
-                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price]}>
+                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price, {color: '#E83B55'} ]}>
                                                         {currency}
                                                     </CText>
                                                 }
@@ -378,11 +378,11 @@ export const ViewProductDetail = ({
                                         rightComp={
                                             <View style={[styles.con_content_price_2, Configs.supportRTL ? cStyles.mr_5 : cStyles.ml_5]}>
                                                 {currencyPosition === Currency.left &&
-                                                    <CText style={styles.txt_maint_price_sale}>{currency}</CText>
+                                                    <CText style={[styles.txt_maint_price_sale, {color: '#E83B55'}]}>{currency}</CText>
                                                 }
-                                                <CText style={styles.txt_maint_price_sale}>{priceSale}</CText>
+                                                <CText style={[styles.txt_maint_price_sale, {color: '#E83B55'}]}>{priceSale}</CText>
                                                 {currencyPosition === Currency.right &&
-                                                    <CText style={styles.txt_maint_price_sale}>{currency}</CText>
+                                                    <CText style={[styles.txt_maint_price_sale, {color: '#E83B55'}]}>{currency}</CText>
                                                 }
                                             </View>
                                         }
@@ -411,13 +411,13 @@ export const ViewProductDetail = ({
                                         leftComp={
                                             <View style={styles.con_content_price_2}>
                                                 {currencyPosition === Currency.left &&
-                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price]}>
+                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_maint_regular_price, {color: '#E83B55'}]}>
                                                         {currency}
                                                     </CText>
                                                 }
-                                                <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_regular_price]}>{price}</CText>
+                                                <CText style={[styles.txt_main_price, percentSale !== 0 && styles.txt_regular_price, {color: '#E83B55'}]}>{price}</CText>
                                                 {currencyPosition === Currency.right &&
-                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && { color: Colors.PLACEHOLDER_COLOR }]}>
+                                                    <CText style={[styles.txt_main_price, percentSale !== 0 && { color: '#E83B55' }]}>
                                                         {currency}
                                                     </CText>
                                                 }
@@ -473,7 +473,7 @@ export const ViewProductDetail = ({
                                     html={state._product.short_description}
                                     tagsStyles={{
                                         p: {
-                                            color: Colors.TEXT_BASE_COLOR,
+                                            color: '#000',
                                             fontFamily: cStyles.txt_body_meta_item.fontFamily,
                                             fontSize: cStyles.txt_base_item.fontSize,
                                             textAlign: Configs.supportRTL ? "right" : "left"
@@ -564,7 +564,7 @@ export const ViewProductDetail = ({
                         <View style={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}>
                             <TouchableOpacity onPress={onFunctions.onPressDescription}>
                                 <CViewRow style={[styles.con_header_accordion, { paddingTop: 0 }]}
-                                    leftComp={<CText style={[styles.txt_header_accordion, {color:'#E83B55'}]} i18nKey={'description'} />}
+                                    leftComp={<CText style={[styles.txt_header_accordion, {color:'#000'}]} i18nKey={'description'} />}
                                     rightComp={
                                         <Icon name={state._isShowDescription ? 'angle-up' : 'angle-down'}
                                             color={cStyles.ic_right_detail.color}
@@ -581,7 +581,7 @@ export const ViewProductDetail = ({
                     {state._product.reviews_allowed &&
                         <TouchableOpacity onPress={onFunctions.onPressReviews}>
                             <CViewRow style={[styles.con_header_accordion, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
-                                leftComp={<CText style={[styles.txt_header_accordion, {color:'#E83B55'}]} i18nKey={'reviews'} />}
+                                leftComp={<CText style={[styles.txt_header_accordion, {color:'#000'}]} i18nKey={'reviews'} />}
                                 rightComp={
                                     <Icon name={'angle-down'}
                                         color={cStyles.ic_right_detail.color}

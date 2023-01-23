@@ -15,16 +15,35 @@ import CImage from '~/components/CImage';
 import CHeader from '~/components/CHeader';
 import { cStyles } from '~/utils/styles';
 import Icon from 'react-native-fontawesome-pro';
+import LinearGradient from 'react-native-linear-gradient';
+import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
 
 
 class PartnerMain extends React.Component {
   constructor(props) {
     super(props);
   }
+  state = {
+    data: [],
+    loading: true,
+  }
+  
+  componentDidMount() {
+    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=57&order=asc')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data,
+          loading: false
+        });
+      })
+      .catch(error => console.log(error));
+  }
   render() {
-    return (
-      <>
-       <CHeader
+    if (this.state.loading) {
+      return(
+        <>
+        <CHeader
         
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
@@ -46,59 +65,91 @@ class PartnerMain extends React.Component {
         iconLeft_1={'chevron-left'}
         iconRight_1={'none'}
         
-        onPressLeft_1={() => this.props.navigation.goBack()}
+       onPressLeft_1={() => this.props.navigation.goBack()}
         
       />
-        <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
-        
+        <CLoadingPlaceholder />
+        </>
+      );
+    }
+      return (
+        <>
+        <CHeader
           
-            <View style={{paddingVertical:15, flex:1}}>
-                <ScrollView style={{   paddingHorizontal:Devices.sW(3), paddingTop:Devices.sH(3)}} contentContainerStyle={{flexGrow:1}}>
-                    <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700'}}>Sex With Your Partner</Text>
-                    <Text style={{fontSize: Devices.fS(12), color:'#fff', fontWeight:'400'}}>Private Psychotherapy Practice </Text>
-                    <View style={{flex:1,    }}>
-                        
-                        
-                        <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3)}}>
-                            <View style={{width:Devices.sW('44%')}}>
-                                <TouchableOpacity >  
-                                <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.sp1} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(22), borderRadius:10,}}>
-                                    <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center' }}>Emotional Intimacy</Text>
-                                </ImageBackground>
-                                </TouchableOpacity>
-                                <TouchableOpacity>  
-                                <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.sp2} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(25), borderRadius:10,}}>
-                                    <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Heart Problems and Sex</Text>
-                                </ImageBackground>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{width:Devices.sW('44%')}}>
-                                <TouchableOpacity>  
-                                <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.sp3} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(28), borderRadius:10,}}>
-                                    <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Sexual Performance Problems</Text>
-                                </ImageBackground>
-                                </TouchableOpacity>
-                                <TouchableOpacity>  
-                                <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.sp4} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(19), borderRadius:10,}}>
-                                    <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Condom Use 101</Text>
-                                </ImageBackground>
-                                </TouchableOpacity>
-                            </View>
-                            
-                        </View>
-                        <TouchableOpacity>  
-                                <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.sp5} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(19), borderRadius:10,}}>
-                                    <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Sex Drive And The Importance Of Sleep</Text>
-                                </ImageBackground>
-                        </TouchableOpacity>
-                        
-                    </View>
-                </ScrollView>
+          style={{backgroundColor:'#E83B55', color:'#fff'}}
+          titleComponent={
+            <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
+              <View
+                style={[
+                  cStyles.column_align_center,
+                  cStyles.column_justify_center,
+                  { width: '100%' },
+                ]}>
+                <CImage
+                  style={{width:90, height:40}}
+                  source={Assets.log}
+                  resizeMode={'contain'}
+                />
+              </View>
             </View>
+          }
+          iconLeft_1={'chevron-left'}
+          iconRight_1={'none'}
           
-        </ImageBackground>
-      </>
-    );
+          onPressLeft_1={() => this.props.navigation.goBack()}
+          
+        />
+          <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
+          
+            
+              <View style={{paddingVertical:15, flex:1}}>
+                  
+                      <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700', paddingHorizontal:Devices.sW(3)}}>Sex With Your Partner</Text>
+                      <Text style={{fontSize: Devices.fS(12), color:'#fff', fontWeight:'400', paddingHorizontal:Devices.sW(3)}}>Private Psychotherapy Practice </Text>
+                      <View style={{flex:1,    }}>
+                          
+                        <ScrollView style={{   paddingHorizontal:Devices.sW(3), paddingTop:Devices.sH(3)}} contentContainerStyle={{flexGrow:1}}>  
+                          <View style={{flexDirection:'row', flexWrap:'wrap', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3)}}>
+                          {
+                              
+                              this.state.data.map((item, index) => {
+                                if ((index + 1) % 5 !== 0) {
+                                  return(
+                              <View style={{width:Devices.sW('44%')}}>
+                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.id})} >  
+                                    <ImageBackground imageStyle={{ borderRadius: 10}} source={{uri: item.featured_media.sizes['woocommerce_thumbnail']}} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end',  alignContent:'center', height:Devices.sH(25), borderRadius:10,}}>
+                                      <LinearGradient colors={['rgba(209, 58, 97, 0)',  'rgba(99, 5, 69, 0.8)' ]} style={{alignItems:'center', justifyContent:'flex-end', borderRadius:10, alignContent:'flex-end', paddingVertical:10, flex:1, width:'100%', paddingHorizontal:10, paddingVertical:10,}} >  
+                                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>{item.title.rendered}</Text>
+                                      </LinearGradient>
+                                    </ImageBackground>
+                                  </TouchableOpacity>
+                              </View>
+                                  )
+                                }else{
+                                  return(
+                                    <TouchableOpacity  onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.id})} style={{width:Devices.sW(93.5)}}>
+                                      <ImageBackground imageStyle={{ borderRadius: 10}} source={{uri: item.featured_media.sizes['woocommerce_thumbnail']}} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(2), justifyContent:'flex-end',  alignContent:'center', height:Devices.sH(19), borderRadius:10,}}>
+                                        <LinearGradient colors={['rgba(209, 58, 97, 0)',  'rgba(99, 5, 69, 0.8)' ]} style={{alignItems:'center', justifyContent:'flex-end', borderRadius:10, alignContent:'flex-end', paddingVertical:10, flex:1, width:'100%', paddingHorizontal:10, paddingVertical:10,}} >
+                                          <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>{item.title.rendered}</Text>
+                                        </LinearGradient>
+                                      </ImageBackground>
+                                    </TouchableOpacity>
+                                  )
+                                }
+                              })
+                            } 
+                              
+                          </View>
+                        </ScrollView>
+                          
+                      </View>
+                  
+              </View>
+            
+          </ImageBackground>
+        </>
+      );
+      
   };
 };
 

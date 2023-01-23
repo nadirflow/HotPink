@@ -108,7 +108,7 @@ class ContactUs extends React.PureComponent {
           <View style={styles.con_img_logo}>
             <CImage style={styles.img_logo} source={this._logo} resizeMode={'contain'} />
           </View>
-
+          
           <FlatList contentContainerStyle={{ marginHorizontal: Devices.pH(layoutWidth.width) }}
             data={INIT_ROW}
             renderItem={({ item, index }) => {

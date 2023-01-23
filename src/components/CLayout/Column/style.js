@@ -11,8 +11,8 @@ import { Colors } from '~/utils/colors';
 
 export default styles = {
   con_list_store: [cStyles.container],
-  con_store_category: [cStyles.column_justify_start, { width: Devices.sW('33%') }],
-  con_store_service: [cStyles.column_justify_start, cStyles.mb_10, { width: Devices.sW('33%') }],
+  con_store_category: [cStyles.column_justify_start, { width: Devices.sW('49.5%') }],
+  con_store_service: [cStyles.column_justify_start, cStyles.mb_10, { width: Devices.sW('49.5%') }],
   con_store_news: [cStyles.column_justify_start, cStyles.mb_10, { width: Devices.sW('33%') }],
   con_info_store: [cStyles.flex_full, { padding: 10 }],
   con_title_store: [cStyles.column_align_center],

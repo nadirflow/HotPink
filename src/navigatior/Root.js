@@ -151,7 +151,7 @@ export class RootTab extends React.Component {
             return <Icon name={iconName} size={Devices.fS(22)} color={color} type={focused ? "regular" : 'light'} />
           },
           tabBarLabel: ({ focused, color, size }) => {
-            let title = 'Home';
+            let title = 'home';
             switch (route.name) {
               case 'Service':
                 title = 'services';
@@ -191,24 +191,11 @@ export class RootTab extends React.Component {
 }
 
 class RootMain extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }
   /** RENDER */
   render() {
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log(this.props.user)
-    console.log(this.props.initRoute)
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-
     return (
       <Root>
         
@@ -218,7 +205,7 @@ class RootMain extends React.Component {
           headerMode={'none'}
           screenOptions={{ gestureEnabled: false }}>
          
-     <StackMain.Screen name="Welcom" component={Welcom} />
+          <StackMain.Screen name="Welcom" component={Welcom} />
           <StackMain.Screen name="SignUp" component={SignUpScreen} />
           <StackMain.Screen name="SignIn" component={SignInScreen} />
           <StackMain.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
@@ -280,5 +267,10 @@ class RootMain extends React.Component {
     )
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    user: state.user.data,
+   
+  }
+}
 export default RootMain;

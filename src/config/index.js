@@ -411,6 +411,7 @@ export const Assets = {
     t2: require('../../assets/images/text2.png'),
     abg: require('../../assets/images/abg.png'),
     album: require('../../assets/images/album.png'),
+    wel: require('../../assets/images/fi-bg.png'),
 };
 
 export const Keys = {

@@ -30,6 +30,7 @@ import Currency from '~/utils/currency';
 import Helpers from '~/utils/helpers';
 /* STYLES */
 import styles from './style';
+import { color } from 'react-native-reanimated';
 
 const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount, onPressPlusAmount, onPressProduct) => {
   let price = Helpers.formatNumber((data.salePrice > 0 ? data.salePrice : data.price) * data.numberOfProduct);
@@ -70,7 +71,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
           }
           rightComp={
             <View style={[styles.con_products_item_name, Configs.supportRTL && cStyles.column_align_end]}>
-              <CText style={[styles.txt_products_title, {color: '#E83B55'}]} numberOfLines={2}>{data.name}</CText>
+              <CText style={[styles.txt_products_title, {color: '#000'}]} numberOfLines={2}>{data.name}</CText>
               {data.variation && data.variation.attributes &&
                 <View style={[cStyles.row_align_center, cStyles.mt_5]}>
                   <CText style={styles.txt_products_option} i18nKey={'option'} />
@@ -127,9 +128,9 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
           <View style={cStyles.column_justify_end}>
             <View style={styles.con_price_product}>
               {currencyPosition === Currency.left &&
-                <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
+                <CText style={[styles.txt_products_unit_left, {color: '#000'}]}>{symbol}</CText>}
 
-              <CText style={[styles.txt_products_price, {color: '#E83B55'}]}>{price}</CText>
+              <CText style={[styles.txt_products_price, {color: '#000'}]}>{price}</CText>
 
               {currencyPosition === Currency.right &&
                 <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
@@ -159,7 +160,7 @@ const RenderHeader = (title) => {
     <View style={[styles.con_header,
     Configs.supportRTL && cStyles.column_align_end,
     { marginHorizontal: Devices.pH(layoutWidth.width) }]}>
-      <CText style={styles.txt_header_title} i18nKey={title} upperCase />
+      <CText style={[styles.txt_header_title, {color:'#000'}]} i18nKey={title} upperCase />
     </View>
   )
 }
@@ -335,9 +336,9 @@ export const ViewCart = ({
               leftComp={<CText style={[styles.txt_summary_content, {color: '#000'}]} i18nKey={"total"} />}
               rightComp={
                 <View style={styles.con_price_product}>
-                  {currencyPosition === Currency.left && <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
-                  <CText style={styles.txt_products_price}>{state._totalPrice === 0 ? '-' : totalPrice}</CText>
-                  {currencyPosition === Currency.right && <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
+                  {currencyPosition === Currency.left && <CText style={[styles.txt_products_unit_left, {color:'#000'}]}>{symbol}</CText>}
+                  <CText style={[styles.txt_products_price, {color:'#000'}]}>{state._totalPrice === 0 ? '-' : totalPrice}</CText>
+                  {currencyPosition === Currency.right && <CText style={[styles.txt_products_unit_right, {color:'#000'}]}>{symbol}</CText>}
                 </View>
               }
             />
@@ -358,7 +359,7 @@ export const ViewCart = ({
             { borderBottomWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width) }
             ]}
               between
-              leftComp={<CText style={styles.txt_total_content} i18nKey={"provisional"} />}
+              leftComp={<CText style={[styles.txt_total_content, {color:'#000', fontSize:Devices.fS(16), fontWeight:'700'}]} i18nKey={"provisional"} />}
               rightComp={
                 <View style={[cStyles.row_align_center,
                 Configs.supportRTL ? cStyles.row_justify_start : cStyles.row_justify_end,

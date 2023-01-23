@@ -199,7 +199,7 @@ export const ViewHome = ({
     onPressVendor: () => { }
   },
 }) => {
-
+ 
   return (
     <Container>
       <CHeader

@@ -357,7 +357,7 @@ class Service extends React.Component {
         propsItem.index === routesLength - 1 && styles.con_tabbar_last_item
         ]}
         onPress={() => this._onPressTabbar(propsItem.item, propsItem.index)}>
-        <CText style={[styles.txt_tabbar, indexActive === propsItem.index && [cStyles.large, { fontFamily: Devices.zsBodySemiBold, color: '#ffffff' }]]}>
+        <CText style={[styles.txt_tabbar, indexActive === propsItem.index && [cStyles.large, { fontFamily: Devices.zsBodySemiBold, color: '#fff' }]]}>
           {Configs.html5Entities.decode(propsItem.item.name)}
         </CText>
       </TouchableOpacity>
@@ -367,7 +367,7 @@ class Service extends React.Component {
   _onRenderServicesEmpty = () => {
     return (
       <View style={cStyles.center}>
-        <CText style={[cStyles.txt_no_data, { marginTop: 100 }]} i18nKey={'no_data'} />
+        <CText style={[cStyles.txt_no_data, { marginTop: 100, color:'#fff' }]} i18nKey={'no_data'} />
       </View>
     )
   }

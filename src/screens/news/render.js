@@ -6,7 +6,7 @@
 **/
 /* LIBRARY */
 import React from 'react';
-import { View, FlatList, TouchableOpacity } from 'react-native';
+import { View, FlatList, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import { Container, Card } from 'native-base';
 import Icon from 'react-native-fontawesome-pro';
 import firebase from 'react-native-firebase';
@@ -91,13 +91,14 @@ export const ViewNews = ({
     <Container>
       <CHeader
         props={props}
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
         title={"news"}
         iconLeft_1={"none"}
         iconRight_1={"shopping-cart"}
         onPressRight_1={onFunction.onPressCart}
       />
 
-      {!state._loading ?
+      {/* {!state._loading ?
         <>
           <FlatList
             contentContainerStyle={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}
@@ -114,7 +115,14 @@ export const ViewNews = ({
         </>
       :
       <CLoadingPlaceholder />
-      }
+      } */}
+      <ImageBackground  source={Assets.back} resizeMode="cover" style={{flex:1}}>
+          <View style={{flex:1, justifyContent:'center', alignItems:'center' }}>
+              <Icon name='star-shooting' color='#fff' size={50} />
+              <Text style={{fontSize:Devices.fS(20), color:'#fff', marginTop:5, fontWeight:'700' }}>Nothing to wish for.</Text>
+              
+          </View>
+      </ImageBackground>
 
       {/* <CLoading visible={state._loading} /> */}
     </Container>

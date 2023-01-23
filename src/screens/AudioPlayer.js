@@ -14,6 +14,8 @@ import CHeader from '~/components/CHeader';
 import { cStyles } from '~/utils/styles';
 import CImage from '~/components/CImage';
 import { Assets } from '~/config';
+import axios from 'axios';
+import cheerio from 'react-native-cheerio/lib/cheerio';
  const TRACKS = [
   {
     title: 'A Candle Visualization',
@@ -37,7 +39,7 @@ import { Assets } from '~/config';
 export default class AudioPlayer extends Component {
   constructor(props) {
     super(props);
-
+      
     this.state = {
       paused: true,
       totalLength: 1,
@@ -47,7 +49,22 @@ export default class AudioPlayer extends Component {
       shuffleOn: false,
     };
   }
-
+  state = {
+    post: {},
+  };
+  componentDidMount() {
+    const { audioId } = this.props.route.params;
+    console.log('////////////////////');
+    console.log(audioId);
+    axios
+      .get(`https://webtestview.com/hotpink/wp-json/wp/v2/posts/${audioId}`)
+      .then((response) => {
+        this.setState({ post: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   setDuration(data) {
     // console.log(totalLength);
     this.setState({totalLength: Math.floor(data.duration)});
@@ -103,9 +120,28 @@ export default class AudioPlayer extends Component {
 
 
   render() {
+    const { post } = this.state;
+    let audioSrc;
+    if (post && post.content) {
+      const htmlString = post.content.rendered;
+      const $ = cheerio.load(htmlString);
+      audioSrc = $('audio').attr('src');
+    }
+    console.log(audioSrc);
+    let atitle;
+    if (post && post.title) {
+        atitle = post.title.rendered;
+    }
+    console.log(atitle);
+    
+    // const htmlString = post.content.rendered;
+    // const $ = cheerio.load(htmlString);
+    // const audioSrc = $('audio').attr('src');
+    // console.log(audioSrc);
+    
     const track = TRACKS[this.state.selectedTrack];
     const video = this.state.isChanging ? null : (
-      <Video source={{uri: track.audioUrl}} // Can be a URL or a local file.
+      <Video source={{uri: audioSrc}} // Can be a URL or a local file.
         ref="audioElement"
         paused={this.state.paused}               // Pauses playback entirely.
         resizeMode="cover"           // Fill the whole screen at aspect ratio.
@@ -151,7 +187,7 @@ export default class AudioPlayer extends Component {
           
                     
             <AlbumArt url={track.albumArtUrl} />
-            <TrackDetails title={track.title} artist={track.artist} />
+            <TrackDetails title={atitle} artist={track.artist} />
             <Controls
               onPressRepeat={() => this.setState({repeatOn : !this.state.repeatOn})}
               repeatOn={this.state.repeatOn}
