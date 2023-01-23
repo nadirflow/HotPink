@@ -19,6 +19,7 @@ import axios from 'axios';
 import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
 import DOMPurify from 'dompurify';
 import WebView from 'react-native-webview';
+import AutoHeightWebView from 'react-native-autoheight-webview';
 
 
 class ArticleSelf extends React.Component {
@@ -131,18 +132,22 @@ class ArticleSelf extends React.Component {
                  :
                  <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
                 } 
-                {/* <Text style={{fontSize:Devices.fS(24), fontWeight:'700', color:'#fff'}}>{postTitle && postTitle.rendered ? postTitle.rendered : ''}</Text>
-                */}
-                  {/* <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>
-                    {
-
-                      post.content && post.content.rendered ? 
-                      <WebView source={{html: post.content.rendered}} />
-                    : 'Hello'
-                    }
-                  </Text> */}
-                
-                <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>{post.excerpt && post.excerpt.rendered ? post.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '') : ''}</Text>
+                {/* {
+                  post.content && post.content.rendered ?
+                // <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}} dangerouslySetInnerHTML={post.content.rendered} />
+                <AutoHeightWebView
+                      
+                      originWhitelist={['*']}
+                      source={{ html: post.content.rendered }}
+                      style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(5)}}
+                      scalesPageToFit={true}
+                      viewportContent={'width=device-width, user-scalable=no'}
+                      customStyle={" *{font-szie:14px; color:#fff; padding-right:11.5px;} li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
+                      
+                  />
+                : <Text>No content available</Text>
+                } */}
+                <Text style={{fontSize:Devices.fS(14), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>{post.excerpt && post.excerpt.rendered ? post.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '') : ''}</Text>
                   <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
                     <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  
                              return;
