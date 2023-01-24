@@ -137,9 +137,9 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
       }
       rightComp={
         <View style={[styles.con_products_item_right, {justifyContent:'center', alignContent:'center', alignItems:'flex-end', }]}>
-          <View style={[cStyles.column_justify_start, {backgroundColor: '#fff', paddingHorizontal:5, paddingVertical:5, borderRadius:5,} ]}>
+          <View style={[cStyles.column_justify_start, {backgroundColor: '#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:10,} ]}>
             <IconF name={"trash-alt"}
-              size={Devices.fS(20)}
+              size={Devices.fS(14)}
               color={'#D33A60'}
               type={"regular"}
               onPress={() => onRemove(data)} />
