@@ -7,7 +7,7 @@
 /* LIBRARY */
 import React from 'react';
 import {
-  View, FlatList, TouchableOpacity, Text
+  View, FlatList, TouchableOpacity, Text, ImageBackground
 } from 'react-native';
 import {
   Container, Title, Button, Body, Content, Footer,
@@ -71,7 +71,31 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
           }
           rightComp={
             <View style={[styles.con_products_item_name, Configs.supportRTL && cStyles.column_align_end]}>
-              <CText style={[styles.txt_products_title, {color: '#000'}]} numberOfLines={2}>{data.name}</CText>
+              <CText style={[styles.txt_products_title, {color: '#fff', fontWeight:'700', fontSize:Devices.fS(16)}]} numberOfLines={2}>{data.name}</CText>
+              <View >
+              <View style={[styles.con_price_product, {alignContent:'flex-start', alignItems:'flex-start', alignSelf:'flex-start'}]}>
+                {currencyPosition === Currency.left &&
+                  <CText style={[styles.txt_products_unit_left, {color: '#fff', fontSize:Devices.fS(16), fontWeight:'700'}]}>{symbol}</CText>}
+
+                <CText style={[styles.txt_products_price, {color: '#fff', fontSize:Devices.fS(16), fontWeight:'700'}]}>{price}</CText>
+
+                {currencyPosition === Currency.right &&
+                  <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
+              </View>
+
+              {(state._success && data.price_coupon > 0) &&
+                <View style={[cStyles.row_align_center, cStyles.pt_5]}>
+                  {currencyPosition === Currency.left && <CText style={styles.txt_products_discount_unit_left}>
+                    {data.price_coupon && symbol}
+                  </CText>}
+                  <CText style={styles.txt_products_discount_price}>{data.price_coupon}</CText>
+                  {currencyPosition === Currency.right && <CText style={styles.txt_products_discount_unit_right}>
+                    {data.price_coupon && symbol}
+                  </CText>}
+                  <CText style={[styles.txt_products_discount_price, cStyles.pl_5]} i18nKey={'discount_lower'} />
+                </View>
+              }
+            </View>
               {data.variation && data.variation.attributes &&
                 <View style={[cStyles.row_align_center, cStyles.mt_5]}>
                   <CText style={styles.txt_products_option} i18nKey={'option'} />
@@ -86,21 +110,21 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
 
               {!data.sold_individually &&
                 <View style={styles.con_amount_item}>
-                  <View style={styles.con_amount_right}>
+                  <View style={[styles.con_amount_right, {backgroundColor:'#F0F0F0'} ]}>
                     <IconF
                       name={"minus"}
                       size={Devices.fS(15)}
-                      color={data.numberOfProduct === 1 ? Colors.PLACEHOLDER_COLOR : Colors.BLACK_COLOR}
+                      color={data.numberOfProduct === 1 ? '#D33A60' : '#D33A60'}
                       type={"light"}
                       onPress={() => data.numberOfProduct === 1 ? null : onPressMinusAmount(indexProduct)}
                     />
                     <View style={styles.con_input_amount}>
-                      <CText style={[styles.txt_amount_item, {color:'#000'}]}>{data.numberOfProduct}</CText>
+                      <CText style={[styles.txt_amount_item, {color:'#D33A60'}]}>{data.numberOfProduct}</CText>
                     </View>
                     <IconF
                       name={"plus"}
                       size={Devices.fS(15)}
-                      color={Colors.BLACK_COLOR}
+                      color={'#D33A60'}
                       type={"light"}
                       onPress={() => onPressPlusAmount(indexProduct)}
                     />
@@ -112,25 +136,23 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
         />
       }
       rightComp={
-        <View style={[styles.con_products_item_right,
-        !Configs.supportRTL ? cStyles.column_align_end : cStyles.column_align_start
-        ]}>
-          <View style={cStyles.column_justify_start}>
-            <IconF name={"times-circle"}
+        <View style={[styles.con_products_item_right, {justifyContent:'center', alignContent:'center', alignItems:'flex-end', }]}>
+          <View style={[cStyles.column_justify_start, {backgroundColor: '#fff', paddingHorizontal:5, paddingVertical:5, borderRadius:5,} ]}>
+            <IconF name={"trash-alt"}
               size={Devices.fS(20)}
-              color={Colors.RED_COLOR}
+              color={'#D33A60'}
               type={"regular"}
               onPress={() => onRemove(data)} />
           </View>
 
           <View style={cStyles.flex_full} />
 
-          <View style={cStyles.column_justify_end}>
+          {/* <View style={cStyles.column_justify_end}>
             <View style={styles.con_price_product}>
               {currencyPosition === Currency.left &&
-                <CText style={[styles.txt_products_unit_left, {color: '#000'}]}>{symbol}</CText>}
+                <CText style={[styles.txt_products_unit_left, {color: '#fff'}]}>{symbol}</CText>}
 
-              <CText style={[styles.txt_products_price, {color: '#000'}]}>{price}</CText>
+              <CText style={[styles.txt_products_price, {color: '#fff'}]}>{price}</CText>
 
               {currencyPosition === Currency.right &&
                 <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
@@ -148,7 +170,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
                 <CText style={[styles.txt_products_discount_price, cStyles.pl_5]} i18nKey={'discount_lower'} />
               </View>
             }
-          </View>
+          </View> */}
         </View>
       }
     />
@@ -160,7 +182,7 @@ const RenderHeader = (title) => {
     <View style={[styles.con_header,
     Configs.supportRTL && cStyles.column_align_end,
     { marginHorizontal: Devices.pH(layoutWidth.width) }]}>
-      <CText style={[styles.txt_header_title, {color:'#000'}]} i18nKey={title} upperCase />
+      <CText style={[styles.txt_header_title, {color:'#fff'}]}   >Totals</CText>
     </View>
   )
 }
@@ -194,6 +216,7 @@ export const ViewCart = ({
 
   return (
     <Container>
+      <ImageBackground source={Assets.back} style={{width:Devices.width, height:Devices.height}}>
       <CHeader
         style={{backgroundColor:'#E83B55'}}
         titleComponent={
@@ -229,32 +252,89 @@ export const ViewCart = ({
                 )}
               keyExtractor={(item, index) => index.toString()}
               scrollEnabled={false}
-              ItemSeparatorComponent={() => <View style={styles.con_separator_option} />}
+              // ItemSeparatorComponent={() => <View style={styles.con_separator_option} />}
             />
           }
 
-          <View style={styles.con_separator} />
+          <View style={[styles.con_separator, {backgroundColor:'transparent'}]} />
 
-          <View style={styles.con_discount}>
-            <CViewRow style={[styles.con_discount_child, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
+          
+
+          <View style={[styles.con_separator, {backgroundColor:'transparent'}]} />
+
+          <View style={[styles.con_summary, {backgroundColor: 'transparent'}]}>
+            {RenderHeader('summary')}
+
+            <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
+              between
+              leftComp={<CText style={[styles.txt_summary_content, {color: '#fff'}]} i18nKey={"total"} />}
+              rightComp={
+                <View style={styles.con_price_product}>
+                  {currencyPosition === Currency.left && <CText style={[styles.txt_products_unit_left, {color:'#fff'}]}>{symbol}</CText>}
+                  <CText style={[styles.txt_products_price, {color:'#fff'}]}>{state._totalPrice === 0 ? '-' : totalPrice}</CText>
+                  {currencyPosition === Currency.right && <CText style={[styles.txt_products_unit_right, {color:'#fff'}]}>{symbol}</CText>}
+                </View>
+              }
+            />
+
+            <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
+              between
+              leftComp={<CText style={[styles.txt_summary_content, {color:'#fff'}]} i18nKey={"discount"} />}
+              rightComp={
+                <View style={styles.con_price_product}>
+                  {state._discountPrice > 0 && currencyPosition === Currency.left && <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
+                  <CText style={[styles.txt_products_price, {color:'#fff'}]}>{state._discountPrice === 0 ? '-' : discountPrice}</CText>
+                  {state._discountPrice > 0 && currencyPosition === Currency.right && <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
+                </View>
+              }
+            />
+
+            <CViewRow style={[styles.con_row_item,
+            { borderBottomWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width) }
+            ]}
+              between
+              leftComp={<CText style={[styles.txt_total_content, {color:'#fff', fontSize:Devices.fS(16), fontWeight:'700'}]} i18nKey={"provisional"} />}
+              rightComp={
+                <View style={[cStyles.row_align_center,
+                Configs.supportRTL ? cStyles.row_justify_start : cStyles.row_justify_end,
+                { flex: .6 }
+                ]}>
+                  {currencyPosition === Currency.left &&
+                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.WHITE_COLOR }]}>
+                      {symbol}
+                    </Text>
+                  }
+                  <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.WHITE_COLOR }]}>
+                    {provisionalPrice}
+                  </Text>
+                  {currencyPosition === Currency.right &&
+                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.WHITE_COLOR }]}>
+                      {symbol}
+                    </Text>
+                  }
+                </View>
+              }
+            />
+          </View>
+          <View style={[styles.con_separator, {backgroundColor:'transparent'}]} />
+          <View style={[styles.con_separator, {backgroundColor:'transparent'}]} />
+          <View style={[styles.con_separator, {backgroundColor:'transparent'}]} />
+          <View style={[styles.con_discount, {backgroundColor:'transparent', paddingHorizontal: Devices.sW(5), }]}>
+            <CViewRow style={[styles.con_discount_child, {  borderColor:'#fff', borderWidth:1, borderRadius:5, }]}
               leftComp={
-                <CViewRow style={{ flex: .6 }}
+                <CViewRow style={{ flex: .7 }}
                   leftComp={
-                    <IconF containerStyle={[Configs.supportRTL ? cStyles.ml_10 : cStyles.mr_10]}
-                      name={"tags"}
-                      color={'#E83B55'}
-                      size={Devices.fS(25)}
-                      type={"solid"} />
+                    <></>
                   }
                   rightComp={
-                    <View style={{ width: "90%" }}>
-                      <Item style={styles.con_input} last error={state._error !== ""}>
+                    <View style={{ width: "100%" }}>
+                      <Item style={[styles.con_input, {borderColor:'transparent', paddingLeft:5, marginBottom:0, paddingBottom:0,}]}  error={state._error !== ""}>
                         <Input style={[styles.txt_coupon_input,
-                        Configs.supportRTL && cStyles.txt_RTL
+                        Configs.supportRTL && cStyles.txt_RTL, {color:'#fff', borderBottomWidth:0, fontSize:Devices.fS(14), marginBottom:0, paddingBottom:0,}
                         ]}
                           disabled={state._loadingCoupon}
-                          placeholder={Languages[props.language].coupon_number}
-                          placeholderTextColor={Colors.PLACEHOLDER_COLOR}
+                          placeholder={'Enter Voucher Code'}
+                          placeholderTextColor={'#fff'}
                           value={state._couponCode}
                           onChangeText={(value) => onFunction.onChangeText(value)}
                           selectionColor={Colors.BLACK_COLOR}
@@ -266,12 +346,12 @@ export const ViewCart = ({
                 />
               }
               rightComp={
-                <View style={{ flex: .3 }}>
-                  <Button style={[styles.con_btn_apply, { borderColor: '#E83B55' }]}
+                <View style={{ flex: .2 }}>
+                  <TouchableOpacity style={[styles.con_btn_apply, { borderColor: 'transparent', borderWidth:0, backgroundColor:'transparent', shadowColor:'transparent', shadowOpacity:0, }]}
                     block disabled={state._loadingCoupon} onPress={onFunction.onPressApply}>
-                    {state._loadingCoupon && <BallIndicator color={'#E83B55'} size={20} />}
-                    {!state._loadingCoupon && <CText style={[styles.txt_btn, styles.txt_btn_apply, {color:'#E83B55'}]} i18nKey={"apply"} />}
-                  </Button>
+                    {state._loadingCoupon && <BallIndicator color={'#fff'} size={20} />}
+                    {!state._loadingCoupon && <CText style={[styles.txt_btn, styles.txt_btn_apply, {color:'#fff', backgroundColor:'transparent', fontSize:16, fontWeight:'400'}]} i18nKey={"apply"} />}
+                  </TouchableOpacity>
                 </View>
               }
             />
@@ -325,63 +405,6 @@ export const ViewCart = ({
               />
             }
           </View>
-
-          <View style={styles.con_separator} />
-
-          <View style={styles.con_summary}>
-            {RenderHeader("summary")}
-
-            <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
-              between
-              leftComp={<CText style={[styles.txt_summary_content, {color: '#000'}]} i18nKey={"total"} />}
-              rightComp={
-                <View style={styles.con_price_product}>
-                  {currencyPosition === Currency.left && <CText style={[styles.txt_products_unit_left, {color:'#000'}]}>{symbol}</CText>}
-                  <CText style={[styles.txt_products_price, {color:'#000'}]}>{state._totalPrice === 0 ? '-' : totalPrice}</CText>
-                  {currencyPosition === Currency.right && <CText style={[styles.txt_products_unit_right, {color:'#000'}]}>{symbol}</CText>}
-                </View>
-              }
-            />
-
-            <CViewRow style={[styles.con_row_item, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}
-              between
-              leftComp={<CText style={[styles.txt_summary_content, {color:'#000'}]} i18nKey={"discount"} />}
-              rightComp={
-                <View style={styles.con_price_product}>
-                  {state._discountPrice > 0 && currencyPosition === Currency.left && <CText style={styles.txt_products_unit_left}>{symbol}</CText>}
-                  <CText style={[styles.txt_products_price, {color:'#000'}]}>{state._discountPrice === 0 ? '-' : discountPrice}</CText>
-                  {state._discountPrice > 0 && currencyPosition === Currency.right && <CText style={styles.txt_products_unit_right}>{symbol}</CText>}
-                </View>
-              }
-            />
-
-            <CViewRow style={[styles.con_row_item,
-            { borderBottomWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width) }
-            ]}
-              between
-              leftComp={<CText style={[styles.txt_total_content, {color:'#000', fontSize:Devices.fS(16), fontWeight:'700'}]} i18nKey={"provisional"} />}
-              rightComp={
-                <View style={[cStyles.row_align_center,
-                Configs.supportRTL ? cStyles.row_justify_start : cStyles.row_justify_end,
-                { flex: .6 }
-                ]}>
-                  {currencyPosition === Currency.left &&
-                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
-                      {symbol}
-                    </Text>
-                  }
-                  <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
-                    {provisionalPrice}
-                  </Text>
-                  {currencyPosition === Currency.right &&
-                    <Text style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>
-                      {symbol}
-                    </Text>
-                  }
-                </View>
-              }
-            />
-          </View>
         </Content>
         :
         <>
@@ -390,7 +413,7 @@ export const ViewCart = ({
               style={styles.img_no_products}
               source={Assets.image_cart}
             />
-            <CText style={styles.txt_no_products} i18nKey={'no_data_on_cart'} />
+            <CText style={[styles.txt_no_products, {color:'#fff'}]} i18nKey={'no_data_on_cart'} />
           </Content>
 
           <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
@@ -402,8 +425,8 @@ export const ViewCart = ({
       }
 
       {state._products.length > 0 &&
-        <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <Button block style={[styles.con_btn, { backgroundColor: '#E83B55' }]}
+        <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width), backgroundColor:'transparent', justifyContent:'flex-end', alignContent:'flex-end', borderTopWidth:0, shadowColor:'#fff', shadowOffset:0, }]}>
+          <TouchableOpacity  style={[styles.con_btn, { backgroundColor: 'transparent', justifyContent:'flex-end', alignItems:'flex-end', borderWidth:1, borderColor:'#fff', flex:0, paddingHorizontal:Devices.sW(2), paddingVertical:Devices.sH(1) }]}
             disabled={state._loadingNextPage || state._loadingCheckProducts ? true : false}
             onPress={onFunction.onPressOrder} >
             {state._loadingNextPage || state._loadingCheckProducts ?
@@ -411,11 +434,12 @@ export const ViewCart = ({
               :
               <CText style={styles.txt_btn} i18nKey={'proceed_to_checkout'} />
             }
-          </Button>
+          </TouchableOpacity>
         </Footer>
       }
 
       <CLoading visible={state._loadingCheckProducts || state._loadingNextPage} />
+      </ImageBackground>
     </Container>
   )
 }

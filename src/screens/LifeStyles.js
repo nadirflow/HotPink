@@ -138,7 +138,7 @@ class LifeStyles extends React.Component {
                                               <View style={{backgroundColor:'rgba(119, 12, 85, 0.8)', height:'100%', justifyContent:'center', alignContent:'center', alignItems:'center', borderRadius:10, width:'100%',}}>
                                                   <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>{item.title.rendered}</Text>
                                                   <Text style={{fontSize:Devices.fS(16), fontWeight:'200', color: '#fff', textAlign:'center',}}>{item.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '')} </Text>
-                                                  <Button style={{ backgroundColor:'#fff', textAlign:'center', alignSelf:'center', paddingVertical:1, paddingHorizontal:15, height:25, marginTop:5,}}><Text style={{fontSize:Devices.fS(14), color: '#610C47', fontWeight:'600'}}>Read Now</Text></Button>
+                                                  <Button onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.id})} style={{ backgroundColor:'#fff', textAlign:'center', alignSelf:'center', paddingVertical:1, paddingHorizontal:15, height:25, marginTop:5,}}><Text style={{fontSize:Devices.fS(14), color: '#610C47', fontWeight:'600'}}>Read Now</Text></Button>
                                               </View>
                                           </ImageBackground>
                                       </TouchableOpacity>
