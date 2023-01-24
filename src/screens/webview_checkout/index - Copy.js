@@ -13,7 +13,7 @@ import { Container } from 'native-base';
 import queryString from 'query-string';
 import {URL} from 'react-native-url-polyfill';
 /** COMMON */
-import { Configs, Devices, Keys } from '~/config';
+import { Configs, Keys } from '~/config';
 import { cStyles } from '~/utils/styles';
 /** COMPONENTS */
 import CHeader from '~/components/CHeader';
@@ -103,12 +103,12 @@ class WebviewCheckoutScreen extends Component {
     const { language, cartKey, theme } = this.props;
     const { token } = this.props.route.params;
     console.log('22====================================');
-    console.log(`${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`);
+    console.log(cartKey);
+    // console.log(`${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`);
     console.log('22====================================');
     return (
       <Container style={cStyles.container}>
         <CHeader
-         style={{backgroundColor:'#E83B55', color:'#fff'}}
           title={'payment'}
           onPressLeft_1={this.handleGoBack}
           onPressRight_1={this.handleGoForward}
@@ -124,7 +124,7 @@ class WebviewCheckoutScreen extends Component {
           }}
           ref={ref => (this.webview = ref)}
           onNavigationStateChange={this.handleResponse}
-          style={[styles.webView, {paddingHorizontal:Devices.sW(40)}]}
+          style={styles.webView}
         />
 
       </Container>

@@ -160,7 +160,7 @@ class SignIn extends React.Component {
     if (Configs.isPaymentWebview) {
       let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
       if (asCartKey && asCartKey !== "") {
-        asCartKey = JSON.parse(asCartKey);
+        // asCartKey = JSON.parse(asCartKey);
         this.props.cartActions.updateCartKey(asCartKey.key);
       }
     }

@@ -48,7 +48,7 @@ const RenderProduct = (data) => {
             />
           }
           rightComp={
-            <CText style={styles.txt_title_product} numberOfLines={3}>
+            <CText style={[styles.txt_title_product, {color:'#000'}]} numberOfLines={3}>
               {data.name} {data.variation_id !== 0 && Object.keys(data.attributes)[0].split("_")[1]}
             </CText>
           }
@@ -58,17 +58,17 @@ const RenderProduct = (data) => {
         <CViewRow style={{ flex: .4 }} between
           leftComp={
             <View style={[cStyles.center, Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20]}>
-              <CText style={styles.txt_services_option}>{"x"} {data.quantity}</CText>
+              <CText style={[styles.txt_services_option, {color:'#000'}]}>{"x"} {data.quantity}</CText>
             </View>
           }
           rightComp={
             <View style={[cStyles.row_align_center, cStyles.row_justify_end]}>
               {currencyPosition === Currency.left &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
-              <CText style={styles.txt_group_right}>{price}</CText>
+              <CText style={[styles.txt_group_right, {color:'#000'}]}>{price}</CText>
               {currencyPosition === Currency.right &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
             </View>
           }
@@ -173,11 +173,12 @@ export const ViewAppointmentDetail = ({
   return (
     <Container>
       <CHaeder
+        style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
           <Body>
             <Title>
-              <CText style={cStyles.txt_title_header} i18nKey={'appointment'} />{" "}
-              <CText style={cStyles.txt_title_header}>{"#" + data.number}</CText>
+              <CText style={[cStyles.txt_title_header, {color:'#fff'}]} i18nKey={'appointment'} />{" "}
+              <CText style={[cStyles.txt_title_header, , {color:'#fff'}]}>{"#" + data.number}</CText>
             </Title>
           </Body>
         }
@@ -188,14 +189,14 @@ export const ViewAppointmentDetail = ({
 
       <Content>
         <View style={[styles.con_title_group, { marginHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <CText style={styles.txt_title_group} i18nKey={'information'} />
+          <CText style={[styles.txt_title_group,  {color:'#E83B55'}]} i18nKey={'information'} />
         </View>
         <CViewRow style={styles.con_content_row} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={Configs.allowBooking ? "booking_code" : "order_code"} />}
-          rightComp={<CText style={styles.txt_group_right}>{data.number}</CText>}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]} i18nKey={Configs.allowBooking ? "booking_code" : "order_code"} />}
+          rightComp={<CText style={[styles.txt_group_right, {color:'#000'}]}>{data.number}</CText>}
         />
         <CViewRow style={styles.con_content_row} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'status'} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]} i18nKey={'status'} />}
           rightComp={
             <Badge warning={statusHeader.color === "warning"} success={statusHeader.color === "success"}
               info={statusHeader.color === "info"} danger={statusHeader.color === "danger"}
@@ -209,20 +210,20 @@ export const ViewAppointmentDetail = ({
             leftComp={<CText style={styles.txt_group_left} i18nKey={'date'} />}
             rightComp={
               <View style={[cStyles.row_align_center, { flex: .4 }]}>
-                <CText style={styles.txt_group_right}>{`${day} ${time}`}</CText>
+                <CText style={[styles.txt_group_left, {color:'#000'}]}>{`${day} ${time}`}</CText>
               </View>
             }
           />
         }
         <CViewRow style={[styles.con_content_row, { borderBottomWidth: 0 }]} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'payment'} />}
-          rightComp={<CText style={styles.txt_group_right} i18nKey={payment} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]} i18nKey={'payment'} />}
+          rightComp={<CText style={[styles.txt_group_right, {color:'#000'}]} i18nKey={payment} />}
         />
 
         <View style={styles.con_separator} />
 
         <View style={[styles.con_title_group, { marginHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <CText style={cStyles.txt_title_group} i18nKey={'services'} />
+          <CText style={[styles.txt_title_group,  {color:'#E83B55'}]} i18nKey={'services'} />
         </View>
 
         <FlatList style={{ width: Devices.width }}
@@ -237,64 +238,64 @@ export const ViewAppointmentDetail = ({
         <View style={styles.con_separator} />
 
         <View style={[styles.con_title_group, { marginHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <CText style={cStyles.txt_title_group} i18nKey={'summary'} />
+          <CText style={[styles.txt_title_group,  {color:'#E83B55'}]} i18nKey={'summary'} />
         </View>
         <CViewRow style={styles.con_content_row} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'total'} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]}  i18nKey={'total'} />}
           rightComp={
             <View style={styles.con_subtotal}>
               {currencyPosition === Currency.left &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
-              <CText style={styles.txt_group_right}>{totalParse}</CText>
+              <CText style={[styles.txt_group_right, {color:'#000'}]}>{totalParse}</CText>
               {currencyPosition === Currency.right &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
             </View>
           }
         />
 
         <CViewRow style={styles.con_content_row} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'discount'} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]}  i18nKey={'discount'} />}
           rightComp={
             <View style={styles.con_subtotal}>
               {discount > 0 && <CText style={styles.txt_group_right}>{'- '}</CText>}
               {discount > 0 && currencyPosition === Currency.left &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
               <CText style={styles.txt_group_right}>{discount > 0 ? discountParse : '-'}</CText>
               {discount > 0 && currencyPosition === Currency.right &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
             </View>
           }
         />
 
         <CViewRow style={styles.con_content_row} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'delivery_charges'} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]}  i18nKey={'delivery_charges'} />}
           rightComp={
             <View style={styles.con_subtotal}>
               {shipping > 0 && currencyPosition === Currency.left &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
               <CText style={styles.txt_group_right}>{shipping > 0 ? shippingParse : '-'}</CText>
               {shipping > 0 && currencyPosition === Currency.right &&
-                <CText style={[styles.txt_group_right]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, {color:'#000'}]}>{symbol}</CText>
               }
             </View>
           }
         />
 
         <CViewRow style={[styles.con_content_row, { borderBottomWidth: 0 }]} between
-          leftComp={<CText style={styles.txt_group_left} i18nKey={'provisional'} />}
+          leftComp={<CText style={[styles.txt_group_left, {color:'#000'}]}  i18nKey={'provisional'} />}
           rightComp={
             <View style={styles.con_subtotal}>
               {currencyPosition === Currency.left &&
-                <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>{symbol}</CText>
               }
-              <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>{provisionalParse}</CText>
+              <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>{provisionalParse}</CText>
               {currencyPosition === Currency.right &&
-                <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.PRIMARY_COLOR }]}>{symbol}</CText>
+                <CText style={[styles.txt_group_right, styles.txt_group_subtotal, { color: Colors.BLACK_COLOR }]}>{symbol}</CText>
               }
             </View>
           }

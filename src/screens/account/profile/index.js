@@ -41,8 +41,8 @@ class Profile extends React.Component {
       _address: props.user.billing.address_1,
       /** COUNTRY PICKER */
       _visible: false,
-      _flag: "VN",
-      _callingCode: "+84",
+      _flag: "US",
+      _callingCode: "+1",
     };
     this._inputs = {};
   }
