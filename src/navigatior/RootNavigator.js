@@ -541,7 +541,7 @@ function Navigator(props) {
       source={Assets.splash} resizeMode={"cover"}>
       {loading  &&
         <View  style={{position: 'absolute', left: 0, right: 0, bottom: '50%', alignItems: 'center'}}>
-           <Image source={Assets.lob} animation='pulse' iterationCount='infinite' direction="alternate"/>
+           <Image source={Assets.big} animation='pulse' iterationCount='infinite' direction="alternate"/>
            <Image source={Assets.t1} animation='slideInUp' iterationCount={1} direction="alternate"/>
            <Image source={Assets.t2} animation='slideInUp' iterationCount={1} direction="alternate"/>
         </View>

@@ -227,7 +227,7 @@ class Self extends React.Component {
                                     <View style={{width:'75%', paddingHorizontal:15,}}>
                                         <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>{item.title.rendered}</Text>
                                         <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>{item.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '')}</Text>
-                                        <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:5,}} onPress={() => this.props.navigation.navigate('AudioPlayer', {audioId: item.id})}>
+                                        <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:0,}} onPress={() => this.props.navigation.navigate('AudioPlayer', {audioId: item.id})}>
                                           <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
                                         </TouchableOpacity>
                                     </View>
@@ -255,14 +255,14 @@ class Self extends React.Component {
                       // }
                       
                       return(
-                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("25%") } } onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.item.id})}>
+                      <TouchableOpacity style={{backgroundColor:'#fff', borderRadius:5, padding:5, marginBottom:20, width:Devices.sW("28.5%") } } onPress={() => this.props.navigation.navigate('ArticleSelf',{postId: item.item.id})}>
                        {item.item.featured_media.sizes && item.item.featured_media.sizes['woocommerce_thumbnail'] ?
                          <Image source={{uri: item.item.featured_media.sizes['woocommerce_thumbnail']}} style={{width:'100%', height:80, }} />  
                         :
                         <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
                       }
                          
-                        <Text style={{fontSize:14, color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.title.rendered}</Text>
+                        <Text style={{fontSize:Devices.fS(12), color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.title.rendered}</Text>
                       </TouchableOpacity>
                       );
 

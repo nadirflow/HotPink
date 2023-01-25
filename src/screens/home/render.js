@@ -7,8 +7,8 @@
  ** Description:
  **/
 /* LIBRARY */
-import React from 'react';
-import { View, FlatList, TouchableOpacity, RefreshControl, ImageBackground, Text, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, FlatList, TouchableOpacity, RefreshControl, ImageBackground, Text, ScrollView, BackHandler } from 'react-native';
 import { Container, Content } from 'native-base';
 import moment from 'moment';
 /* COMPONENTS */
@@ -199,7 +199,10 @@ export const ViewHome = ({
     onPressVendor: () => { }
   },
 }) => {
- 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () => backHandler.remove()
+  }, [])
   return (
     <Container>
       <CHeader
@@ -231,10 +234,10 @@ export const ViewHome = ({
       <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,}}>
         
           <View style={{flex:1, backgroundColor:'#fff', marginTop:Devices.sH(10), borderTopRightRadius:30, borderTopLeftRadius:30, }}>
-            <ScrollView style={{   paddingHorizontal:Devices.sW(5), paddingTop:Devices.sH(3)}} contentContainerStyle={{flexGrow:1}}>
+            <ScrollView style={{   paddingHorizontal:Devices.sW(5), paddingTop:Devices.sH(3),}} contentContainerStyle={{flexGrow:1}}>
               <Text style={{fontSize:Devices.fS(26), fontWeight:'700', color: '#E63B57'}}>Explore</Text>
               <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color: '#E63B57'}}>Private Psychotherapy Practice </Text>
-              <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3)}}>
+              <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3), paddingBottom:Devices.sH(4)}}>
                 <View style={{width:Devices.sW('44%')}}>
                     <TouchableOpacity onPress={onFunction.onPressSelf}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im1} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(25), borderRadius:10,}}>
@@ -259,7 +262,7 @@ export const ViewHome = ({
                       </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={onFunction.onPressChat}>  
-                      <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im5} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(25), borderRadius:10,}}>
+                      <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im5} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(26), borderRadius:10,}}>
                         <Icon
                         name='comment-dots'
                         color='#fff'

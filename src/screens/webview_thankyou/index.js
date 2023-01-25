@@ -39,7 +39,7 @@ class WebviewThankYouScreen extends Component {
   render() {
     const {loading, uri} = this.state;
     return (
-      <Container style={cStyles.container}>
+      <Container style={[cStyles.container, {backgroundColor:'#8E3983'}]}>
         <WebView
           source={{uri}}
           onNavigationStateChange={data => this.handleResponse(data)}
@@ -52,10 +52,10 @@ class WebviewThankYouScreen extends Component {
           </View>
         )}
 
-        <Footer style={[cStyles.center, { backgroundColor: Colors.WHITE_COLOR, borderTopWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-          <Button block style={[cStyles.full_center, { backgroundColor: Colors.PRIMARY_COLOR }]}
+        <Footer style={[cStyles.center, { backgroundColor: 'transparent', borderTopWidth: 0, paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
+          <Button block style={[cStyles.full_center, { backgroundColor: '#fff' }]}
             onPress={this.handleContinue} >
-            <CText style={cStyles.txt_title_button} i18nKey={'continue'} />
+            <CText style={[cStyles.txt_title_button, {color: '#E83B55'}]} i18nKey={'continue'} />
           </Button>
         </Footer>
       </Container>

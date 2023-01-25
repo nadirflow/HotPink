@@ -8,7 +8,7 @@ import Helpers from '~/utils/helpers';
 import Services from '~/services';
 import COtp from '~/components/COtp';
 import { Button, Container, Content, Image, Text } from 'native-base';
-import { ImageBackground, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { BackHandler, ImageBackground, ToastAndroid, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Assets, Devices } from '~/config';
 import CImage from '~/components/CImage';
 
@@ -19,6 +19,18 @@ class Welcom extends React.Component {
     
   }
   
+componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+}
+
+componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+}
+
+handleBackButton() {
+    
+    return true;
+}
     _onPressSignIn = () => {
         this.props.navigation.navigate("SignIn");
         
