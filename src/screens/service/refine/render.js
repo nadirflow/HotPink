@@ -28,12 +28,12 @@ const renderAccordionSort = (item, state, onPress) => {
     <TouchableOpacity onPress={() => onPress(item.id)}>
       <CViewRow style={styles.con_sort_item} between
         leftComp={
-          <CText style={cStyles.txt_base_item} i18nKey={item.title} />
+          <CText style={[cStyles.txt_base_item, {color: '#000'}]} i18nKey={item.title} />
         }
         rightComp={state._sortSelected === item.id ?
           <Icon name={"dot-circle"}
             size={Devices.fS(20)}
-            color={Colors.PRIMARY_COLOR}
+            color={'#E83B55'}
             type={"solid"} />
           :
           <Icon name={"circle"}
@@ -56,6 +56,7 @@ export const ViewRefine = ({
   return (
     <Container>
       <CHeader
+        style={{backgroundColor:'#E83B55'}}
         title={'sort'}
         iconLeft_1={Configs.supportRTL ? "angle-right" : "angle-left"}
         iconRight_1={"none"}
@@ -70,7 +71,7 @@ export const ViewRefine = ({
       />
 
       <Footer style={[styles.con_footer, { paddingHorizontal: Devices.pH(layoutWidth.width) }]}>
-        <Button block style={[styles.con_btn, { backgroundColor: Colors.PRIMARY_COLOR }]}
+        <Button block style={[styles.con_btn, { backgroundColor:'#E83B55' }]}
           onPress={onFunction.onPressBack}>
           <CText style={cStyles.txt_title_button} i18nKey={'show_result'} />
         </Button>

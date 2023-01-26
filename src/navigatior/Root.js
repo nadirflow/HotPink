@@ -151,7 +151,7 @@ export class RootTab extends React.Component {
             return <Icon name={iconName} size={Devices.fS(22)} color={color} type={focused ? "regular" : 'light'} />
           },
           tabBarLabel: ({ focused, color, size }) => {
-            let title = 'Home';
+            let title = 'home';
             switch (route.name) {
               case 'Service':
                 title = 'services';
@@ -171,11 +171,17 @@ export class RootTab extends React.Component {
         tabBarOptions={{
           activeTintColor: Colors.WHITE_COLOR,
           inactiveTintColor: '#E1E2E4',
+          activeBackgroundColor:'#E83B55',
+          inactiveBackgroundColor:'#E83B55',
        
         style:{
           backgroundColor: '#E83B55',
+          shadowColor:'#999',
+          shadowOffset:5,
+          shadowOpacity:1,
           borderTopRightRadius:20,
           borderTopLeftRadius:20,
+
           paddingTop:5,
           height:60,
         }
@@ -191,24 +197,11 @@ export class RootTab extends React.Component {
 }
 
 class RootMain extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }
   /** RENDER */
   render() {
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log(this.props.user)
-    // console.log(this.props.initRoute)
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-    // console.log('---------------------')
-
     return (
       <Root>
         
@@ -281,5 +274,10 @@ class RootMain extends React.Component {
     )
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    user: state.user.data,
+   
+  }
+}
 export default RootMain;

@@ -379,6 +379,7 @@ class Cart extends React.Component {
       }
     }
     if (Configs.isPaymentWebview) {
+
       let token = await Helpers.getDataStorage(Keys.AS_DATA_JWT);
       if(token){
         console.log('token====================================');

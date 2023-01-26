@@ -90,8 +90,9 @@ class Account extends React.Component {
     await Helpers.removeKeyStorage(Keys.AS_DATA_JWT);
     await Helpers.removeKeyStorage(Keys.AS_DATA_CART_KEY);
 
-    Helpers.resetNavigation(this.props.navigation, "RootTab");
+    // Helpers.resetNavigation(this.props.navigation, "RootTab");
     /** If done => Navigate to homepage */
+    this.props.navigation.navigate('Welcom');
     this.setState({ _loading: false });
     
     let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);

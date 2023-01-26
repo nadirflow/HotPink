@@ -81,7 +81,7 @@ export const ViewSignIn = ({
         onPressLeft_1={onFunction.onPressBack}
         
       />
-    <ImageBackground source={Assets.back} resizeMode='cover' style={{flex:1, paddingTop:25,  }}>
+    <ImageBackground source={Assets.wel} resizeMode='cover' style={{flex:1, paddingTop:25,  }}>
       
       
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>

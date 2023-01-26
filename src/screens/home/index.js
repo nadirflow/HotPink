@@ -58,6 +58,12 @@ class Home extends React.Component {
     let { setting } = this.props, find = false, i;
     /** Get data user and cart of user in async storage */
     this._onCheckUserCartStorage();
+    
+    let Users = await Helpers.getDataStorage(Keys.AS_DATA_USER);
+    
+    if (Users === null) {
+      this.props.navigation.navigate('Welcom');
+     }
 
     /** Default */
     this._settingOrder = [];
@@ -177,14 +183,22 @@ class Home extends React.Component {
     let asUser = await Helpers.getDataStorage(Keys.AS_DATA_USER);
     if (asUser && asUser !== "") {
       asUser = JSON.parse(asUser);
+   
+      console.log(asUser);
+
       /** Update data to redux user */
       this.props.userActions.updateUser(asUser);
+      // console.log('ooooooooooo');
+      // console.log(asUser.username);
+      // console.log('ooooooooooo');
       /** Update cart to redux cart */
       let asCart = await Helpers.getDataStorage(Keys.AS_DATA_CART);
       if (asCart && asCart !== "") {
         asCart = JSON.parse(asCart);
         this.props.cartActions.updateCart(asCart);
       }
+      
+     
       if (Configs.isPaymentWebview) {
         let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
         if (asCartKey && asCartKey !== "") {
@@ -193,9 +207,16 @@ class Home extends React.Component {
         }
       }
     }
+    // if (asUser.username == "") {
+    //   this.props.navigation.navigate('welcom');
+      
+    // }
+   
+    
   }
 
   _onFetchLatestPosts = async (numberItem, isRefreshing) => {
+   
     if (isRefreshing) {
       let tmp = [], res = null;
       let params = {

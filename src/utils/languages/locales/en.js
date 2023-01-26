@@ -39,7 +39,7 @@ export default {
     add_to_cart: 'Add to cart',
     update_cart: 'Update cart',
     view_cart: 'View cart',
-    news: 'News',
+    news: 'Wishlist',
     home: 'Home',
     hours: 'hours ago',
     minutes: 'minutes ago',

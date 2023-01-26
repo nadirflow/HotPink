@@ -376,10 +376,6 @@ export const Assets = {
     image_coupon: require('../../assets/images/image_coupon.png'),
     image_cart: require('../../assets/images/image_cart.png'),
     image_store_demo: require('../../assets/images/image_store_demo.png'),
-    image_beauty: require('../../assets/images/image_beauty.jpeg'),
-    image_hair: require('../../assets/images/image_hair.jpeg'),
-    image_nail: require('../../assets/images/image_nail.jpeg'),
-    image_spa: require('../../assets/images/image_spa.jpeg'),
     image_bg_coupons: require('../../assets/images/image_bg_coupons.png'),
     image_speaker: require('../../assets/images/image_speaker.png'),
     icon_wallet: require('../../assets/icons/icon_wallet.png'),
@@ -391,7 +387,7 @@ export const Assets = {
     icon_coupon: require('../../assets/icons/icon_coupon.png'),
     icon_calendar: require('../../assets/icons/icon_calendar.png'),
     back: require('../../assets/images/linear.png'),
-    big: require('../../assets/images/logo-big.png'),
+    big: require('../../assets/images/slogo.png'),
     log: require('../../assets/images/logo.png'),
     im1: require('../../assets/images/img1.png'),
     im3: require('../../assets/images/img3.png'),
@@ -411,6 +407,11 @@ export const Assets = {
     lob: require('../../assets/images/logo-big.png'),
     t1: require('../../assets/images/text1.png'),
     t2: require('../../assets/images/text2.png'),
+    abg: require('../../assets/images/abg.png'),
+    album: require('../../assets/images/album.png'),
+    wel: require('../../assets/images/fi-bg.png'),
+    pink: require('../../assets/images/pink.png'),
+    
 };
 
 export const Keys = {

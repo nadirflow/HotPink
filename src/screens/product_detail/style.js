@@ -30,7 +30,7 @@ export default styles = {
   }],
 
   txt_badge: cStyles.txt_badge,
-  txt_title_header_fixed: [cStyles.txt_title_header, { color: Colors.BLACK_COLOR }],
+  txt_title_header_fixed: [cStyles.txt_title_header, { color: '#fff' }],
 
   /** CONTENT */
   con_content_title: cStyles.pv_10,

@@ -39,12 +39,12 @@ export default styles = {
   /** TAB */
   con_tab: { width: Devices.width },
   con_tabbar: { paddingVertical: 5 },
-  con_tabbar_item: [cStyles.center, { padding: 10, marginRight: 10 }],
+  con_tabbar_item: [cStyles.center, { padding: 10, marginRight: 10,  }],
   con_tabbar_last_item: { marginRight: 0 },
-  con_tabbar_active_item: { borderBottomColor: Colors.PRIMARY_COLOR, borderBottomWidth: 4 },
+  con_tabbar_active_item: { borderBottomColor: Colors.WHITE_COLOR, borderBottomWidth: 4 },
   con_separator: { height: 1, backgroundColor: Colors.BORDER_COLOR },
 
-  txt_tabbar: [cStyles.large, { color: Colors.PLACEHOLDER_COLOR }],
+  txt_tabbar: [cStyles.large, { color: Colors.WHITE_COLOR }],
   txt_header_tab: [cStyles.small, { paddingHorizontal: 10 }],
   //SLIDER
   con_slider: { position: 'relative' },
