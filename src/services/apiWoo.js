@@ -25,7 +25,7 @@ class ApiWoo {
   static async get(route, params) {
     try {
       let data = await WooCommerce.api.get(route, params);
-      console.log('=== Api.get ' + route + ': ', data);
+      // console.log('=== Api.get ' + route + ': ', data);
       return data;
     } catch (e) {
       console.log('ERROR => Api.get ' + route + ': ', e);

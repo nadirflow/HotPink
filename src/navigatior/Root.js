@@ -218,6 +218,7 @@ class RootMain extends React.Component {
           <StackMain.Screen name="Welcom" component={Welcom} />
           <StackMain.Screen name="SignUp" component={SignUpScreen} />
           <StackMain.Screen name="SignIn" component={SignInScreen} />
+          <StackMain.Screen name="Account" component={AccountScreen} />
           <StackMain.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <StackMain.Screen name="RootTab" component={RootTab} />
           <StackMain.Screen name="HomeDetail" component={HomePostDetailScreen} />

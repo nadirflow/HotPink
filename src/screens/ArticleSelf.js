@@ -90,7 +90,6 @@ class ArticleSelf extends React.Component {
     return (
       <>
        <CHeader
-        
         style={{backgroundColor:'#E83B55', color:'#fff'}}
         titleComponent={
           <View style={[cStyles.row_justify_center, cStyles.flex_full]}>
@@ -112,11 +111,8 @@ class ArticleSelf extends React.Component {
         iconRight_1={'none'}
         
          onPressLeft_1={() => this.props.navigation.goBack()}
-        
       />
         <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
-        
-          
             <View style={{paddingVertical:Devices.sH(5), flex:1, paddingHorizontal:Devices.sW(5)}}>
               <ScrollView>
                 {/* <View style={{flexDirection:'row', }}>
@@ -165,4 +161,12 @@ class ArticleSelf extends React.Component {
   };
 };
 
-export default ArticleSelf;
+
+const mapStateToProps = state => {
+  return {
+    // cart: state.cart.carts,
+    // cartKey: state.cart.cartKey,
+  }
+}
+
+export default connect(mapStateToProps, null)(ArticleSelf);

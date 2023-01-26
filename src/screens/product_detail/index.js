@@ -124,7 +124,15 @@ class ProductDetail extends React.Component {
         let { _product, _price, _optionSelected, _isAdd } = this.state;
         if (Configs.isPaymentWebview) {
             this.setState({_loadingBtnWebview: true})
+            console.log('_optionSelected====================================');
+            console.log(this.props.cartKey);
+            console.log(_optionSelected);
+            console.log('_optionSelected====================================');
             let item = Helpers.prepareItemCart(_product.id, _optionSelected ? _optionSelected.id : 0, _optionSelected);
+            // console.log('AS_DATA_CART_KEY====================================');
+            // console.log(this.props.cartKey);
+            // console.log('====================================');
+            // return ;
             let params = {
                 cartKey: this.props.cartKey,
                 data: item
@@ -141,6 +149,9 @@ class ProductDetail extends React.Component {
 
                 // }
             }
+            console.log('ProductDetail====================================');
+            console.log(res);
+            console.log('ProductDetail====================================');
         }
         let originPrice = 0,
         salePrice = 0;
@@ -205,6 +216,9 @@ class ProductDetail extends React.Component {
                 );
             },
         );
+        console.log('ProductDetail====================================');
+        console.log(this.props.cart);
+        console.log('ProductDetail====================================');
     };
 
     _onPressBack = () => {

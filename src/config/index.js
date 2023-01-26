@@ -237,6 +237,8 @@ export const Configs = {
     hostStripe: 'https://api.stripe.com',
     /* URL API */ 
     hostApi: 'https://webtestview.com/hotpink',
+    subscribeCat: 55, 
+    subscribeProduct: 110, 
     parseTimestamp,
     formatDate: 'DD/MM/YYYY',
     formatTime: 'hh:MM:ss',
