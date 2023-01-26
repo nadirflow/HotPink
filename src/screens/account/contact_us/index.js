@@ -100,13 +100,15 @@ class ContactUs extends React.PureComponent {
           iconLeft_1={Configs.supportRTL ? "angle-right" : "angle-left"}
           iconRight_1={"none"}
           onPressLeft_1={this._onPressBack}
+          style={{backgroundColor:'#E83B55' }}
+          
         />
 
         <Content>
           <View style={styles.con_img_logo}>
             <CImage style={styles.img_logo} source={this._logo} resizeMode={'contain'} />
           </View>
-
+          
           <FlatList contentContainerStyle={{ marginHorizontal: Devices.pH(layoutWidth.width) }}
             data={INIT_ROW}
             renderItem={({ item, index }) => {
@@ -117,7 +119,7 @@ class ContactUs extends React.PureComponent {
                       <CViewRow
                         leftComp={
                           <Icon name={item.icon}
-                            color={cStyles.ic_left_detail.color}
+                            color={'#E83B55'}
                             size={cStyles.ic_left_detail.size}
                             type={cStyles.ic_left_detail.type} />
                         }
@@ -130,7 +132,7 @@ class ContactUs extends React.PureComponent {
                           ]}>
                             {item.title &&
                               <CText style={[styles.txt_row,
-                              Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20]} i18nKey={item.title} />
+                              Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20, {color: '#000'}]} i18nKey={item.title} />
                             }
                           </View>
                         }
@@ -139,7 +141,7 @@ class ContactUs extends React.PureComponent {
                     rightComp={
                       <View style={[{ flex: .8 },
                       Configs.supportRTL ? cStyles.column_align_start : cStyles.column_align_end]}>
-                        <Text style={[styles.txt_row, Configs.supportRTL ? { textAlign: "left" } : { textAlign: "right" }]} numberOfLines={3}>
+                        <Text style={[styles.txt_row, Configs.supportRTL ? { textAlign: "left", color: '#E83B55' } : { textAlign: "right", color: '#E83B55' }]} numberOfLines={3}>
                           {item.slug === "app_version" ? this._appVersion : this._settings[item.slug]}
                         </Text>
                       </View>

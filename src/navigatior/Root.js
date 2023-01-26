@@ -77,6 +77,9 @@ import AudioPlayer from '~/screens/AudioPlayer';
 import Self from '~/screens/Self';
 import ArticleSelf from '~/screens/ArticleSelf';
 import LSArticle from '~/screens/LSArticle';
+import ChatScreen from '~/screens/ChatScreen';
+import welcome from '~/screens/authentication/welcome';
+import SplashScreen from 'react-native-splash-screen';
 
 
 /** INIT NAVIGATOR OF APP */
@@ -85,6 +88,9 @@ const TabMain = createBottomTabNavigator();
 const TabVendor = createBottomTabNavigator();
 
 export class VendorTab extends React.Component {
+  componentDidMount() {
+      SplashScreen.hide();
+  }
   /** RENDER */
   render() {
     return (
@@ -149,7 +155,7 @@ export class RootTab extends React.Component {
             return <Icon name={iconName} size={Devices.fS(22)} color={color} type={focused ? "regular" : 'light'} />
           },
           tabBarLabel: ({ focused, color, size }) => {
-            let title = 'Home';
+            let title = 'home';
             switch (route.name) {
               case 'Service':
                 title = 'services';
@@ -169,11 +175,17 @@ export class RootTab extends React.Component {
         tabBarOptions={{
           activeTintColor: Colors.WHITE_COLOR,
           inactiveTintColor: '#E1E2E4',
+          activeBackgroundColor:'#E83B55',
+          inactiveBackgroundColor:'#E83B55',
        
         style:{
           backgroundColor: '#E83B55',
+          shadowColor:'#999',
+          shadowOffset:5,
+          shadowOpacity:1,
           borderTopRightRadius:20,
           borderTopLeftRadius:20,
+
           paddingTop:5,
           height:60,
         }
@@ -189,7 +201,9 @@ export class RootTab extends React.Component {
 }
 
 class RootMain extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }
   /** RENDER */
   render() {
     return (
@@ -197,12 +211,14 @@ class RootMain extends React.Component {
         
         <StackMain.Navigator
           initialRouteName={this.props.initRoute}
+         //initialRouteName={this.props.user ?this.props.initRoute :  Welcom}
           headerMode={'none'}
           screenOptions={{ gestureEnabled: false }}>
          
-          {/* <StackMain.Screen name="Welcom" component={Welcom} /> */}
+          <StackMain.Screen name="Welcom" component={Welcom} />
           <StackMain.Screen name="SignUp" component={SignUpScreen} />
           <StackMain.Screen name="SignIn" component={SignInScreen} />
+          <StackMain.Screen name="Account" component={AccountScreen} />
           <StackMain.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <StackMain.Screen name="RootTab" component={RootTab} />
           <StackMain.Screen name="HomeDetail" component={HomePostDetailScreen} />
@@ -256,10 +272,16 @@ class RootMain extends React.Component {
           <StackMain.Screen name="AudioPlayer" component={AudioPlayer} />
           <StackMain.Screen name="ArticleSelf" component={ArticleSelf} />
           <StackMain.Screen name="LSArticle" component={LSArticle} />
+          <StackMain.Screen name="ChatScreen" component={ChatScreen} />
         </StackMain.Navigator>
       </Root>
     )
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    user: state.user.data,
+   
+  }
+}
 export default RootMain;

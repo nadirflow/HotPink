@@ -48,13 +48,13 @@ class Account extends React.Component {
         Helpers.showToastDuration({}, "Error call", "error");
       }
     } else {
-      if (true){
-          this.props.navigation.navigate("UnlockSubscription");  
-          return;
-      }
-      console.log('1---------------');
-      console.log(data.routeName);
-      console.log('1---------------');
+      // if (true){
+      //     this.props.navigation.navigate("UnlockSubscription");  
+      //     return;
+      // }
+      // console.log('1---------------');
+      // console.log(data.routeName);
+      // console.log('1---------------');
       this.props.navigation.navigate(data.routeName);
     }
   }
@@ -87,10 +87,18 @@ class Account extends React.Component {
     /** Remove key data user in async storage */
     await Helpers.removeKeyStorage(Keys.AS_DATA_USER);
     await Helpers.removeKeyStorage(Keys.AS_DATA_CART);
+    await Helpers.removeKeyStorage(Keys.AS_DATA_JWT);
+    await Helpers.removeKeyStorage(Keys.AS_DATA_CART_KEY);
 
-    Helpers.resetNavigation(this.props.navigation, "RootTab");
+    // Helpers.resetNavigation(this.props.navigation, "RootTab");
     /** If done => Navigate to homepage */
+    this.props.navigation.navigate('Welcom');
     this.setState({ _loading: false });
+    
+    let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
+    console.log('AS_DATA_CART_KEY====================================');
+    console.log(asCartKey);
+    console.log('AS_DATA_CART_KEY====================================');
   }
 
   _onPressCart = () => {

@@ -47,7 +47,7 @@ export const ViewForgotPassword = ({
     
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       
-      <ImageBackground source={Assets.back} resizeMode='cover' style={{flex:1,  paddingTop:25, }}>
+      <ImageBackground source={Assets.wel} resizeMode='cover' style={{flex:1,  paddingTop:25, }}>
       <TopBar></TopBar>
       <Container style={[cStyles.container_auth, {backgroundColor:''} ]}>
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>
@@ -87,9 +87,9 @@ export const ViewForgotPassword = ({
                       />
                     {/* </Item> */}
                     {(typeof state._errorEmail === "string" && state._errorEmail !== "") &&
-                      <CText numberOfLines={2} style={styles.txt_error} i18nKey={state._errorEmail} />}
+                      <CText numberOfLines={2} style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorEmail} />}
                     {typeof state._errorEmail === "object" &&
-                      <CText numberOfLines={2} style={styles.txt_error}>{state._errorEmail.message}</CText>}
+                      <CText numberOfLines={2} style={[styles.txt_error, {color: '#fff'}]}>{state._errorEmail.message}</CText>}
 
                     <Button block
                       style={[styles.con_btn, { backgroundColor: '#C73A66' }]}

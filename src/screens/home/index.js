@@ -58,6 +58,12 @@ class Home extends React.Component {
     let { setting } = this.props, find = false, i;
     /** Get data user and cart of user in async storage */
     this._onCheckUserCartStorage();
+    
+    let Users = await Helpers.getDataStorage(Keys.AS_DATA_USER);
+    
+    if (Users === null) {
+      this.props.navigation.navigate('Welcom');
+     }
 
     /** Default */
     this._settingOrder = [];
@@ -177,25 +183,40 @@ class Home extends React.Component {
     let asUser = await Helpers.getDataStorage(Keys.AS_DATA_USER);
     if (asUser && asUser !== "") {
       asUser = JSON.parse(asUser);
+   
+      console.log(asUser);
+
       /** Update data to redux user */
       this.props.userActions.updateUser(asUser);
+      // console.log('ooooooooooo');
+      // console.log(asUser.username);
+      // console.log('ooooooooooo');
       /** Update cart to redux cart */
       let asCart = await Helpers.getDataStorage(Keys.AS_DATA_CART);
       if (asCart && asCart !== "") {
         asCart = JSON.parse(asCart);
         this.props.cartActions.updateCart(asCart);
       }
+      
+     
       if (Configs.isPaymentWebview) {
         let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
         if (asCartKey && asCartKey !== "") {
-          asCartKey = JSON.parse(asCartKey);
+          // asCartKey = JSON.parse(asCartKey);
           this.props.cartActions.updateCartKey(asCartKey.key);
         }
       }
     }
+    // if (asUser.username == "") {
+    //   this.props.navigation.navigate('welcom');
+      
+    // }
+   
+    
   }
 
   _onFetchLatestPosts = async (numberItem, isRefreshing) => {
+   
     if (isRefreshing) {
       let tmp = [], res = null;
       let params = {
@@ -289,6 +310,9 @@ class Home extends React.Component {
     this.props.navigation.navigate("Cart");
   }
   _onPressSelf = () => {
+    console.log('_onPressSelf====================================');
+    console.log(this.props.cartKey);
+    console.log('_onPressSelf====================================');
     this.props.navigation.navigate("Self");
   }
   _onPressPartner = () => {
@@ -296,6 +320,9 @@ class Home extends React.Component {
   }
   _onPressLifeStyles = () => {
     this.props.navigation.navigate("LifeStyles");
+  }
+  _onPressChat = () => {
+    this.props.navigation.navigate("ChatScreen");
   }
 
   _onFocusSearch = () => {
@@ -657,6 +684,13 @@ class Home extends React.Component {
       vendorData: item
     })
   }
+  _updateCartKey = async () => {
+    let _cartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
+    this.setState({ cartKey: _cartKey});
+    console.log('home_cartKey====================================');
+    console.log(_cartKey);
+    console.log('home_cartKey====================================');
+  }
   /* LIFE CYCLE */
   componentDidMount() {
     /** Check setting general show/hide rating app */
@@ -671,6 +705,8 @@ class Home extends React.Component {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       this.setState({ _loadingCart: !this.state._loadingCart });
     });
+    
+    
   }
 
   componentWillUnmount() {
@@ -727,7 +763,9 @@ class Home extends React.Component {
             onPressVendor: this._onPressVendor,
             onPressSelf: this._onPressSelf,
             onPressPartner: this._onPressPartner,
-            onPressLifeStyles: this._onPressLifeStyles
+            onPressLifeStyles: this._onPressLifeStyles,
+            onPressChat: this._onPressChat
+
           }}
         />
       </Drawer>

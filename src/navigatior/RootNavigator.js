@@ -11,9 +11,9 @@
 /* LIBRARY */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Image, ImageBackground, Button } from 'react-native';
+import {  ImageBackground, Button } from 'react-native';
  
-import { View } from 'react-native-animatable';
+import { View, Image, Animation, Direction,  } from 'react-native-animatable';
 import SplashScreen from 'react-native-splash-screen';
 import firebase from 'react-native-firebase';
 import Modal from 'react-native-modal';
@@ -144,14 +144,20 @@ function Navigator(props) {
   };
 
   const onGetToken = async () => {
-    let fcmToken = await firebase.messaging().getToken();
-    // console.log('------------------------------');
-    // console.log(fcmToken.register);
-    if (fcmToken) {
-      // Register token
-      onRegisterTokenFCM(fcmToken);
-    } else {
-      onRequestPermission();
+    try {
+      let fcmToken = await firebase.messaging().getToken();
+      // console.log('------------------------------');
+      // console.log(fcmToken.register);
+      if (fcmToken) {
+        // Register token
+        onRegisterTokenFCM(fcmToken);
+      } else {
+        onRequestPermission();
+      }
+    }catch(e){
+      console.log('fcmToken====================================');
+      console.log(e);
+      console.log('fcmToken====================================');
     }
   };
 
@@ -512,7 +518,7 @@ function Navigator(props) {
     allSetting.settingLanguage = settingLanguage;
 
     //Finally update ALL SETTINGS to Redux
-    dispatch(SettingActions.updateAllSettings(allSetting));
+    await dispatch(SettingActions.updateAllSettings(allSetting));
     //Navigate to homescreen
     onSetRouteAndNext("RootTab");
   }
@@ -529,19 +535,24 @@ function Navigator(props) {
   }, [loading, initRoute, settingState]);
 
   useEffect(() => {
+    SplashScreen.hide();
     createNotificationListeners();
+    // createNotificationListeners();
     onGetHostApi();
-    onCheckPermission();
+    // onCheckPermission();
     onGetSettings();
   }, []);
 
   /** RENDER */
   return (
-    <ImageBackground style={[cStyles.container, styles.con_image_bg]}
+    
+    <ImageBackground style={[cStyles.container, styles.con_image_bg, {justifyContent:'center'}]}
       source={Assets.splash} resizeMode={"cover"}>
       {loading  &&
-        <View style={{position: 'absolute', left: 0, right: 0, bottom: '20%', alignItems: 'center'}}>
-          <BallIndicator color={Colors.ICON_COLOR} />
+        <View  style={{position: 'absolute', left: 0, right: 0, bottom: '50%', alignItems: 'center'}}>
+           <Image source={Assets.big} animation='pulse' iterationCount='infinite' direction="alternate"/>
+           <Image source={Assets.t1} animation='slideInUp' iterationCount={1} direction="alternate"/>
+           <Image source={Assets.t2} animation='slideInUp' iterationCount={1} direction="alternate"/>
         </View>
       }
 

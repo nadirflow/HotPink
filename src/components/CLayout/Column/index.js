@@ -6,7 +6,7 @@
 **/
 /* LIBRARY */
 import React from 'react';
-import { View, FlatList, TouchableOpacity, Text } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text, Image } from 'react-native';
 import { Card } from 'native-base';
 import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-fontawesome-pro';
@@ -23,6 +23,7 @@ import Helpers from '~/utils/helpers';
 import { layoutWidth } from '~/utils/layout_width';
 /* STYLES */
 import styles from './style';
+import { color } from 'react-native-reanimated';
 
 const regex = /(<([^>]+)>)/ig;
 const regex2 = /\n/g;
@@ -102,14 +103,15 @@ export class RenderItem extends React.Component {
             <TouchableOpacity onPress={() => onPress(data)}>
                 <Card style={[
                     isCategory && styles.con_store_category,
-                    (isCategory && Configs.supportRTL && index === 0) && { marginRight: Devices.pH(layoutWidth.width) * 2 },
+                    (isCategory && Configs.supportRTL && index === 0) && { marginRight: Devices.pH(layoutWidth.width) * 2, width:Devices.sW('49.5%') },
                     isService && styles.con_store_service,
-                    styles.con_store_news, styles.noBorder
+                    styles.con_store_news, styles.noBorder, {width:Devices.sW('49.5%'),}
                 ]} noShadow transparent={isCategory}>
                     <View style={cStyles.column_align_center}>
-                        <CImage
-                            style={isService ? [styles.img_store_service, { width: size.width - 5, height: size.height }] :
-                                isNews ? [styles.img_store_news, { width: size.width, height: size.height }] : styles.img_store_category}
+                        
+                        <Image
+                            style={isService ? [styles.img_store_service, { width: '100%', resizeMode: 'contain', height: Devices.sH('16%') }] :
+                                isNews ? [styles.img_store_news, { width: '100%', height: Devices.sH('10%'),  resizeMode:'' }] : styles.img_store_category}
                             source={source}
                         />
                         {(showBookmark && inBookmark) ?
@@ -147,10 +149,10 @@ export class RenderItem extends React.Component {
                     </View>
 
                     <View style={styles.con_info_store}>
-                        <View style={styles.con_title_store, Configs.supportRTL && cStyles.column_align_end}>
-                            {isService && <Text style={[styles.txt_title_store, Configs.supportRTL && cStyles.txt_RTL]} numberOfLines={5}>{title}</Text>}
-                            {isCategory && <Text style={[styles.txt_title_store, styles.txt_title_category]} numberOfLines={5}>{title}</Text>}
-                            {isNews && <Text style={[styles.txt_title_new, Configs.supportRTL && cStyles.txt_RTL]} numberOfLines={5}>{title}</Text>}
+                        <View style={[styles.con_title_store, Configs.supportRTL && cStyles.column_align_end, {alignItems:'flex-start'}]}>
+                            {isService && <Text style={[styles.txt_title_store, Configs.supportRTL && cStyles.txt_RTL, {color:'#000', fontSize:Devices.fS(16), }]} numberOfLines={2}>{title}</Text>}
+                            {isCategory && <Text style={[styles.txt_title_store, styles.txt_title_category]} numberOfLines={2}>{title}</Text>}
+                            {isNews && <Text style={[styles.txt_title_new, Configs.supportRTL && cStyles.txt_RTL, {color:'#000', fontSize:Devices.fS(16), fontWeight:'600' }]} numberOfLines={2}>{title}</Text>}
                         </View>
 
                         {isNews &&
@@ -217,25 +219,25 @@ export class RenderItem extends React.Component {
                                         {percentSale !== 0 &&
                                             <View style={styles.con_content_price_2}>
                                                 {currencyPosition === Currency.left &&
-                                                    <CText style={styles.txt_content_price_sale}>{symbol}</CText>
+                                                    <CText style={[styles.txt_content_price_sale,  {fontSize:Devices.fS(14), color:'#E83B55'}]}>{symbol}</CText>
                                                 }
-                                                <CText style={styles.txt_content_price_sale}>{Helpers.formatNumber(data.sale_price)}</CText>
+                                                <CText style={[styles.txt_content_price_sale, {fontSize:Devices.fS(14), color:'#E83B55'}]}>{Helpers.formatNumber(data.sale_price)}</CText>
                                                 {currencyPosition === Currency.right &&
-                                                    <CText style={styles.txt_content_price_sale}>{symbol}</CText>
+                                                    <CText style={[styles.txt_content_price_sale, {fontSize:Devices.fS(14), color:'#E83B55'}]}>{symbol}</CText>
                                                 }
                                             </View>
                                         }
                                         <View style={cStyles.row_align_center}>
                                             {_dataOptions.length > 0 &&
-                                                <CText style={cStyles.txt_body_meta_item} i18nKey={"from_price"} />
+                                                <CText style={[cStyles.txt_body_meta_item, {fontSize:Devices.fS(14), color:'#E83B55'}]} i18nKey={"from_price"} />
                                             }
 
                                             {currencyPosition === Currency.left &&
-                                                <CText style={[styles.txt_unit_item, percentSale !== 0 && { color: Colors.PLACEHOLDER_COLOR }]}>{symbol}</CText>
+                                                <CText style={[styles.txt_unit_item, percentSale !== 0 && { color: '#E83B55' }]}>{symbol}</CText>
                                             }
-                                            <CText style={[styles.txt_price_item, percentSale !== 0 && styles.txt_regular_price]}>{price}</CText>
+                                            <CText style={[styles.txt_price_item, percentSale !== 0 && styles.txt_regular_price, , {fontSize:Devices.fS(14), color:'#E83B55'}]}>{price}</CText>
                                             {currencyPosition === Currency.right &&
-                                                <CText style={[styles.txt_unit_item, percentSale !== 0 && { color: Colors.PLACEHOLDER_COLOR }]}>{symbol}</CText>
+                                                <CText style={[styles.txt_unit_item, percentSale !== 0 && { color: '#E83B55' }]}>{symbol}</CText>
                                             }
                                         </View>
                                     </View>
