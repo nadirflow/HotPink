@@ -58,7 +58,7 @@ class ApiWP {
 
     try {
       let resp = await fetch(url, options);
-      console.log('=== Api.xhr.resp ' + route + ' respJSON ===', resp);
+      // console.log('=== Api.xhr.resp ' + route + ' respJSON ===', resp);
       if (resp.ok) {
         let respJSON = await resp.json();
         return respJSON;
@@ -86,10 +86,10 @@ class ApiWP {
     };
     try {
       let resp = await fetch(url, options);
-      console.log('=== Api.xhr.resp ===', resp);
+      // console.log('=== Api.xhr.resp ===', resp);
       if (resp.ok) {
         let respJSON = await resp.json();
-        console.log('=== Api.xhr.respJSON ' + route + ' respJSON ===', respJSON);
+        // console.log('=== Api.xhr.respJSON ' + route + ' respJSON ===', respJSON);
         return respJSON;
       } else {
         return null;

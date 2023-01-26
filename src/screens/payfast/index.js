@@ -88,7 +88,7 @@ class PayFastPayment extends React.Component {
   }
 
   _onNavigationStateChange = (webViewState) => {
-    console.log("webViewState", webViewState);
+    // console.log("webViewState", webViewState);
     if (webViewState.url === Configs.payFastRUrl) {
       this.setState({ _modalVisible: true });
       this._updateOrder(Configs.order.COMPLETED)

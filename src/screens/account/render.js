@@ -91,6 +91,7 @@ export const ViewAccount = ({
 }) => {
   let newFullName = "", avatar_url = Configs.avatarUrlDefault;
   if (props.user) {
+    console.log("props.user: ", props.user);
     newFullName = props.user.first_name + " " + props.user.last_name;
     avatar_url = props.user.avatar_url;
   }

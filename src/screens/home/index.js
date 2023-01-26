@@ -202,7 +202,7 @@ class Home extends React.Component {
       if (Configs.isPaymentWebview) {
         let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
         if (asCartKey && asCartKey !== "") {
-          asCartKey = JSON.parse(asCartKey);
+          // asCartKey = JSON.parse(asCartKey);
           this.props.cartActions.updateCartKey(asCartKey.key);
         }
       }
@@ -310,6 +310,9 @@ class Home extends React.Component {
     this.props.navigation.navigate("Cart");
   }
   _onPressSelf = () => {
+    console.log('_onPressSelf====================================');
+    console.log(this.props.cartKey);
+    console.log('_onPressSelf====================================');
     this.props.navigation.navigate("Self");
   }
   _onPressPartner = () => {
@@ -681,6 +684,13 @@ class Home extends React.Component {
       vendorData: item
     })
   }
+  _updateCartKey = async () => {
+    let _cartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
+    this.setState({ cartKey: _cartKey});
+    console.log('home_cartKey====================================');
+    console.log(_cartKey);
+    console.log('home_cartKey====================================');
+  }
   /* LIFE CYCLE */
   componentDidMount() {
     /** Check setting general show/hide rating app */
@@ -695,6 +705,8 @@ class Home extends React.Component {
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
       this.setState({ _loadingCart: !this.state._loadingCart });
     });
+    
+    
   }
 
   componentWillUnmount() {

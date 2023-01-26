@@ -281,5 +281,11 @@ class Self extends React.Component {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    cart: state.cart.carts,
+    // cartKey: state.cart.cartKey,
+  }
+}
 
-export default Self;
+export default connect(mapStateToProps, null)(Self);
