@@ -44,12 +44,13 @@ export default {
     try {
       let newURL = Routes.auth.signIn;
       let results = await WooCommerce.get(newURL , {'email' : params.email});
-      // console.log('5====================================');
-      // console.log(results);
-      // console.log('5====================================');
-      if(results && results.customers && results.customers[0]){
+      if(results && results.customers ){
+        let cust = results.customers.filter(function(cust) {
+          return cust.email == params.email;
+        });
+        
         let resultTemp = {
-          customer: results.customers[0]
+          customer: cust[0]
         };
         return resultTemp;
       }

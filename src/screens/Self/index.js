@@ -103,16 +103,18 @@ class Self extends React.Component {
   constructor(props) {
   
     super(props);
-    
+    console.log('props.cartKey====================================');
+    console.log(this.props.cartKey);
+    console.log('props.cartKey====================================');
   }
   _onPressAudio = () => {
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log(this.props);
-    console.log('----------------------------------');
-    console.log('----------------------------------');
-    console.log('----------------------------------');
+    // console.log('----------------------------------');
+    // console.log('----------------------------------');
+    // console.log('----------------------------------');
+    // console.log(this.props);
+    // console.log('----------------------------------');
+    // console.log('----------------------------------');
+    // console.log('----------------------------------');
      this.props.navgation.navigate('AudioPlayer');
     
   }
@@ -196,5 +198,11 @@ class Self extends React.Component {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    cart: state.cart.carts,
+    // cartKey: state.cart.cartKey,
+  }
+}
 
-export default Self;
+export default connect(mapStateToProps, null)(Self);

@@ -333,18 +333,22 @@ export default (Helpers = {
   /**
    ** Prepare item add to cart
    **/
-  prepareItemCart: (id, variation_id = 0, variation = null, cart_item_data = {}, quantity = 1) => {
+  prepareItemCart: (id, variation_id = 0, variation = null, cart_item_data = {}, quantity = 1,buy_subscription = false) => {
     let dataVariation = {};
     if (variation) {
       const nameAttr = `attribute_${variation.attributes[0].name}`;
       dataVariation[nameAttr] = variation.attributes[0].option;
     }
-    return {
+    data = {
       product_id: id,
       quantity,
       variation_id,
       cart_item_data,
       variation: dataVariation,
+    };
+    if(buy_subscription){
+      data.buy_subscription = Configs.subscribeProduct
     }
+    return data;
   }
 });

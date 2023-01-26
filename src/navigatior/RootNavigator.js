@@ -144,14 +144,20 @@ function Navigator(props) {
   };
 
   const onGetToken = async () => {
-    let fcmToken = await firebase.messaging().getToken();
-    // console.log('------------------------------');
-    // console.log(fcmToken.register);
-    if (fcmToken) {
-      // Register token
-      onRegisterTokenFCM(fcmToken);
-    } else {
-      onRequestPermission();
+    try {
+      let fcmToken = await firebase.messaging().getToken();
+      // console.log('------------------------------');
+      // console.log(fcmToken.register);
+      if (fcmToken) {
+        // Register token
+        onRegisterTokenFCM(fcmToken);
+      } else {
+        onRequestPermission();
+      }
+    }catch(e){
+      console.log('fcmToken====================================');
+      console.log(e);
+      console.log('fcmToken====================================');
     }
   };
 
@@ -512,7 +518,7 @@ function Navigator(props) {
     allSetting.settingLanguage = settingLanguage;
 
     //Finally update ALL SETTINGS to Redux
-    dispatch(SettingActions.updateAllSettings(allSetting));
+    await dispatch(SettingActions.updateAllSettings(allSetting));
     //Navigate to homescreen
     onSetRouteAndNext("RootTab");
   }
@@ -529,9 +535,9 @@ function Navigator(props) {
   }, [loading, initRoute, settingState]);
 
   useEffect(() => {
-    createNotificationListeners();
+    // createNotificationListeners();
     onGetHostApi();
-    onCheckPermission();
+    // onCheckPermission();
     onGetSettings();
   }, []);
 

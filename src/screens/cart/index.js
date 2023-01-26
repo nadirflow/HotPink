@@ -56,10 +56,18 @@ class Cart extends React.Component {
       _token: '',
     };
     this._totalProducts = 0;
+    console.log('Cart====================================');
+    console.log(props);
+    console.log('Cart====================================');
   }
-
+  
   /* FUNCTIONS */
   _checkProducts = async () => {
+    let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
+    console.log('AS_DATA_CART_KEY====================================');
+    console.log(asCartKey);
+    console.log(this.props.cartKey);
+    console.log('AS_DATA_CART_KEY====================================');
     let resCart = await Services.Cart.getCart({cartKey: this.props.cartKey});
     if (resCart && resCart.items) {
       resCart.items = Object.keys(resCart.items).map((key) => resCart.items[key]);
@@ -372,9 +380,21 @@ class Cart extends React.Component {
     }
     if (Configs.isPaymentWebview) {
       let token = await Helpers.getDataStorage(Keys.AS_DATA_JWT);
-      this.props.navigation.navigate('WebviewCheckout', {
-        token: token || ""
-      })
+      if(token){
+        console.log('token====================================');
+        console.log(this.props.cartKey);
+        console.log('token====================================');
+        this.props.navigation.navigate('WebviewCheckout', {
+          token: token || ""
+        })
+      }else{
+        // Fix Pending For Bootom bar not visible when go from cart to login 
+        // navigationRef.current?.resetRoot({
+        //   index: 0,
+        //   routes: [{ name: 'Account' }],
+        // });
+        this.props.navigation.navigate('Account')
+      }
     } else {
       this.setState({ _loadingNextPage: true });
     }

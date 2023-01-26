@@ -194,20 +194,20 @@ class RootMain extends React.Component {
 
   /** RENDER */
   render() {
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log(this.props.user)
-    console.log(this.props.initRoute)
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
-    console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log(this.props.user)
+    // console.log(this.props.initRoute)
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
+    // console.log('---------------------')
 
     return (
       <Root>
@@ -218,9 +218,10 @@ class RootMain extends React.Component {
           headerMode={'none'}
           screenOptions={{ gestureEnabled: false }}>
          
-     <StackMain.Screen name="Welcom" component={Welcom} />
+          <StackMain.Screen name="Welcom" component={Welcom} />
           <StackMain.Screen name="SignUp" component={SignUpScreen} />
           <StackMain.Screen name="SignIn" component={SignInScreen} />
+          <StackMain.Screen name="Account" component={AccountScreen} />
           <StackMain.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
           <StackMain.Screen name="RootTab" component={RootTab} />
           <StackMain.Screen name="HomeDetail" component={HomePostDetailScreen} />
