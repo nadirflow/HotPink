@@ -87,9 +87,9 @@ export const ViewForgotPassword = ({
                       />
                     {/* </Item> */}
                     {(typeof state._errorEmail === "string" && state._errorEmail !== "") &&
-                      <CText numberOfLines={2} style={styles.txt_error} i18nKey={state._errorEmail} />}
+                      <CText numberOfLines={2} style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorEmail} />}
                     {typeof state._errorEmail === "object" &&
-                      <CText numberOfLines={2} style={styles.txt_error}>{state._errorEmail.message}</CText>}
+                      <CText numberOfLines={2} style={[styles.txt_error, {color: '#fff'}]}>{state._errorEmail.message}</CText>}
 
                     <Button block
                       style={[styles.con_btn, { backgroundColor: '#C73A66' }]}

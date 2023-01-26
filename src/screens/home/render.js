@@ -199,10 +199,7 @@ export const ViewHome = ({
     onPressVendor: () => { }
   },
 }) => {
-  useEffect(() => {
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
-    return () => backHandler.remove()
-  }, [])
+ 
   return (
     <Container>
       <CHeader

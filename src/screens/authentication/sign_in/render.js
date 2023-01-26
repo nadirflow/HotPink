@@ -99,7 +99,7 @@ export const ViewSignIn = ({
                 keyboardType={'email-address'}
                 getRef={ref => inputs[inputFields.email] = ref}
                 disabled={state._loading}
-                placeholder={'contact@loremipsum.com'}
+                placeholder={'Username'}
                 removeClippedSubviews={Devices.OS === 'android'}
                 placeholderTextColor={'#CD3A63'}
                 blurOnSubmit={false}
@@ -111,7 +111,7 @@ export const ViewSignIn = ({
                 onSubmitEditing={() => onFunction.onFocusNextField(inputFields.password)}
               />
             
-            {state._errorEmail !== "" && <CText style={styles.txt_error} i18nKey={state._errorEmail} />}
+            {state._errorEmail !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorEmail} />}
 
             {/** PASSWORD INPUT */}
            
@@ -130,7 +130,7 @@ export const ViewSignIn = ({
                 onSubmitEditing={onFunction.onPressLogin}
               />
             
-            {state._errorPassword !== "" && <CText style={styles.txt_error} i18nKey={state._errorPassword} />}
+            {state._errorPassword !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorPassword} />}
             <View style={styles.con_forgot_password}>
               <TouchableOpacity activeOpacity={.5} onPress={onFunction.onPressForgotPassword}>
                 <CText style={{fontSize:Devices.fS(14), color:"#fff",}} i18nKey={'forgot_password'} />

@@ -79,6 +79,7 @@ import ArticleSelf from '~/screens/ArticleSelf';
 import LSArticle from '~/screens/LSArticle';
 import ChatScreen from '~/screens/ChatScreen';
 import welcome from '~/screens/authentication/welcome';
+import SplashScreen from 'react-native-splash-screen';
 
 
 /** INIT NAVIGATOR OF APP */
@@ -87,6 +88,9 @@ const TabMain = createBottomTabNavigator();
 const TabVendor = createBottomTabNavigator();
 
 export class VendorTab extends React.Component {
+  componentDidMount() {
+      SplashScreen.hide();
+  }
   /** RENDER */
   render() {
     return (

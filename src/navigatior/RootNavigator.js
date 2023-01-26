@@ -529,6 +529,7 @@ function Navigator(props) {
   }, [loading, initRoute, settingState]);
 
   useEffect(() => {
+    SplashScreen.hide();
     createNotificationListeners();
     onGetHostApi();
     onCheckPermission();
@@ -537,6 +538,7 @@ function Navigator(props) {
 
   /** RENDER */
   return (
+    
     <ImageBackground style={[cStyles.container, styles.con_image_bg, {justifyContent:'center'}]}
       source={Assets.splash} resizeMode={"cover"}>
       {loading  &&

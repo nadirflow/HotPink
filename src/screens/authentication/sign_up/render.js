@@ -151,7 +151,7 @@ export const ViewSignUp = ({
                 onSubmitEditing={() => inputs[inputFields.email]._root.focus()}
               />
             
-            {state._errorUserName !== "" && <CText style={styles.txt_error} i18nKey={state._errorUserName} />}
+            {state._errorUserName !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorUserName} />}
 
             {/** EMAIL INPUT */}
             
@@ -170,7 +170,7 @@ export const ViewSignUp = ({
                 onSubmitEditing={() => inputs[inputFields.phone]._root.focus()}
               />
             
-            {state._errorEmail !== "" && <CText style={styles.txt_error} i18nKey={state._errorEmail} />}
+            {state._errorEmail !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorEmail} />}
 
             {/** PHONE INPUT */}
             <CItemInput style={{ backgroundColor:'#B3FFFFFF', borderRadius:6, paddingHorizontal:15, marginBottom:15,}}
@@ -225,7 +225,7 @@ export const ViewSignUp = ({
                 onSubmitEditing={() => inputs[inputFields.confirmpassword]._root.focus()}
               />
             
-            {state._errorPassword !== "" && <CText style={styles.txt_error} i18nKey={state._errorPassword} />}
+            {state._errorPassword !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorPassword} />}
 
             {/** CONFIRM PASSWORD INPUT */}
             
@@ -244,7 +244,7 @@ export const ViewSignUp = ({
                 onSubmitEditing={onFunction.onPressSignUp}
               />
             
-            {state._errorConfirmPassword !== "" && <CText style={styles.txt_error} i18nKey={state._errorConfirmPassword} />}
+            {state._errorConfirmPassword !== "" && <CText style={[styles.txt_error, {color: '#fff'}]} i18nKey={state._errorConfirmPassword} />}
 
             {state._successFetch !== "" &&
               <View style={styles.con_fetch_status}>
@@ -255,8 +255,8 @@ export const ViewSignUp = ({
 
             {state._errorFetch !== "" &&
               <View style={styles.con_fetch_status}>
-                <Icon name={'times-circle'} color={Colors.RED_COLOR} size={Devices.fS(20)} type={'solid'} />
-                <CText style={styles.txt_fetch_failed} numberOfLines={3}>{state._errorFetch}</CText>
+                <Icon name={'times-circle'} color={Colors.WHITE_COLOR} size={Devices.fS(20)} type={'solid'} />
+                <CText style={[styles.txt_fetch_failed, {color: '#fff'}]} numberOfLines={3}>{state._errorFetch}</CText>
               </View>
             }
 
