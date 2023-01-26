@@ -33,26 +33,26 @@ class ArticleSelf extends React.Component {
   componentDidMount() {
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;
-    console.log('////////////////////');
-    console.log(audioId);
+    // console.log('////////////////////');
+    // console.log(audioId);
     axios
       .get(`https://webtestview.com/hotpink/wp-json/wp/v2/posts/${postId}`)
       .then((response) => {
         this.setState({ post: response.data, loading: false });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }
   
   render() {
     const { post } = this.state;
    
-    console.log(':::::::::::::::');
-   console.log(post.featured_media)
+    // console.log(':::::::::::::::');
+   // console.log(post.featured_media)
     const postTitle = post.title;
     const image = post.featured_media;
-    console.log(post.content);
+    // console.log(post.content);
     // const sanitizedHTML = DOMPurify.sanitize(post.content.rendered);
     if (this.state.loading) {
       return(

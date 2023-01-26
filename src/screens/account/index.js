@@ -43,7 +43,7 @@ class Account extends React.Component {
     if (data.routeName === "Phone") {
       if (this.props.settingApp.general.contact !== "") {
         Linking.openURL('tel:' + this.props.settingApp.general.contact)
-          .catch(error => console.log('Error link to facebook'))
+          .catch(error => // console.log('Error link to facebook'))
       } else {
         Helpers.showToastDuration({}, "Error call", "error");
       }
@@ -52,9 +52,9 @@ class Account extends React.Component {
       //     this.props.navigation.navigate("UnlockSubscription");  
       //     return;
       // }
-      // console.log('1---------------');
-      // console.log(data.routeName);
-      // console.log('1---------------');
+      // // console.log('1---------------');
+      // // console.log(data.routeName);
+      // // console.log('1---------------');
       this.props.navigation.navigate(data.routeName);
     }
   }
@@ -96,9 +96,9 @@ class Account extends React.Component {
     this.setState({ _loading: false });
     
     let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
-    console.log('AS_DATA_CART_KEY====================================');
-    console.log(asCartKey);
-    console.log('AS_DATA_CART_KEY====================================');
+    // console.log('AS_DATA_CART_KEY====================================');
+    // console.log(asCartKey);
+    // console.log('AS_DATA_CART_KEY====================================');
   }
 
   _onPressCart = () => {
@@ -118,7 +118,7 @@ class Account extends React.Component {
     }
 
     if (url !== "") {
-      Linking.openURL('https:' + url).catch(error => console.log('Error link to facebook'))
+      Linking.openURL('https:' + url).catch(error => // console.log('Error link to facebook'))
     }
   }
 

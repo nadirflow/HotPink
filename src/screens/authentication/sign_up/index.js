@@ -165,32 +165,32 @@ class SignUp extends React.Component {
             //  IOS AND ANDROID EVENTS
             // ------------------------
             case firebase.auth.PhoneAuthState.CODE_SENT: // or 'sent'
-              console.log('code sent');
-              console.log(phoneAuthSnapshot);
+              // console.log('code sent');
+              // console.log(phoneAuthSnapshot);
               this.setState({ _modalVisible: true })
-              // firebase.auth().applyActionCode(phoneAuthSnapshot.verificationId).then(result => console.log("result", result)).catch(error => console.log("Verify",error))
+              // firebase.auth().applyActionCode(phoneAuthSnapshot.verificationId).then(result => // console.log("result", result)).catch(error => // console.log("Verify",error))
               // on ios this is the final phone auth state event you'd receive
               // so you'd then ask for user input of the code and build a credential from it
               // as demonstrated in the `signInWithPhoneNumber` example above
               break;
             case firebase.auth.PhoneAuthState.ERROR: // or 'error'
-              console.log('verification error');
-              console.log(phoneAuthSnapshot.error);
+              // console.log('verification error');
+              // console.log(phoneAuthSnapshot.error);
               break;
 
             // ---------------------
             // ANDROID ONLY EVENTS
             // ---------------------
             case firebase.auth.PhoneAuthState.AUTO_VERIFY_TIMEOUT: // or 'timeout'
-              console.log('auto verify on android timed out');
+              // console.log('auto verify on android timed out');
               // proceed with your manual code input flow, same as you would do in
               // CODE_SENT if you were on IOS
               break;
             case firebase.auth.PhoneAuthState.AUTO_VERIFIED: // or 'verified'
               // auto verified means the code has also been automatically confirmed as correct/received
               // phoneAuthSnapshot.code will contain the auto verified sms code - no need to ask the user for input.
-              console.log('auto verified on android');
-              console.log(phoneAuthSnapshot);
+              // console.log('auto verified on android');
+              // console.log(phoneAuthSnapshot);
               this._onFetchData();
               // Example usage if handling here and not in optionalCompleteCb:
               // const { verificationId, code } = phoneAuthSnapshot;
@@ -203,7 +203,7 @@ class SignUp extends React.Component {
               break;
           }
         }, (error) => {
-          console.log("Error", error);
+          // console.log("Error", error);
           this._onError("Server error");
         }, (phoneAuthSnapshot) => {
           // optionalCompleteCb would be same logic as the AUTO_VERIFIED/CODE_SENT switch cases above
@@ -216,7 +216,7 @@ class SignUp extends React.Component {
           //   and there'd be no need to ask for user input of the code - proceed to credential creating logic
           // - if ANDROID auto verify timed out then phoneAuthSnapshot.code would be null, just like ios, you'd
           //   continue with user input logic.
-          console.log("phoneAuthSnapshot", phoneAuthSnapshot);
+          // console.log("phoneAuthSnapshot", phoneAuthSnapshot);
         })
     }
   }

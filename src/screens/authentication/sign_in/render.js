@@ -52,7 +52,7 @@ export const ViewSignIn = ({
     onPressLoginAP: () => { }
   }
 }) => {
-  console.log(props.user);
+  // console.log(props.user);
   return (
     <>
     

@@ -286,7 +286,7 @@ export const PopupModal = ({
               <CText style={cStyles.txt_base_item} >{` ${bookingCode}`}</CText>
               :
               <TouchableOpacity
-                onPress={() => { Linking.openURL('tel:' + contact).catch(error => console.log('Error call to ', contact)); }}
+                onPress={() => { Linking.openURL('tel:' + contact).catch(error => // console.log('Error call to ', contact)); }}
               >
                 <CText style={cStyles.txt_base_item} >{` ${contact}`}</CText>
               </TouchableOpacity>

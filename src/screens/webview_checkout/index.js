@@ -44,7 +44,7 @@ class WebviewCheckoutScreen extends Component {
     const {navigation, theme} = this.props;
     const parsed = queryString.parse(new URL(url).search);
 
-    console.log(parsed)
+    // console.log(parsed)
     if (url.includes('/order-received/')) {
       navigation.replace('WebviewThankyou', {
         uri: `${url}&mobile=1&theme=${theme}&currency=${Configs.currencyValue}`,
@@ -102,9 +102,9 @@ class WebviewCheckoutScreen extends Component {
     const { canGoForward} = this.state;
     const { language, cartKey, theme } = this.props;
     const { token } = this.props.route.params;
-    console.log('22====================================');
-    console.log(`${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`);
-    console.log('22====================================');
+    // console.log('22====================================');
+    // console.log(`${Configs.hostApi}/wp-json/zini-app-builder/v2/auto-login?cart-key=${cartKey}&currency=${Configs.currencyValue}&lang=${language}&mobile=${1}&theme=${theme}&token=${token}`);
+    // console.log('22====================================');
     return (
       <Container style={cStyles.container}>
         <CHeader

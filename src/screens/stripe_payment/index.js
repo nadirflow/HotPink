@@ -75,7 +75,7 @@ class StripePayment extends React.Component {
     let token = await Services.Stripe.getTokenStripe(params);
     if (token) {
       if (token.error) return this._error();
-      console.log('---> TOKEN OF STRIPE: ', token);
+      // console.log('---> TOKEN OF STRIPE: ', token);
       this._submitPayment(token.id);
     } else return this._error();
 
@@ -99,7 +99,7 @@ class StripePayment extends React.Component {
       }
       let res = await Services.Stripe.processPayment(params);
       if (res) {
-        console.log("resPayment", res)
+        // console.log("resPayment", res)
         if (res.status === 'succeeded');
         this._updateOrder(Configs.order.COMPLETED)
       } else return this._error();

@@ -111,7 +111,7 @@ class PayPalPayment extends React.Component {
   }
 
   _onNavigationStateChange = async (webViewState) => {
-    // console.log("webViewState", webViewState)
+    // // console.log("webViewState", webViewState)
     if (!this.state._captured) {
       let params = {
         id: this.state._payPalId,

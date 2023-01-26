@@ -54,24 +54,24 @@ export default class AudioPlayer extends Component {
   };
   componentDidMount() {
     const { audioId } = this.props.route.params;
-    console.log('////////////////////');
-    console.log(audioId);
+    // console.log('////////////////////');
+    // console.log(audioId);
     axios
       .get(`https://webtestview.com/hotpink/wp-json/wp/v2/posts/${audioId}`)
       .then((response) => {
         this.setState({ post: response.data });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }
   setDuration(data) {
-    // console.log(totalLength);
+    // // console.log(totalLength);
     this.setState({totalLength: Math.floor(data.duration)});
   }
 
   setTime(data) {
-    //console.log(data);
+    //// console.log(data);
     this.setState({currentPosition: Math.floor(data.currentTime)});
   }
 
@@ -127,17 +127,17 @@ export default class AudioPlayer extends Component {
       const $ = cheerio.load(htmlString);
       audioSrc = $('audio').attr('src');
     }
-    console.log(audioSrc);
+    // console.log(audioSrc);
     let atitle;
     if (post && post.title) {
         atitle = post.title.rendered;
     }
-    console.log(atitle);
+    // console.log(atitle);
     
     // const htmlString = post.content.rendered;
     // const $ = cheerio.load(htmlString);
     // const audioSrc = $('audio').attr('src');
-    // console.log(audioSrc);
+    // // console.log(audioSrc);
     
     const track = TRACKS[this.state.selectedTrack];
     const video = this.state.isChanging ? null : (

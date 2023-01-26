@@ -473,7 +473,7 @@ class BookAddress extends React.Component {
     /** End */
 
     _onFocusNextField = (id) => {
-        console.log("id", id)
+        // console.log("id", id)
         // this._inputs[id]._root.focus();
     }
 
@@ -543,7 +543,7 @@ class BookAddress extends React.Component {
     /* RENDER */
     render() {
 
-        // console.log('object', this.state._dataCountry)
+        // // console.log('object', this.state._dataCountry)
         return (
             <ViewBookAddress
                 props={this.props}

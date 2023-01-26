@@ -33,7 +33,7 @@ class WebviewThankYouScreen extends Component {
   };
 
   handleResponse = data => {
-    console.log(data);
+    // console.log(data);
   };
 
   render() {

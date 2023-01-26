@@ -72,7 +72,7 @@ export const ViewNewsPostDetail = ({
     outputRange: [0, 1],
     extrapolate: 'clamp',
   });
-  // console.log("data.content.rendered", data.content.rendered)
+  // // console.log("data.content.rendered", data.content.rendered)
   return (
     <Container>
       {!Configs.supportRTL ?

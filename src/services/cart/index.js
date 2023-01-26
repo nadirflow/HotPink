@@ -18,10 +18,10 @@ export default {
       newUrl = `${Routes.cart.addToCart}?cart_key=${params.cartKey}`
     }
     try {
-      console.log('====================================');
-      console.log(newUrl);
-      console.log(params.data);
-      console.log('====================================');
+      // console.log('====================================');
+      // console.log(newUrl);
+      // console.log(params.data);
+      // console.log('====================================');
       let results = await ApiWP.post(newUrl, params.data);
       return results;
     } catch (error) {
@@ -31,11 +31,11 @@ export default {
   _addtoCart: (async (params = {}) => {
     let newUrl = Routes.cart.addToCart;
     if (params.cartKey) {
-      console.log('messed up');
+      // console.log('messed up');
       newUrl = `${Routes.cart.addToCart}?cart_key=${params.cartKey}`;
     }
-    console.log(newUrl);
-    console.log(JSON.stringify(params.data));
+    // console.log(newUrl);
+    // console.log(JSON.stringify(params.data));
 
     const rawResponse = await axios.post(Configs.hostApi + '/wp-json' + newUrl, JSON.stringify(params.data), {
       headers: {
@@ -55,7 +55,7 @@ export default {
     //   body: JSON.stringify(params.data)
     // });
     const content = await rawResponse;
-    console.log(content);
+    // console.log(content);
    return content;
   }),
   getCart: async (params = {}) => {
@@ -92,7 +92,7 @@ export default {
     let newUrl = `${Routes.cart.addCoupon}?cart_key=${params.cartKey}`
     let data = new FormData();
     data.append('coupon_code', params.data.coupon_code);
-    console.log(data)
+    // console.log(data)
     try {
       let results = await ApiWP.post(newUrl, data, true);
       return results;

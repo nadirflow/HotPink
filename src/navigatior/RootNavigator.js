@@ -139,15 +139,15 @@ function Navigator(props) {
       await firebase.messaging().requestPermission();
       onGetToken();
     } catch (error) {
-      console.log('Permission rejected');
+      // console.log('Permission rejected');
     }
   };
 
   const onGetToken = async () => {
     try {
       let fcmToken = await firebase.messaging().getToken();
-      // console.log('------------------------------');
-      // console.log(fcmToken.register);
+      // // console.log('------------------------------');
+      // // console.log(fcmToken.register);
       if (fcmToken) {
         // Register token
         onRegisterTokenFCM(fcmToken);
@@ -155,9 +155,9 @@ function Navigator(props) {
         onRequestPermission();
       }
     }catch(e){
-      console.log('fcmToken====================================');
-      console.log(e);
-      console.log('fcmToken====================================');
+      // console.log('fcmToken====================================');
+      // console.log(e);
+      // console.log('fcmToken====================================');
     }
   };
 

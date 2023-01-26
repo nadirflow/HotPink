@@ -34,7 +34,7 @@ class VendorAbout extends Component {
     // }
 
     // if (url !== "") {
-    //   Linking.openURL('https:' + url).catch(error => console.log('Error link to facebook'))
+    //   Linking.openURL('https:' + url).catch(error => // console.log('Error link to facebook'))
     // }
   }
 

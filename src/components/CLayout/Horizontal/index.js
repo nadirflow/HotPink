@@ -90,7 +90,7 @@ export class RenderItem extends React.Component {
       time = Configs.parseTimestamp(data.date);
       source = Assets.image_slider_failed;
       if (data.featured_media && typeof data.featured_media !== 'number') {
-        // console.log("data.featured_media", data.featured_media)
+        // // console.log("data.featured_media", data.featured_media)
         source = { uri: data.featured_media.sizes.thumbnail };
         scaleImage = data.featured_media.sizes["thumbnail-width"] / data.featured_media.sizes["thumbnail-height"];
       }

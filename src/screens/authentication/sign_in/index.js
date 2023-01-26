@@ -107,9 +107,9 @@ class SignIn extends React.Component {
       params.password = this.state._valPassword;
     }
     let res = await Services.SignIn.jwt(params);
-    console.log('_onFetchDataFromJWT====================================');
-    console.log(res);
-    console.log('_onFetchDataFromJWT====================================');
+    // console.log('_onFetchDataFromJWT====================================');
+    // console.log(res);
+    // console.log('_onFetchDataFromJWT====================================');
     if (res) {
       if (res.code) {
         if (typeLogin === Keys.LOGIN_TYPE.SOCIAL) {
@@ -118,9 +118,9 @@ class SignIn extends React.Component {
           this._onError(Languages[this.props.language].email_or_password_not_correct);
         }
       } else {
-        console.log('66====================================');
-        console.log(res.token);
-        console.log('66====================================');
+        // console.log('66====================================');
+        // console.log(res.token);
+        // console.log('66====================================');
         Helpers.setDataStorage(Keys.AS_DATA_JWT, res.token);
         this._onFetchDataUser(res);
       }
@@ -132,16 +132,16 @@ class SignIn extends React.Component {
   _onFetchDataUser = async (dataJWT) => {
     let params = { email: dataJWT.user_email };
     let res = await Services.SignIn.signIn(params);
-    console.log("SignIn.signIn: ",res);
+    // console.log("SignIn.signIn: ",res);
     if (res) {
       if (res.code || res.errors) {
         this._onError(Languages[this.props.language].server_error);
       } else {
         params = { id: res.customer.id };
         res = await Services.User.get(params);
-        console.log('_onFetchDataUser====================================');
-        console.log(res);
-        console.log('_onFetchDataUser====================================');
+        // console.log('_onFetchDataUser====================================');
+        // console.log(res);
+        // console.log('_onFetchDataUser====================================');
         if (res) {
           if (res.code) {
             this._onError(Languages[this.props.language].server_error);
@@ -169,9 +169,9 @@ class SignIn extends React.Component {
     }
     // if (Configs.isPaymentWebview) {
       // let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
-      // console.log('New SignIn Key Exist already====================================');
-      // console.log(asCartKey);
-      // console.log('====================================');
+      // // console.log('New SignIn Key Exist already====================================');
+      // // console.log(asCartKey);
+      // // console.log('====================================');
     //   if (asCartKey) {
     //     this.props.cartActions.updateCartKey(asCartKey.key);
     //   }
@@ -180,7 +180,7 @@ class SignIn extends React.Component {
     if (dataUser.role === Configs.USER_ROLE.STORE_MANAGER) {
       Helpers.resetNavigation(this.props.navigation, "VendorTab");
     } else {
-      console.log('this.props.navigation == ', this.props.navigation);
+      // console.log('this.props.navigation == ', this.props.navigation);
       Helpers.resetNavigation(this.props.navigation, "RootTab");
     }
 
@@ -188,7 +188,7 @@ class SignIn extends React.Component {
 
   _onGetInformationUserFB = (error, result) => {
     if (error) {
-      console.log('Error fetching data: ' + error.toString());
+      // console.log('Error fetching data: ' + error.toString());
       Helpers.showToastDuration({}, 'Server error', "danger");
       this.setState({ _loading: false });
     } else {
@@ -205,7 +205,7 @@ class SignIn extends React.Component {
   _onChangeValue = (value, field) => {
     if (field === "email") this.setState({ _valEmail: value });
     if (field === "password") this.setState({ _valPassword: value });
-    // console.log(this.props.navigation);
+    // // console.log(this.props.navigation);
   }
 
   _onPressForgotPassword = () => {
@@ -219,9 +219,9 @@ class SignIn extends React.Component {
   _onPressLogin = async () => {
     
     let asCartKey = await Helpers.getDataStorage(Keys.AS_DATA_JWT);
-    console.log('_onPressLogin====================================');
-    console.log(asCartKey);
-    console.log('_onPressLogin====================================');
+    // console.log('_onPressLogin====================================');
+    // console.log(asCartKey);
+    // console.log('_onPressLogin====================================');
     // return;
     /** Validate email */
     let _isNotEmpty = this._validateFields("empty");

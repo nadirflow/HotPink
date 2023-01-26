@@ -240,18 +240,18 @@ class Self extends React.Component {
                     }
                   }
                     renderItem={(item) => { 
-                      console.log('-------------------------------------')
-                      console.log(item.item)
-                      console.log('--------------sssssss-----------------------')
+                      // console.log('-------------------------------------')
+                      // console.log(item.item)
+                      // console.log('--------------sssssss-----------------------')
                       
                       // if(item.item.featured_media.sizes){
-                      //   console.log('--------------if 1 -----------------------')
-                      //   console.log(item.item.featured_media.sizes)
-                      //   console.log(item.item.featured_media.sizes['woocommerce_thumbnail']);
+                      //   // console.log('--------------if 1 -----------------------')
+                      //   // console.log(item.item.featured_media.sizes)
+                      //   // console.log(item.item.featured_media.sizes['woocommerce_thumbnail']);
                       // }
                       // if(item.item.featured_media.sizes.woocommerce_thumbnail !== 'undefined'){
-                      //   console.log('--------------if 2 -----------------------')
-                      //   console.log(item.item.featured_media.sizes.woocommerce_thumbnail)  
+                      //   // console.log('--------------if 2 -----------------------')
+                      //   // console.log(item.item.featured_media.sizes.woocommerce_thumbnail)  
                       // }
                       
                       return(

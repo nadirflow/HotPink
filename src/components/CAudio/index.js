@@ -60,7 +60,7 @@ class CAudio extends React.Component {
             _loading: false
           })
         } catch (e) {
-          console.log('There is no song playing', e)
+          //// console.log('There is no song playing', e)
         }
       }
     })
@@ -73,7 +73,7 @@ class CAudio extends React.Component {
     try {
       SoundPlayer.loadUrl(source);
     } catch (e) {
-      console.log(`cannot play the sound file`, e)
+      // console.log(`cannot play the sound file`, e)
     }
   }
 

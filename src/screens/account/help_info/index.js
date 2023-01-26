@@ -78,7 +78,7 @@ class HelpInfo extends React.PureComponent {
         inAppDelay: 1.0
       };
       Rate.rate(options, success => {
-        console.log('success', success);
+        // console.log('success', success);
       });
     }
   }

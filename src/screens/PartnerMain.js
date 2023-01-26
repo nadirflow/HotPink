@@ -37,7 +37,7 @@ class PartnerMain extends React.Component {
           loading: false
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => // console.log(error));
   }
   render() {
     if (this.state.loading) {

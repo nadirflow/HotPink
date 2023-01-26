@@ -24,7 +24,7 @@ export const AsyncFacebookSignIn = async ({
   let result = await LoginManager.logInWithPermissions(Configs.PERMISSIONS_LOGIN_FB);
   if (result) {
     if (result.isCancelled) {
-      console.log(Logs.SIGN_IN_CANCELLED);
+      // console.log(Logs.SIGN_IN_CANCELLED);
       return null;
     } else {
       let infoRequest = new GraphRequest(
@@ -36,7 +36,7 @@ export const AsyncFacebookSignIn = async ({
       new GraphRequestManager().addRequest(infoRequest).start();
     }
   } else {
-    console.log(Logs.OTHER);
+    // console.log(Logs.OTHER);
     return null;
   }
 }

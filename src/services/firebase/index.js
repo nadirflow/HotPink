@@ -24,9 +24,9 @@ export default {
 
     try {
       let res = await fetch(Configs.hostApi + '/pnfw/register', options);
-      // console.log('registry Notifiction', res)
+      // // console.log('registry Notifiction', res)
     } catch (error) {
-      console.log('ERROR ASYNC: ', error);
+      // console.log('ERROR ASYNC: ', error);
       return null;
     }
   }

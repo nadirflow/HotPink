@@ -42,13 +42,13 @@ const INIT_ROW = [
     icon: "phone-alt",
     title: "phone",
     slug: "contact",
-    onPress: (phone) => Linking.openURL('tel:' + phone).catch(error => console.log('Error call'))
+    onPress: (phone) => Linking.openURL('tel:' + phone).catch(error => // console.log('Error call'))
   },
   {
     icon: "envelope",
     title: "email",
     slug: "email",
-    onPress: (email) => Linking.openURL('mailto:' + email).catch(error => console.log('Error send mail'))
+    onPress: (email) => Linking.openURL('mailto:' + email).catch(error => // console.log('Error send mail'))
   },
   {
     icon: "map-marker-alt",

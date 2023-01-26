@@ -24,7 +24,7 @@ export default {
       // divided by &
       body: JSON.stringify(params)
     }).then(response => response.json())
-      .catch(e => console.log("Error", e));
+      .catch(e => // console.log("Error", e));
   },
 
   validateCode: async (params) => {
@@ -41,7 +41,7 @@ export default {
       // divided by &
       body: JSON.stringify(params)
     }).then(response => response.json())
-      .catch(e => console.log("Error", e));
+      .catch(e => // console.log("Error", e));
   },
 
   setPassword: async (params) => {
@@ -58,6 +58,6 @@ export default {
       // divided by &
       body: JSON.stringify(params)
     }).then(response => response.json())
-      .catch(e => console.log("Error", e));
+      .catch(e => // console.log("Error", e));
   },
 }

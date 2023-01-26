@@ -34,12 +34,12 @@ class UnlockSubscription extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
-    console.log('UnlockSubscription====================================');
-    console.log(this.props.cartKey);
+    // console.log('UnlockSubscription====================================');
+    // console.log(this.props.cartKey);
     // clear Cart First
     this.props.cartActions.removeAllCart();
     Helpers.removeKeyStorage(Keys.AS_DATA_CART);
-    console.log('UnlockSubscription====================================');
+    // console.log('UnlockSubscription====================================');
   }
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
@@ -55,7 +55,7 @@ class UnlockSubscription extends React.PureComponent {
     this.props.navigation.goBack(null);
     
         // let asCartKey =  Helpers.getDataStorage(Keys.AS_DATA_CART_KEY)
-        // console.log('remove key on back press: ',asCartKey); 
+        // // console.log('remove key on back press: ',asCartKey); 
       return true;
   }
   /* FUNCTIONS */
@@ -138,10 +138,10 @@ class UnlockSubscription extends React.PureComponent {
         data: item
     }
     let res2 = await Services.Cart._addtoCart(_params);
-    console.log('res2 ',res2);
+    // console.log('res2 ',res2);
     if (res2 && res2.cart_key) {
       _params.cartKey = res2.cart_key;
-      console.log('res2.cart_key: ',res2.cart_key);
+      // console.log('res2.cart_key: ',res2.cart_key);
       await this.props.cartActions.updateCartKey(res2.cart_key)
     }
     
@@ -182,7 +182,7 @@ class UnlockSubscription extends React.PureComponent {
     };
     // THen Add 
     this.props.cartActions.addItemCart(selected);
-    // console.log('_params: ',_params);
+    // // console.log('_params: ',_params);
     this.setState({ cartKey: _params.cartKey});
 
     let _isAdd = true;

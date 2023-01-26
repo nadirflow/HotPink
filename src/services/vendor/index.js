@@ -59,7 +59,7 @@ export default {
   //** FOR STORE MANAGER */
 
   getProducts: async (params) => {
-    console.log('params', params)
+    // console.log('params', params)
     return fetch(Configs.hostApi + Routes.vendor.manager.listProduct, {
       headers: {
         // Use the correct MIME type for your server
@@ -70,10 +70,10 @@ export default {
       // Use a proper HTTP method
       method: 'get'
     }).then(response => {
-      console.log('response', response);
+      // console.log('response', response);
       return response.json()
     })
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 
   getOrders: async (params) => {
@@ -87,7 +87,7 @@ export default {
       // Use a proper HTTP method
       method: 'get'
     }).then(response => response.json())
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 
   getStats: async (params) => {
@@ -101,7 +101,7 @@ export default {
       // Use a proper HTTP method
       method: 'get'
     }).then(response => response.json())
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 
   getReviews: async (params) => {
@@ -115,7 +115,7 @@ export default {
       // Use a proper HTTP method
       method: 'get'
     }).then(response => response.json())
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 
   getNotifications: async (params) => {
@@ -129,6 +129,6 @@ export default {
       // Use a proper HTTP method
       method: 'get'
     }).then(response => response.json())
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 }

@@ -174,7 +174,7 @@ export default (Helpers = {
           : '')
       );
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   },
 
@@ -220,7 +220,7 @@ export default (Helpers = {
     try {
       await AsyncStorage.multiRemove(keys);
     } catch (e) {
-      console.log('Error: ', e);
+      // console.log('Error: ', e);
       return null;
     }
   },
@@ -232,7 +232,7 @@ export default (Helpers = {
     try {
       await AsyncStorage.removeItem(key);
     } catch (e) {
-      console.log('Error: ', e);
+      // console.log('Error: ', e);
       return null;
     }
   },
@@ -247,7 +247,7 @@ export default (Helpers = {
         data === '' ? data : JSON.stringify(data),
       );
     } catch (e) {
-      console.log('Error: ', e);
+      // console.log('Error: ', e);
       return null;
     }
   },
@@ -266,7 +266,7 @@ export default (Helpers = {
         return null;
       }
     } catch (e) {
-      console.log('Error: ', e);
+      // console.log('Error: ', e);
       return null;
     }
   },

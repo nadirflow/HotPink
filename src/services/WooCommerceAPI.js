@@ -39,7 +39,7 @@ function WooCommerceAPI(opt) {
  * @param {Object} opt
  */
 WooCommerceAPI.prototype._setDefaultsOptions = function (opt) {
-  // console.log('opt: ', opt)
+  // // console.log('opt: ', opt)
   this.url = opt.url;
   this.wpAPI = opt.wpAPI || false;
   this.wpAPIPrefix = opt.wpAPIPrefix || 'wp-json';
@@ -114,7 +114,7 @@ WooCommerceAPI.prototype._getUrl = function (endpoint) {
   }
 
   return url;
-  // console.log("Normalize URl:- " + url);
+  // // console.log("Normalize URl:- " + url);
 };
 
 /**
@@ -229,7 +229,7 @@ WooCommerceAPI.prototype._request = function (method, endpoint, data, callback) 
   if (method !== 'GET') {
     options.body = JSON.stringify(data);
   }
-  // console.log(requestUrl)
+  // // console.log(requestUrl)
   return fetch(requestUrl, options)
     .then((response) => {
       return response.json()
@@ -241,7 +241,7 @@ WooCommerceAPI.prototype._request = function (method, endpoint, data, callback) 
       return responseData
     })
     .catch((error, data) => {
-      console.log('error network -', error, data);
+      // console.log('error network -', error, data);
     }
     );
 };

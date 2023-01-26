@@ -57,7 +57,7 @@ const parseTimestamp = (datetime) => {
             return null;
         }
     } catch (e) {
-        console.log('ERROR parseTimestamp: ', e);
+        // console.log('ERROR parseTimestamp: ', e);
         return {
             time: '',
             type: '',

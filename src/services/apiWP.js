@@ -58,13 +58,13 @@ class ApiWP {
 
     try {
       let resp = await fetch(url, options);
-      // console.log('=== Api.xhr.resp ' + route + ' respJSON ===', resp);
+      // // console.log('=== Api.xhr.resp ' + route + ' respJSON ===', resp);
       if (resp.ok) {
         let respJSON = await resp.json();
         return respJSON;
       } else return null;
     } catch (e) {
-      console.log('=== Api.xhr.catch ' + route + ' ===', e);
+      // console.log('=== Api.xhr.catch ' + route + ' ===', e);
       return null;
     }
   }
@@ -82,10 +82,10 @@ class ApiWP {
     };
     try {
       let resp = await fetch(url, options);
-      // console.log('=== Api.xhr.resp ===', resp);
+      // // console.log('=== Api.xhr.resp ===', resp);
       if (resp.ok) {
         let respJSON = await resp.json();
-        // console.log('=== Api.xhr.respJSON ' + route + ' respJSON ===', respJSON);
+        // // console.log('=== Api.xhr.respJSON ' + route + ' respJSON ===', respJSON);
         return respJSON;
       } else {
         if (respJSON) {
@@ -96,7 +96,7 @@ class ApiWP {
       }
 
     } catch (e) {
-      console.log('=== Api.xhr.catch ' + route + ' ===', e);
+      // console.log('=== Api.xhr.catch ' + route + ' ===', e);
       return null;
     }
   }

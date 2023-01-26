@@ -125,7 +125,7 @@ class MercadoPayment extends React.Component {
   }
 
   _onNavigationStateChange = (webViewState) => {
-    // console.log("webViewState", webViewState);
+    // // console.log("webViewState", webViewState);
     let verify = webViewState.url.includes(Configs.hostApi)
     if (verify) {
       this.setState({

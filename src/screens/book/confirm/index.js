@@ -179,7 +179,7 @@ class BookConfirm extends React.PureComponent {
 
     /* RENDER */
     render() {
-        // console.log('object_state.user.data', this.props.user)
+        // // console.log('object_state.user.data', this.props.user)
         return (
             <ViewBookConfirm
                 state={this.state}

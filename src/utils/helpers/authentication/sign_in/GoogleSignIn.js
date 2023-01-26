@@ -31,13 +31,13 @@ export const AsyncGoogleSignIn = async () => {
     return data;
   } catch (error) {
     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-      console.log(Logs.SIGN_IN_CANCELLED);
+      // console.log(Logs.SIGN_IN_CANCELLED);
     } else if (error.code === statusCodes.IN_PROGRESS) {
-      console.log(Logs.IN_PROGRESS);
+      // console.log(Logs.IN_PROGRESS);
     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-      console.log(Logs.PLAY_SERVICES_NOT_AVAILABLE);
+      // console.log(Logs.PLAY_SERVICES_NOT_AVAILABLE);
     } else {
-      console.log(Logs.OTHER, error);
+      // console.log(Logs.OTHER, error);
     }
     return null;
   }

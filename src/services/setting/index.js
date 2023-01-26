@@ -85,7 +85,7 @@ export default {
       };
 
       let results = await fetch(Configs.hostApi + Routes.setting.appSetting, options);
-      // console.log('=== Api.get ' + Configs.hostApi + Routes.setting.appSetting + ': ');
+      // // console.log('=== Api.get ' + Configs.hostApi + Routes.setting.appSetting + ': ');
       results = results.json();
       return results;
     } catch (error) {
@@ -103,7 +103,7 @@ export default {
       };
 
       let results = await fetch(Configs.hostApi + Routes.setting.homeSetting, options);
-      // console.log('=== Api.get ' + Configs.hostApi + Routes.setting.homeSetting + ': ', results);
+      // // console.log('=== Api.get ' + Configs.hostApi + Routes.setting.homeSetting + ': ', results);
       results = results.json();
       return results;
     } catch (error) {

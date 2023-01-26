@@ -28,7 +28,7 @@ export default {
         .map(key => key + '=' + params.body[key])
         .join('&')
     }).then(response => response.json())
-      .catch(e => console.log(e));
+      .catch(e => // console.log(e));
   },
 
   processPayment: async (params) => {
@@ -47,7 +47,7 @@ export default {
       // divided by &
       body: JSON.stringify(params.body)
     }).then(response => response.json())
-      .catch(e => console.log("Error", e));
+      .catch(e => // console.log("Error", e));
   },
 
   getStatusPayment: async (params) => {
@@ -83,6 +83,6 @@ export default {
       // Format the credit card data to a string of key-value pairs
       // divided by &
     }).then(response => response.json())
-      .catch(e => console.log("Error", e));
+      .catch(e => // console.log("Error", e));
   },
 }

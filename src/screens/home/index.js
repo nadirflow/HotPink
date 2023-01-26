@@ -184,13 +184,13 @@ class Home extends React.Component {
     if (asUser && asUser !== "") {
       asUser = JSON.parse(asUser);
    
-      console.log(asUser);
+      // console.log(asUser);
 
       /** Update data to redux user */
       this.props.userActions.updateUser(asUser);
-      // console.log('ooooooooooo');
-      // console.log(asUser.username);
-      // console.log('ooooooooooo');
+      // // console.log('ooooooooooo');
+      // // console.log(asUser.username);
+      // // console.log('ooooooooooo');
       /** Update cart to redux cart */
       let asCart = await Helpers.getDataStorage(Keys.AS_DATA_CART);
       if (asCart && asCart !== "") {
@@ -310,9 +310,9 @@ class Home extends React.Component {
     this.props.navigation.navigate("Cart");
   }
   _onPressSelf = () => {
-    console.log('_onPressSelf====================================');
-    console.log(this.props.cartKey);
-    console.log('_onPressSelf====================================');
+    // console.log('_onPressSelf====================================');
+    // console.log(this.props.cartKey);
+    // console.log('_onPressSelf====================================');
     this.props.navigation.navigate("Self");
   }
   _onPressPartner = () => {
@@ -687,9 +687,9 @@ class Home extends React.Component {
   _updateCartKey = async () => {
     let _cartKey = await Helpers.getDataStorage(Keys.AS_DATA_CART_KEY);
     this.setState({ cartKey: _cartKey});
-    console.log('home_cartKey====================================');
-    console.log(_cartKey);
-    console.log('home_cartKey====================================');
+    // console.log('home_cartKey====================================');
+    // console.log(_cartKey);
+    // console.log('home_cartKey====================================');
   }
   /* LIFE CYCLE */
   componentDidMount() {

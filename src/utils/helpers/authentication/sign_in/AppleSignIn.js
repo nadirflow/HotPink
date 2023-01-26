@@ -26,7 +26,7 @@ const Logs = {
 
 export const AsyncAppleSignIn = async () => {
   if (!appleAuth.isSupported) {
-    console.log(Logs.NOT_SUPPORT);
+    // console.log(Logs.NOT_SUPPORT);
     return { code: Errors.NOT_SUPPORT, message: Logs.NOT_SUPPORT };
   }
 
@@ -55,9 +55,9 @@ export const AsyncAppleSignIn = async () => {
     return dataUser;
   } catch (error) {
     if (error.code === AppleAuthError.CANCELED) {
-      console.log(Logs.SIGN_IN_CANCELLED);
+      // console.log(Logs.SIGN_IN_CANCELLED);
     } else {
-      console.log(Logs.OTHER, error);
+      // console.log(Logs.OTHER, error);
     }
     return null;
   }
