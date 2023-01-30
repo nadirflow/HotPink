@@ -1,4 +1,4 @@
-package com.zinistore;
+package com.hotpink;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

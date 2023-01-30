@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:793140404870:android:c93d4ff7aa317203d26707",
         "android_client_info": {
-          "package_name": "com.zinistore"
+          "package_name": "com.hotpink"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "793140404870-ns7ot31h9omcte7747pbd0567ue67l2i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.zinistore",
+            "package_name": "com.hotpink",
             "certificate_hash": "80d539bdd96024b3bb1d8b096b2ca1430ed492a9"
           }
         },

@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.appbookit",
+    package = "com.hotpink",
 )
 
 android_resource(
     name = "res",
-    package = "com.appbookit",
+    package = "com.hotpink",
     res = "src/main/res",
 )
 
