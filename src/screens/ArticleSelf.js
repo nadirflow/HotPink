@@ -20,17 +20,31 @@ import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
 import DOMPurify from 'dompurify';
 import WebView from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview';
+import { Base64 } from 'js-base64';
+const customerId = 1;
+const endpoint = `https://webtestview.com/hotpink/wp-json/wc/v3/customers/${customerId}/wishlist`;
 
 
 class ArticleSelf extends React.Component {
+  
   constructor(props) {
     super(props);
   }
   state = {
     post: {},
     loading: true,
+    wishlists: [],
+    error: null,
   };
+
+ 
+
+
+
+
+
   componentDidMount() {
+
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;
     console.log('////////////////////');
