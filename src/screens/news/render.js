@@ -5,7 +5,7 @@
  ** Description: 
 **/
 /* LIBRARY */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, TouchableOpacity, ImageBackground, Text } from 'react-native';
 import { Container, Card } from 'native-base';
 import Icon from 'react-native-fontawesome-pro';
@@ -23,7 +23,11 @@ import { Colors } from '~/utils/colors';
 import { Configs, Devices, Assets } from '~/config';
 import { layoutWidth } from '~/utils/layout_width';
 /* STYLES */
-import styles from './style'; 
+import styles from './style';
+
+  
+
+ 
 
 const RenderCategory = (index, item, onPress) => {
   
