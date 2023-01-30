@@ -130,7 +130,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.zinistore"
+        applicationId "com.hotpink"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 25

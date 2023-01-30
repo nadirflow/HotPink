@@ -140,7 +140,7 @@ export class RootTab extends React.Component {
         
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName = 'search';
+            let iconName = 'home';
             switch (route.name) {
               case 'Service':
                 iconName = 'store';
