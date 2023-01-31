@@ -41,6 +41,7 @@ class UnlockSubscription extends React.PureComponent {
     Helpers.removeKeyStorage(Keys.AS_DATA_CART);
     console.log('UnlockSubscription====================================');
   }
+ 
   componentWillMount() {
     BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
   }
@@ -129,7 +130,8 @@ class UnlockSubscription extends React.PureComponent {
   }
   _addProductToCart = async (params, TYPE) => {
 
-    
+    // Clear Cart for Checkout Subscription
+    let cartRes = await Services.Cart.clearCart();
     // Helpers.getDataStorage(keys.AS_)
     let res1 = await Services.Service.listProducts(params);
     let item = Helpers.prepareItemCart(res1[0].id, 0,null, {}, 1, true);
@@ -141,7 +143,6 @@ class UnlockSubscription extends React.PureComponent {
     console.log('res2 ',res2);
     if (res2 && res2.cart_key) {
       _params.cartKey = res2.cart_key;
-      console.log('res2.cart_key: ',res2.cart_key);
       await this.props.cartActions.updateCartKey(res2.cart_key)
     }
     

@@ -9,7 +9,7 @@ import Services from '~/services';
 import COtp from '~/components/COtp';
 import { Button, Container, Content, } from 'native-base';
 import { ImageBackground, ScrollView, View,  Image, Text, TouchableHighlight, TouchableOpacity, FlatList, } from 'react-native';
-import { Assets, Devices } from '~/config';
+import { Assets, Devices, Configs } from '~/config';
 import CImage from '~/components/CImage';
 
 import CHeader from '~/components/CHeader';
@@ -26,10 +26,10 @@ class LifeStyles extends React.Component {
   state = {
     data: [],
     loading: true,
-  }
+  } 
   
   componentDidMount() {
-    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=56&order=asc')
+    fetch(Configs.hostApi+'/'+Configs.wpAPIPrefix+'/wp/v2/posts?categories=56&order=asc')
       .then(response => response.json())
       .then(data => {
         this.setState({

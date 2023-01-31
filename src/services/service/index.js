@@ -7,6 +7,7 @@
 /* LIBRARY */
 import ApiWoo from '~/services/apiWoo';
 import Routes from '~/services/routes';
+import { Configs } from '~/config';
 
 export default {
   product: (params) => {
@@ -24,9 +25,11 @@ export default {
 
   listCategories: (params) => {
     try {
+      if(!params) params = {};
+      if(!params.exclude) params.exclude= Configs.subscribeCat;
       let results = ApiWoo.get(Routes.service.listCategories, params);
       return results;
-    } catch (error) {
+    } catch (error) { 
       return null;
     }
   },

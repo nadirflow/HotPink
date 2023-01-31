@@ -62,3 +62,4 @@ android/app/.classpath
 android/.project
 android/.settings/org.eclipse.buildship.core.prefs
 android/app/.project
+package-lock.json

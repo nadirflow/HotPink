@@ -50,7 +50,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
     }
     label = label.substr(0, label.length - 2)
   }
-
+  console.log(data);
   return (
     <CViewRow between style={[styles.con_products_content,
     indexProduct === 0 && { paddingTop: 0 }
@@ -137,6 +137,8 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
       }
       rightComp={
         <View style={[styles.con_products_item_right, {justifyContent:'center', alignContent:'center', alignItems:'flex-end', }]}>
+          {
+          data.id == Configs.subscribeProduct ? <></> : 
           <View style={[cStyles.column_justify_start, {backgroundColor: '#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:10,} ]}>
             <IconF name={"trash-alt"}
               size={Devices.fS(14)}
@@ -144,7 +146,7 @@ const RenderProducts = (indexProduct, data, state, onRemove, onPressMinusAmount,
               type={"regular"}
               onPress={() => onRemove(data)} />
           </View>
-
+            } 
           <View style={cStyles.flex_full} />
 
           {/* <View style={cStyles.column_justify_end}>

@@ -37,7 +37,8 @@ const Routes = {
   },
   user: {
     get: 'customers',
-    getAuthor: '/users'
+    getAuthor: '/users',
+    subsription: '/wc/v3/orders'
   },
   setting: {
     get: 'settings/general',
@@ -88,7 +89,8 @@ const Routes = {
     updateQuantity: '/zini-app-builder/v2/set-quantity',
     removeItem: '/zini-app-builder/v2/remove-cart-item',
     addCoupon: '/zini-app-builder/v2/add-discount',
-    removeCoupon: '/zini-app-builder/v2/remove-coupon'
+    removeCoupon: '/zini-app-builder/v2/remove-coupon',
+    clearCart: '/twentytwentythree/v2/empty-cart'
   }
 }
 
