@@ -1,4 +1,4 @@
-package com.zinistore;
+package com.hotpink;
 
 import android.app.Application;
 import android.content.Context;
