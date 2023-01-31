@@ -34,7 +34,6 @@ const inputFields = {
   password: "password"
 }
 
-console
 export const ViewSignIn = ({
   
   state = null,

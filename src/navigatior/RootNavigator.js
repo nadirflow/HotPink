@@ -208,6 +208,10 @@ function Navigator(props) {
       wpAPIPrefix: Configs.wpAPIPrefix
     }); 
   } 
+  const onGetSubscription = async () => {
+    let res = await Services.Subscription.hasSubscription();
+    Helpers.setDataStorage(Keys.AS_DATA_USER_SUBSCRIPTION,{subscription: res})
+  }
 
   /**
    * Fetch settings
@@ -516,10 +520,11 @@ function Navigator(props) {
     /** Update settings + Cate product + Cate news */
     allSetting.settingApp = settings;
     allSetting.settingLanguage = settingLanguage;
-
+    
     //Finally update ALL SETTINGS to Redux
     await dispatch(SettingActions.updateAllSettings(allSetting));
     //Navigate to homescreen
+    // When data received we do not want to redirect to roottab
     onSetRouteAndNext("RootTab");
   }
   /****************************/
@@ -539,6 +544,7 @@ function Navigator(props) {
     onGetHostApi();
     // onCheckPermission();
     onGetSettings();
+    onGetSubscription();
   }, []);
 
   /** RENDER */

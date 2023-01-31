@@ -113,8 +113,8 @@ WooCommerceAPI.prototype._getUrl = function (endpoint) {
     return this._normalizeQueryString(url);
   }
 
+  console.log("Normalize URl:- " + url); 
   return url;
-  // console.log("Normalize URl:- " + url);
 };
 
 /**
@@ -182,7 +182,7 @@ WooCommerceAPI.prototype._request = function (method, endpoint, data, callback) 
     if (this.queryStringAuth) {
       params.qs = {
         consumer_key: this.consumerKey,
-        consumer_secret: this.consumerSecret
+        consumer_secret: this.consumerSecret 
       };
     } else {
       params.auth = {
@@ -209,7 +209,10 @@ WooCommerceAPI.prototype._request = function (method, endpoint, data, callback) 
   var requestUrl = params.url;
 
   // encode the oauth_signature to make sure it not remove + charactor
-  params.qs.oauth_signature = encodeURIComponent(params.qs.oauth_signature);
+  console.log(params);
+  if(params.qs.oauth_signature){
+    params.qs.oauth_signature = encodeURIComponent(params.qs.oauth_signature);
+  }
   if (this.isSsl) {
     requestUrl += '?' + this.join(params.qs, '&');
     requestUrl += '&' + this.join(data, '&');
@@ -229,9 +232,11 @@ WooCommerceAPI.prototype._request = function (method, endpoint, data, callback) 
   if (method !== 'GET') {
     options.body = JSON.stringify(data);
   }
-  // console.log(requestUrl)
+  console.log(options);
+  console.log(requestUrl)
   return fetch(requestUrl, options)
     .then((response) => {
+      console.log(response);
       return response.json()
     })
     .then((responseData) => {
