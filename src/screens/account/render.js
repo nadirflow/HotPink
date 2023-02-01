@@ -6,7 +6,7 @@
 **/
 /* LIBRARY */
 import React from 'react';
-import { View, TouchableOpacity, FlatList, Image, ImageBackground, Dimensions } from 'react-native';
+import { View, TouchableOpacity, FlatList, Image, ImageBackground, Dimensions, ScrollView } from 'react-native';
 import {
   Container, Content, Left, Body, Right, Button, Footer
 } from 'native-base';
@@ -107,7 +107,7 @@ export const ViewAccount = ({
         iconRight_1={(props. user && props.user.role === Configs.USER_ROLE.STORE_MANAGER) ? "none" : "shopping-cart"}
         onPressRight_1={onFunction.onPressCart}
       />
-      
+    <ScrollView>  
       <View style={{backgroundColor:'#fff',  borderTopRightRadius:30, borderTopLeftRadius:30, paddingTop:20, marginTop:30,  }}>
         {props.user &&
           <CViewRow style={{ marginHorizontal: Devices.pH(layoutWidth.width) }}
@@ -350,7 +350,7 @@ export const ViewAccount = ({
           "Hot Pink" + " v" + VersionCheck.getCurrentVersion()}
         </CText>
       </Footer>
-      
+    </ScrollView>
     </Container >
     </ImageBackground>
   )

@@ -47,7 +47,6 @@ class ArticleSelf extends React.Component {
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;
     console.log('////////////////////');
-    console.log(audioId);
     this.updateSubscription();
     axios
       .get(Configs.hostApi+'/'+Configs.wpAPIPrefix+`/wp/v2/posts/${postId}`)
@@ -66,7 +65,7 @@ class ArticleSelf extends React.Component {
   //  console.log(post.featured_media)
     const postTitle = post.title;
     const image = post.featured_media;
-    // console.log(post.content);
+    console.log(post.content);
     // const sanitizedHTML = DOMPurify.sanitize(post.content.rendered);
     if (this.state.loading) {
       return(
@@ -147,22 +146,28 @@ class ArticleSelf extends React.Component {
                   
                 } */
                 }
-                <Text style={{fontSize:Devices.fS(14), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>{post.excerpt && post.excerpt.rendered ? post.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '') : ''}</Text>
+                
                 <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
                   { !this.state.hasSubscription ? 
+                  <>
+                    <Text style={{fontSize:Devices.fS(14), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>{post.excerpt && post.excerpt.rendered ? post.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '') : ''}</Text>
                     <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  return;}}}>
                         <Text style={{color:'#610C47'}}>Buy Subscription</Text>
-                    </TouchableOpacity> : (
+                    </TouchableOpacity>
+                  </>
+                    
+                     : (
                       post.content && post.content.rendered ?
                       // <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}} dangerouslySetInnerHTML={post.content.rendered} />
                       <AutoHeightWebView
                             
                             originWhitelist={['*']}
                             source={{ html: post.content.rendered }}
-                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(5)}}
+                            scrol
+                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, height:Devices.sH(170), marginTop:Devices.sH(2)}}
                             scalesPageToFit={true}
                             viewportContent={'width=device-width, user-scalable=no'}
-                            customStyle={" *{font-szie:14px; color:#fff; padding-right:11.5px;} li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
+                            customStyle={" body{padding-left:20px; overflow:visible} *{font-szie:14px; color:#fff; padding-right:11.5px;, } li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
                             
                         />
                       : <Text>No content available</Text>

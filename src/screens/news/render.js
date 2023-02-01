@@ -20,14 +20,16 @@ import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
 /* COMMON */
 import { cStyles } from '~/utils/styles';
 import { Colors } from '~/utils/colors';
-import { Configs, Devices, Assets } from '~/config';
+import { Configs, Devices, Assets, Keys } from '~/config';
 import { layoutWidth } from '~/utils/layout_width';
 /* STYLES */
 import styles from './style';
-const customerId = 1;
-const endpoint = `https://webtestview.com/hotpink/wp-json/wc/v3/wishlist/get_by_user/2`;
+import Services from '~/services';
+import helpers from '~/utils/helpers';
+import axios from 'axios';
+import { Buffer } from 'buffer';
+import { Image } from 'react-native';
 
-   
 
 const RenderCategory = (index, item, onPress) => {
   
@@ -96,6 +98,84 @@ export const ViewNews = ({
     onPressItem: () => { },
   }
 }) => {
+
+        
+        const [shareKey, setSharekey] = useState(null);
+        const [wishlistProductIds, setWishlistProductIds] = useState([]);
+        const [products, setProducts] = useState([]);
+        useEffect(()=> {
+          const initializeShareKey = async () => {
+              try {
+              let wishlistKey = await  Services.Wishlist.getWishlistKey();
+              if(wishlistKey.length && wishlistKey[0]){
+                  setSharekey(wishlistKey[0].share_key);
+              }
+              } catch (error) {
+              console.error(error);
+              }
+          };
+          initializeShareKey();
+          
+          
+          
+      },[])
+
+      useEffect(() => {
+        const initializeShareKey = async () => {
+          try {
+            let wishlistKey = await Services.Wishlist.getWishlistKey();
+            if (wishlistKey.length && wishlistKey[0]) {
+              setSharekey(wishlistKey[0].share_key);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        initializeShareKey();
+      }, []);
+      
+      useEffect(() => {
+        const fetchWishlistProducts = async () => {
+          let wishlistProducts = await Services.Wishlist.getProductForWishlistByKey(shareKey);
+          let productIds = wishlistProducts.map((product) => product.product_id);
+          setWishlistProductIds(productIds);
+          console.log(productIds)
+        };
+        fetchWishlistProducts();
+      }, [shareKey]);
+      
+      useEffect(() => {
+        const fetchProductData = async () => {
+          // const consumerKey = 'ck_7171b2d0be04df526491b4ad224951f313f0a6a1';
+          // const consumerSecret = 'cs_9c0a1003c5c525ed50756412c474d3693008e3b6';
+          // const auth = Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64');
+          try {
+            const response = await axios.get(`https://webtestview.com/hotpink/wp-json/wc/v3/products?consumer_key=ck_7171b2d0be04df526491b4ad224951f313f0a6a1&consumer_secret=cs_9c0a1003c5c525ed50756412c474d3693008e3b6&include=${wishlistProductIds.join(',')}`);
+            const productData = response.data;
+            setProducts(productData);
+            // console.log(productData);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        if (wishlistProductIds.length) {
+          fetchProductData();
+        }
+      }, [wishlistProductIds]);
+     
+      const removeFromWishlist = async (productId) => {
+        let wishlistProducts = await Services.Wishlist.getProductForWishlistByKey(shareKey);
+        if(wishlistProducts.length){
+            let itemFound = wishlistProducts.filter(item => item.product_id === productId);
+          
+            if(itemFound.length && itemFound[0]){
+               await Services.Wishlist.removeProductFromWishlist(itemFound[0])
+            } 
+        }
+      
+   };
+ 
+      
   return (
     <Container>
       <CHeader
@@ -126,11 +206,42 @@ export const ViewNews = ({
       <CLoadingPlaceholder />
       } */}
       <ImageBackground  source={Assets.back} resizeMode="cover" style={{flex:1}}>
-          <View style={{flex:1, justifyContent:'center', alignItems:'center' }}>
+        <View style={{paddingHorizontal:Devices.sW(2)}}>
+          {products ?
+            <FlatList
+                data={products}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => {
+                  return (
+                    <View>
+                      <View style={{backgroundColor:'#fff', flexDirection:'row', borderRadius:4, marginBottom:Devices.sH(2), alignContent:'center', alignItems:'center', paddingVertical:Devices.sH(1), paddingHorizontal:Devices.sW(1)}}>
+                        <View style={{width:'30%'}}> 
+                          <Image source={{uri: item.images[0].src }} style={{width:'100%', height:60}} resizeMode="contain"/>
+                        </View>
+                        <View style={{width:'65%'}}>  
+                          <Text style={{color:'#E83B55', fontWeight:'700', marginBottom:2}}>{item.name}</Text>
+                          <Text style={{color:'#E83B55', fontWeight:'400'}}>${item.price}</Text>
+                          <TouchableOpacity style={{backgroundColor:'#E83B55', width:'35%', paddingVertical:2, marginTop:5, }} onPress={() => removeFromWishlist(item.id)}>
+                              <Text style={{textAlign:'center', color:'#fff'}}>Remove</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+                  );
+                }}
+              />
+            :
+            <View style={{flex:1, justifyContent:'center', alignItems:'center' }}>
+              <Icon name='star-shooting' color='#fff' size={50} />
+              <Text style={{fontSize:Devices.fS(20), color:'#fff', marginTop:5, fontWeight:'700' }}>Nothing to wish for.</Text>
+            </View>
+          }
+        </View>
+          {/* <View style={{flex:1, justifyContent:'center', alignItems:'center' }}>
               <Icon name='star-shooting' color='#fff' size={50} />
               <Text style={{fontSize:Devices.fS(20), color:'#fff', marginTop:5, fontWeight:'700' }}>Nothing to wish for.</Text>
               
-          </View>
+          </View> */}
       </ImageBackground>
 
       {/* <CLoading visible={state._loading} /> */}
