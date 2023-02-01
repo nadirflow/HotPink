@@ -48,7 +48,7 @@ class Search extends React.Component {
   /* FUNCTIONS */
   _onFetchData = async (value) => {
     let { _dataSearch } = this.state;
-    let params = { search: value };
+    let params = { search: value,exclude:Configs.subscribeProduct };
     let res = await Services.Service.listProducts(params);
     if (res) {
       if (res.code) {
