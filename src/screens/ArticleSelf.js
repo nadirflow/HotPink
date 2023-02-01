@@ -9,7 +9,7 @@ import Services from '~/services';
 import COtp from '~/components/COtp';
 import { Button, Container, Content, } from 'native-base';
 import { ImageBackground, ScrollView, View,  Image, Text, TouchableHighlight, TouchableOpacity, FlatList, } from 'react-native';
-import { Assets, Devices } from '~/config';
+import { Assets, Devices, Keys } from '~/config';
 import CImage from '~/components/CImage';
 
 import CHeader from '~/components/CHeader';
@@ -21,8 +21,7 @@ import DOMPurify from 'dompurify';
 import WebView from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Base64 } from 'js-base64';
-const customerId = 1;
-const endpoint = `https://webtestview.com/hotpink/wp-json/wc/v3/customers/${customerId}/wishlist`;
+
 
 
 class ArticleSelf extends React.Component {
@@ -33,8 +32,8 @@ class ArticleSelf extends React.Component {
   state = {
     post: {},
     loading: true,
-    wishlists: [],
-    error: null,
+   
+    
   };
 
  
@@ -44,6 +43,8 @@ class ArticleSelf extends React.Component {
 
 
   componentDidMount() {
+
+    
 
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;

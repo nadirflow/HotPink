@@ -24,13 +24,14 @@ import { Configs, Devices, Assets } from '~/config';
 import { layoutWidth } from '~/utils/layout_width';
 /* STYLES */
 import styles from './style';
+const customerId = 1;
+const endpoint = `https://webtestview.com/hotpink/wp-json/wc/v3/wishlist/get_by_user/2`;
 
-  
-
- 
+   
 
 const RenderCategory = (index, item, onPress) => {
   
+
   let source = Assets.image_failed;
   if (typeof(item.thumbnail) !== 'undefined' && item.thumbnail.length) {
     source = { uri: item.thumbnail.sizes.thumbnail };
@@ -82,8 +83,12 @@ const _onRenderEmpty = () => {
 }
 
 export const ViewNews = ({
+
+
+  
   state = null,
-  props = null, 
+  props = null,
+  
   onFunction = {
     onPressCart: () => { },
     onRefresh: () => { },

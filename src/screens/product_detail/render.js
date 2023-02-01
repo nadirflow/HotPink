@@ -5,8 +5,8 @@
 ** Description: 
 **/
 /* LIBRARY */
-import React from 'react';
-import { View, FlatList, TouchableOpacity, Animated } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, FlatList, TouchableOpacity, Animated, TextInput } from 'react-native';
 import {
     Container, Left, Body, Right, Content, Button
 } from 'native-base';
@@ -24,7 +24,7 @@ import { CVendor } from '~/components/CVendor'
 import { BallIndicator } from '~/components/CIndicator';
 /* COMMON */
 import { Colors } from '~/utils/colors';
-import { Devices, Languages, Configs, Assets } from '~/config';
+import { Devices, Languages, Configs, Assets, Keys } from '~/config';
 import { cStyles } from '~/utils/styles';
 import { layoutWidth } from '~/utils/layout_width';
 import Helpers from '~/utils/helpers';
@@ -32,6 +32,7 @@ import Currency from '~/utils/currency';
 /* STYLES */
 import styles from './style';
 import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
+import Services from '~/services';
 
 const Banner = firebase.admob.Banner;
 const AdRequest = firebase.admob.AdRequest;
@@ -192,6 +193,7 @@ const RenderRelatedProduct = (index, data, dataLength, onPress) => {
 }
 
 export const ViewProductDetail = ({
+    
     state = null,
     props = null,
     settings = {
@@ -208,7 +210,104 @@ export const ViewProductDetail = ({
         onChange: () => { },
         onPressStore: () => { },
     }
+    
 }) => {
+    const [shareKey, setSharekey] = useState(null);
+    const [WishlistProduct, setWishlistProduct] = useState(null);
+    
+    const updateProductsForWishlist = async () => {
+        let wishlistProducts = await Services.Wishlist.getProductForWishlistByKey(shareKey);
+        if(wishlistProducts.length){
+            let itemFound = wishlistProducts.filter(item => item.product_id === state._product.id);
+            if(itemFound.length){
+                setWishlistProduct(itemFound[0])
+                console.log(itemFound)
+            }
+        }
+    };
+    
+    useEffect(()=> {
+        const initializeShareKey = async () => {
+            try {
+            let wishlistKey = await Services.Wishlist.getWishlistKey();
+            if(wishlistKey.length && wishlistKey[0]){
+                setSharekey(wishlistKey[0].share_key);
+            }
+            } catch (error) {
+            console.error(error);
+            }
+        };
+        initializeShareKey();
+        if(shareKey){
+            updateProductsForWishlist();
+        }
+    },[])
+    const removeFromWishlist = async () => {
+         let wishlistProducts = await Services.Wishlist.getProductForWishlistByKey(shareKey);
+         if(wishlistProducts.length){
+             let itemFound = wishlistProducts.filter(item => item.product_id === state._product.id);
+             if(itemFound.length){
+               setWishlistProduct(null)
+            }
+             if(itemFound.length && itemFound[0]){
+                await Services.Wishlist.removeProductFromWishlist(itemFound[0])
+             } 
+         }
+        
+    };
+    
+      
+      const handleAddProduct = async () => {
+       
+        try {
+            
+          const token = await Helpers.getDataStorage(Keys.AS_DATA_JWT);
+          const response = await fetch(`https://webtestview.com/hotpink/wp-json/wc/v3/wishlist/${shareKey}/add_product`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              product_id: state._product.id,
+            }),
+          });
+          const data = await response.json();
+          if (data.length) {
+            console.log('Product added to wishlist');
+            setWishlistProduct(data[0])
+            console.log(response);
+          }
+        } catch (error) {
+          console.error(error);
+          
+          
+        }
+        // getID();
+      };
+     
+    //   const getWishp = async (shareKey) => {
+    //     try {
+    //       const token = await Helpers.getDataStorage(Keys.AS_DATA_JWT);
+          
+    //       const response = await fetch(`https://webtestview.com/hotpink/wp-json/wc/v3/wishlist/${shareKey}/get_products`, {
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //           'Content-Type': 'application/json',
+    //           Accept: 'application/json',
+    //         },
+    //       });
+          
+    //       const wishlistsp = await response.json();
+    //       setWishlistsp(wishlistsp);
+    //       console.log('---wish---wish---wis');
+    //       console.log(wishlistsp);
+    //       console.log('---wish---wish---wis');
+        
+    //     } catch (error) {
+    //       setError(error);
+    //     }
+    //   };
     let price = Helpers.formatNumber(Number(state._price));
     let priceSale = 0, percentSale = 0, currencyPosition = Configs.currencyPosition;
     let currency = Configs.html5Entities.decode(Configs.currency);
@@ -247,7 +346,8 @@ export const ViewProductDetail = ({
         price = Helpers.formatNumber(state._optionSelected.regular_price);
     }
     let size = Devices.sImage("product_detail", scaleImage);
-
+       
+        
     return (
         <Container>
             <Animated.View style={[styles.con_header_fixed, { opacity: headerOpacity }]} />
@@ -559,7 +659,17 @@ export const ViewProductDetail = ({
                             <View style={styles.con_separator} />
                         </View>
                     }
-
+                    <View style={{alignItems:'center', marginBottom:Devices.sH(3)}}>
+                        {!WishlistProduct ?
+                        <TouchableOpacity onPress={handleAddProduct}style={{color:'#E83B55', width:Devices.sW('50%'), flexDirection:'row', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                            <Icon name='heart' color='#E83B55' size={12} style={{marginRight:1,}}  /><CText style={{textAlign:'center', color:'#E83B55', marginLeft:3}}>Add To Wishlist</CText>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity onPress={removeFromWishlist} style={{color:'#E83B55', width:Devices.sW('50%'), flexDirection:'row', justifyContent:'center', alignContent:'space-between', alignItems:'center'}}>
+                            <Icon name='heart' color='#E83B55' size={12} type="solid"  /><CText style={{textAlign:'center', color:'#E83B55', marginLeft:2, }}> Remove From Wishlist</CText>
+                        </TouchableOpacity>
+                        }
+                    </View>
                     {state._product.description !== "" &&
                         <View style={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}>
                             <TouchableOpacity onPress={onFunctions.onPressDescription}>

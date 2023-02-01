@@ -89,6 +89,10 @@ const Routes = {
     removeItem: '/zini-app-builder/v2/remove-cart-item',
     addCoupon: '/zini-app-builder/v2/add-discount',
     removeCoupon: '/zini-app-builder/v2/remove-coupon'
+  },
+  wishlist: {
+    getWishlistKey: '/wc/v3/wishlist/get_by_user/',
+    removeProductByItemId: '/wc/v3/wishlist/remove_product/'
   }
 }
 

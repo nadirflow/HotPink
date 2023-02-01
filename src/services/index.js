@@ -23,6 +23,7 @@ import PayPal from './paypal';
 import DataShipping from './data_shipping';
 import Vendor from './vendor';
 import Cart from './cart';
+import Wishlist from './wishlist';
 
 let Services = {
   SignIn,
@@ -41,7 +42,8 @@ let Services = {
   Pdf,
   DataShipping,
   Vendor,
-  Cart
+  Cart,
+  Wishlist
 };
 
 export default Services;
