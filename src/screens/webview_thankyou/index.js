@@ -11,6 +11,7 @@ import * as cartActions from '~/redux/actions/cart';
 import Helpers from '~/utils/helpers';
 import { bindActionCreators } from 'redux';
 import CText from '~/components/CText';
+import Services from '~/services';
 
 class WebviewThankYouScreen extends Component {
   constructor(props, context) {
@@ -21,7 +22,14 @@ class WebviewThankYouScreen extends Component {
       uri: route?.params?.uri ?? '',
     };
   }
+  componentWillUnmount(){
+    this.onGetSubscription();
 
+  }
+  onGetSubscription = async () => {
+    let res = await Services.Subscription.hasSubscription();
+    Helpers.setDataStorage(Keys.AS_DATA_USER_SUBSCRIPTION,{subscription: res})
+  }
   handleContinue = () => {
     const {navigation} = this.props;
     //Clear data cart
