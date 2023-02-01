@@ -163,9 +163,9 @@ class ArticleSelf extends React.Component {
                             
                             originWhitelist={['*']}
                             source={{ html: post.content.rendered }}
-                            scrol
-                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, height:Devices.sH(170), marginTop:Devices.sH(2)}}
-                            scalesPageToFit={true}
+                            onSizeUpdated={size => console.log(size.height)}
+                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(2)}}
+                            
                             viewportContent={'width=device-width, user-scalable=no'}
                             customStyle={" body{padding-left:20px; overflow:visible} *{font-szie:14px; color:#fff; padding-right:11.5px;, } li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
                             
