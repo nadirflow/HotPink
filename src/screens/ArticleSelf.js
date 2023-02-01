@@ -9,7 +9,7 @@ import Services from '~/services';
 import COtp from '~/components/COtp';
 import { Button, Container, Content, } from 'native-base';
 import { ImageBackground, ScrollView, View,  Image, Text, TouchableHighlight, TouchableOpacity, FlatList, } from 'react-native';
-import { Assets, Devices, Keys } from '~/config';
+import { Assets, Devices, Configs, Keys } from '~/config';
 import CImage from '~/components/CImage';
 
 import CHeader from '~/components/CHeader';
@@ -32,16 +32,14 @@ class ArticleSelf extends React.Component {
   state = {
     post: {},
     loading: true,
-   
-    
+    wishlists: [],
+    error: null,
+    hasSubscription: false
   };
-
- 
-
-
-
-
-
+  updateSubscription = async () => {
+    let key = await Helpers.getDataStorage(Keys.AS_DATA_USER_SUBSCRIPTION);
+    this.setState({hasSubscription: key.subscription, loading: false});
+  }
   componentDidMount() {
 
     
@@ -50,10 +48,11 @@ class ArticleSelf extends React.Component {
     const { audioId } = this.props.route.params;
     console.log('////////////////////');
     console.log(audioId);
+    this.updateSubscription();
     axios
-      .get(`https://webtestview.com/hotpink/wp-json/wp/v2/posts/${postId}`)
+      .get(Configs.hostApi+'/'+Configs.wpAPIPrefix+`/wp/v2/posts/${postId}`)
       .then((response) => {
-        this.setState({ post: response.data, loading: false });
+        this.setState({ post: response.data });
       })
       .catch((error) => {
         console.log(error);
@@ -63,11 +62,11 @@ class ArticleSelf extends React.Component {
   render() {
     const { post } = this.state;
    
-    console.log(':::::::::::::::');
-   console.log(post.featured_media)
+  //   console.log(':::::::::::::::');
+  //  console.log(post.featured_media)
     const postTitle = post.title;
     const image = post.featured_media;
-    console.log(post.content);
+    // console.log(post.content);
     // const sanitizedHTML = DOMPurify.sanitize(post.content.rendered);
     if (this.state.loading) {
       return(
@@ -143,30 +142,32 @@ class ArticleSelf extends React.Component {
                  :
                  <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
                 } 
-                {/* {
-                  post.content && post.content.rendered ?
-                // <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}} dangerouslySetInnerHTML={post.content.rendered} />
-                <AutoHeightWebView
-                      
-                      originWhitelist={['*']}
-                      source={{ html: post.content.rendered }}
-                      style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(5)}}
-                      scalesPageToFit={true}
-                      viewportContent={'width=device-width, user-scalable=no'}
-                      customStyle={" *{font-szie:14px; color:#fff; padding-right:11.5px;} li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
-                      
-                  />
-                : <Text>No content available</Text>
-                } */}
+                {
+                /* {
+                  
+                } */
+                }
                 <Text style={{fontSize:Devices.fS(14), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}}>{post.excerpt && post.excerpt.rendered ? post.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '') : ''}</Text>
-                  <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
-                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  
-                             return;
-                         }
-                     }}>
+                <View style={{justifyContent:'center', alignItems:'center', marginTop:10,}}>
+                  { !this.state.hasSubscription ? 
+                    <TouchableOpacity style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:7, borderRadius:5,}} onPress={() => {if (true){this.props.navigation.navigate("UnlockSubscription");  return;}}}>
                         <Text style={{color:'#610C47'}}>Buy Subscription</Text>
-                    </TouchableOpacity>
-                  </View>
+                    </TouchableOpacity> : (
+                      post.content && post.content.rendered ?
+                      // <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}} dangerouslySetInnerHTML={post.content.rendered} />
+                      <AutoHeightWebView
+                            
+                            originWhitelist={['*']}
+                            source={{ html: post.content.rendered }}
+                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(5)}}
+                            scalesPageToFit={true}
+                            viewportContent={'width=device-width, user-scalable=no'}
+                            customStyle={" *{font-szie:14px; color:#fff; padding-right:11.5px;} li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
+                            
+                        />
+                      : <Text>No content available</Text>
+                    )}
+                </View>
               </ScrollView>
             </View>
           

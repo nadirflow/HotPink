@@ -37,7 +37,8 @@ const Routes = {
   },
   user: {
     get: 'customers',
-    getAuthor: '/users'
+    getAuthor: '/users',
+    subsription: '/wc/v3/orders'
   },
   setting: {
     get: 'settings/general',
@@ -92,7 +93,9 @@ const Routes = {
   },
   wishlist: {
     getWishlistKey: '/wc/v3/wishlist/get_by_user/',
-    removeProductByItemId: '/wc/v3/wishlist/remove_product/'
+    removeProductByItemId: '/wc/v3/wishlist/remove_product/',
+    removeCoupon: '/zini-app-builder/v2/remove-coupon',
+    clearCart: '/twentytwentythree/v2/empty-cart'
   }
 }
 

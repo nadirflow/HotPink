@@ -9,7 +9,7 @@ import Services from '~/services';
 import COtp from '~/components/COtp';
 import { Button, Container, Content, } from 'native-base';
 import { ImageBackground, ScrollView, View,  Image, Text, TouchableHighlight, TouchableOpacity, FlatList, } from 'react-native';
-import { Assets, Devices } from '~/config';
+import { Assets, Devices, Configs } from '~/config';
 import CImage from '~/components/CImage';
 
 import CHeader from '~/components/CHeader';
@@ -111,13 +111,15 @@ class Self extends React.Component {
     data: [],
     audio: [],
     loading: true,
-  }
+  } 
   componentDidMount() {
-    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=48')
-      .then(response => response.json())
+    console.log(Configs.hostApi+'/'+Configs.wpAPIPrefix+'/wp/v2/posts?categories=48');
+    fetch(Configs.hostApi+'/'+Configs.wpAPIPrefix+'/wp/v2/posts?categories=48') 
+      .then(response => 
+        response.json())
       .then(data => this.setState({ data: data, loading: false, }));
 
-    fetch('https://webtestview.com/hotpink/wp-json/wp/v2/posts?categories=58')
+    fetch(Configs.hostApi+'/'+Configs.wpAPIPrefix+'/wp/v2/posts?categories=58')
       .then(response => response.json())
       .then(audio => this.setState({ audio }));
   }
@@ -240,9 +242,9 @@ class Self extends React.Component {
                     }
                   }
                     renderItem={(item) => { 
-                      console.log('-------------------------------------')
-                      console.log(item.item)
-                      console.log('--------------sssssss-----------------------')
+                      // console.log('-------------------------------------')
+                      // console.log(item.item)
+                      // console.log('--------------sssssss-----------------------')
                       
                       // if(item.item.featured_media.sizes){
                       //   console.log('--------------if 1 -----------------------')

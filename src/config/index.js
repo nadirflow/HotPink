@@ -243,13 +243,15 @@ export const Configs = {
     formatDate: 'DD/MM/YYYY',
     formatTime: 'hh:MM:ss',
     layoutWidth: 96,
-    discountType: DISCOUNT_TYPE,
+    discountType: DISCOUNT_TYPE, 
     versionApi: 'wc/v3',
     wpAPIPrefix: 'wp-json',
     versionApiForLogin: 'v3',
     wpAPIPrefixForLogin: 'wc-api',
-    cosumerKey: 'ck_7171b2d0be04df526491b4ad224951f313f0a6a1', //For ZiniStore
-    consumerSecret: 'cs_9c0a1003c5c525ed50756412c474d3693008e3b6',//For ZiniStore
+    cosumerKey: 'ck_7171b2d0be04df526491b4ad224951f313f0a6a1', //For ZiniStore Live
+    consumerSecret: 'cs_9c0a1003c5c525ed50756412c474d3693008e3b6',//For ZiniStore Live
+    // cosumerKey: 'ck_bd486f330ec3c44323ae12fd1f109c96628eff16', //For ZiniStore Local
+    // consumerSecret: 'cs_596aa684d3c5389a935310d52c42b182d78e7392',//For ZiniStore Local
     bookmarks: [],
     /** AUTH */
     IOS_CLIENT_ID:
@@ -296,9 +298,13 @@ export const Configs = {
 
     /** STRIPE */
     stripeMethod: 'stripe',
-    stripePublishKey: 'pk_test_51Ln1FOKuCK7IZWA1CJ1vYDdjZfg3OQoeNtiS9WBf03vgokIOGp39qgZu5hRPRZ6u40nfMfCtBuQOU4PVhY01FHPr00TUAGql7G',
-    stripeSecret: 'sk_test_51Ln1FOKuCK7IZWA1vd9zIZ2Y6VwbkpbhLbcxTco51LgDRFYYApWMBMzPh3hf4ZUlQTZqipZLEqlzj6es4TgDuq5S00ampXF67h',
+    stripePublishKey: 'pk_test_51Ln1FOKuCK7IZWA1CJ1vYDdjZfg3OQoeNtiS9WBf03vgokIOGp39qgZu5hRPRZ6u40nfMfCtBuQOU4PVhY01FHPr00TUAGql7G', //Live Test
+    stripeSecret: 'sk_test_51Ln1FOKuCK7IZWA1vd9zIZ2Y6VwbkpbhLbcxTco51LgDRFYYApWMBMzPh3hf4ZUlQTZqipZLEqlzj6es4TgDuq5S00ampXF67h', //Live Test
 
+    // stripePublishKey: 'pk_test_51MPOJ0KMt2UNIXBufkAYStyqYBzPYOytXuhWBTgCXwNESASXlJQAZtNuEtVFoHFzbFOd4TXZ5W7jN3mj4dltqdEL00PXxDaK8l',  //Local Test
+    // stripeSecret: 'sk_test_51MPOJ0KMt2UNIXBuR3uH3F5gl6MJor0dngbHhF7fxRAjCpvVtAzCURZjPnRbzTEHuO1HTjk5DGWtCAJdWjxmVxST00qaNnSVTd',  //Local Test
+
+    
     avatarUrlDefault: 'http://1.gravatar.com/avatar/4456f23e6de5424fb8ca08be40e30cb7?s=192&d=mm&r=g',
     customLayout: LAYOUT,
     customThumbCategory: THUMB_CATEGORY,
@@ -334,7 +340,11 @@ export const Configs = {
 
     USER_ROLE,
 
-    isPaymentWebview: true
+    isPaymentWebview: true,
+
+    //** SUBSCRIPTION VARIABLES */
+    debugSubscription: false,
+    debugHasSubscription : false,
 };
 export const Devices = {
     moment,
@@ -419,6 +429,7 @@ export const Keys = {
     KEY_PLATFORM_ANDROID: 'android',
 
     AS_DATA_USER: 'AS_DATA_USER',
+    AS_DATA_USER_SUBSCRIPTION: 'AS_DATA_USER_SUBSCRIPTION',
     AS_DATA_USER_APPLE: 'AS_DATA_USER_APPLE',
     AS_DATA_JWT: 'AS_DATA_JWT',
     AS_DATA_LANGUAGE: 'AS_DATA_LANGUAGE',

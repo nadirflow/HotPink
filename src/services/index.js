@@ -24,6 +24,7 @@ import DataShipping from './data_shipping';
 import Vendor from './vendor';
 import Cart from './cart';
 import Wishlist from './wishlist';
+import Subscription from './subscription';
 
 let Services = {
   SignIn,
@@ -43,7 +44,8 @@ let Services = {
   DataShipping,
   Vendor,
   Cart,
-  Wishlist
+  Wishlist,
+  Subscription
 };
 
 export default Services;
