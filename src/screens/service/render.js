@@ -22,6 +22,7 @@ import { Colors } from '~/utils/colors';
 /* STYLES */
 import styles from './style';
 import { ImageBackground } from 'react-native';
+import { View, Text } from 'react-native';
 
 
 
@@ -85,7 +86,7 @@ export const ViewService = ({
         <>
         
           <ImageBackground  source={Assets.back} resizeMode="cover" style={{flex:1,  }} >
-          <TabView
+          {/* <TabView
             
             initialLayout={styles.con_tab}
             navigationState={state}
@@ -98,7 +99,11 @@ export const ViewService = ({
             tabBarPosition={'top'}
             removeClippedSubviews={Devices.OS === 'android'}
             swipeEnabled={false}
-          />
+          /> */}
+          
+          <View style={{justifyContent:'center', alignItems:'center', flex:1}}>
+            <Text style={{fontSize:Devices.fS(30), color:'#fff', fontWeight:'700', textAlign:'center'}}>Coming Soon</Text>
+          </View>
           </ImageBackground>
         </>
       :

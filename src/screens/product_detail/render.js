@@ -659,7 +659,7 @@ export const ViewProductDetail = ({
                             <View style={styles.con_separator} />
                         </View>
                     }
-                    <View style={{alignItems:'center', marginBottom:Devices.sH(3)}}>
+                    {/* <View style={{alignItems:'center', marginBottom:Devices.sH(3)}}>
                         {!WishlistProduct ?
                         <TouchableOpacity onPress={handleAddProduct}style={{color:'#E83B55', width:Devices.sW('50%'), flexDirection:'row', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
                             <Icon name='heart' color='#E83B55' size={12} style={{marginRight:1,}}  /><CText style={{textAlign:'center', color:'#E83B55', marginLeft:3}}>Add To Wishlist</CText>
@@ -669,7 +669,7 @@ export const ViewProductDetail = ({
                             <Icon name='heart' color='#E83B55' size={12} type="solid"  /><CText style={{textAlign:'center', color:'#E83B55', marginLeft:2, }}> Remove From Wishlist</CText>
                         </TouchableOpacity>
                         }
-                    </View>
+                    </View> */}
                     {state._product.description !== "" &&
                         <View style={{ paddingHorizontal: Devices.pH(layoutWidth.width) }}>
                             <TouchableOpacity onPress={onFunctions.onPressDescription}>
