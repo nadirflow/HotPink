@@ -17,69 +17,7 @@ import { cStyles } from '~/utils/styles';
 import Icon from 'react-native-fontawesome-pro';
 import { useNavigation } from '@react-navigation/native';
 import CLoadingPlaceholder from '~/components/CLoadingPlaceholder';
-const persons = [
-  {
-    id: '1',
-    name: 'Earnest Green',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '2',
-    name: 'Winston Orn',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '3',
-    name: 'Carlton Collins',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '4',
-    name: 'Malcolm Labadie',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '5',
-    name: 'Michelle Dare',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '6',
-    name: 'Carlton Zieme',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '7',
-    name: 'Malcolm Labadie',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '8',
-    name: 'Michelle Dare',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '9',
-    name: 'Carlton Zieme',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '10',
-    name: 'Malcolm Labadie',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '11',
-    name: 'Michelle Dare',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  {
-    id: '12',
-    name: 'Carlton Zieme',
-    image: 'https://images.pexels.com/photos/14778924/pexels-photo-14778924.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load'
-  },
-  
-];
+
 // const ItemDivider = () => {
 //   return (
 //     <View style={{backgroundColor:'#fff', paddingHorizontal:10, paddingVertical:10, borderRadius:5, flexDirection:'row' }}>

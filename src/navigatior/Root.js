@@ -145,8 +145,8 @@ export class RootTab extends React.Component {
               case 'Service':
                 iconName = 'store';
                 break;
-              case 'News':
-                iconName = 'heart';
+              case 'Search':
+                iconName = 'search';
                 break;
               case 'Account':
                 iconName = 'user-alt';
@@ -160,8 +160,8 @@ export class RootTab extends React.Component {
               case 'Service':
                 title = 'services';
                 break;
-              case 'News':
-                title = 'news';
+              case 'Search':
+                title = 'search';
                 break;
               case 'Account':
                 title = 'account';
@@ -192,7 +192,7 @@ export class RootTab extends React.Component {
         }}
       >
         <TabMain.Screen name={"Home"} component={HomeScreen} /> 
-        <TabMain.Screen name={"News"} component={NewsScreen} />
+        <TabMain.Screen name={"Search"} component={SearchScreen} />
         <TabMain.Screen name={"Service"} component={ServiceScreen} />
         <TabMain.Screen name={"Account"} component={AccountScreen} />
       </TabMain.Navigator>

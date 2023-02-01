@@ -88,7 +88,9 @@ export const ViewNews = ({
 
 
   
-  state = null,
+  state = {
+    loading: true,
+  },
   props = null,
   
   onFunction = {
@@ -103,12 +105,14 @@ export const ViewNews = ({
         const [shareKey, setSharekey] = useState(null);
         const [wishlistProductIds, setWishlistProductIds] = useState([]);
         const [products, setProducts] = useState([]);
+        const [loading, setLoading] = useState(true);
         useEffect(()=> {
           const initializeShareKey = async () => {
               try {
               let wishlistKey = await  Services.Wishlist.getWishlistKey();
               if(wishlistKey.length && wishlistKey[0]){
                   setSharekey(wishlistKey[0].share_key);
+                  
               }
               } catch (error) {
               console.error(error);
@@ -139,7 +143,7 @@ export const ViewNews = ({
           let wishlistProducts = await Services.Wishlist.getProductForWishlistByKey(shareKey);
           let productIds = wishlistProducts.map((product) => product.product_id);
           setWishlistProductIds(productIds);
-          console.log(productIds)
+          
         };
         fetchWishlistProducts();
       }, [shareKey]);
@@ -153,6 +157,8 @@ export const ViewNews = ({
             const response = await axios.get(`https://webtestview.com/hotpink/wp-json/wc/v3/products?consumer_key=ck_7171b2d0be04df526491b4ad224951f313f0a6a1&consumer_secret=cs_9c0a1003c5c525ed50756412c474d3693008e3b6&include=${wishlistProductIds.join(',')}`);
             const productData = response.data;
             setProducts(productData);
+            setLoading(fasle);
+
             // console.log(productData);
           } catch (error) {
             console.error(error);
@@ -205,6 +211,7 @@ export const ViewNews = ({
       :
       <CLoadingPlaceholder />
       } */}
+    {setLoading ?
       <ImageBackground  source={Assets.back} resizeMode="cover" style={{flex:1}}>
         <View style={{paddingHorizontal:Devices.sW(2)}}>
           {products ?
@@ -243,7 +250,9 @@ export const ViewNews = ({
               
           </View> */}
       </ImageBackground>
-
+    :
+          <CLoadingPlaceholder />
+        }
       {/* <CLoading visible={state._loading} /> */}
     </Container>
   )
