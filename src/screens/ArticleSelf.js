@@ -40,6 +40,7 @@ class ArticleSelf extends React.Component {
     let key = await Helpers.getDataStorage(Keys.AS_DATA_USER_SUBSCRIPTION);
     this.setState({hasSubscription: key.subscription, loading: false});
   }
+  
   componentDidMount() {
 
     
@@ -47,7 +48,6 @@ class ArticleSelf extends React.Component {
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;
     console.log('////////////////////');
-    this.updateSubscription();
     axios
       .get(Configs.hostApi+'/'+Configs.wpAPIPrefix+`/wp/v2/posts/${postId}`)
       .then((response) => {
@@ -57,7 +57,10 @@ class ArticleSelf extends React.Component {
         console.log(error);
       });
   }
-  
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+    this.updateSubscription();
+  }
   render() {
     const { post } = this.state;
    
