@@ -128,7 +128,10 @@ class SignIn extends React.Component {
       this._onError(Languages[this.props.language].server_error);
     }
   }
-
+  onGetSubscription = async () => {
+    let res = await Services.Subscription.hasSubscription();
+    Helpers.setDataStorage(Keys.AS_DATA_USER_SUBSCRIPTION,{subscription: res})
+  }
   _onFetchDataUser = async (dataJWT) => {
     let params = { email: dataJWT.user_email };
     let res = await Services.SignIn.signIn(params);
@@ -176,6 +179,10 @@ class SignIn extends React.Component {
     //     this.props.cartActions.updateCartKey(asCartKey.key);
     //   }
     // }
+
+    this.onGetSubscription();
+
+
     /** If done => Navigate to homepage */
     if (dataUser.role === Configs.USER_ROLE.STORE_MANAGER) {
       Helpers.resetNavigation(this.props.navigation, "VendorTab");
