@@ -42,12 +42,8 @@ class ArticleSelf extends React.Component {
   }
   
   componentDidMount() {
-
-    
-
     const { postId } = this.props.route.params;
     const { audioId } = this.props.route.params;
-    console.log('////////////////////');
     axios
       .get(Configs.hostApi+'/'+Configs.wpAPIPrefix+`/wp/v2/posts/${postId}`)
       .then((response) => {
@@ -56,11 +52,12 @@ class ArticleSelf extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
-  componentDidUpdate(){
-    console.log('componentDidUpdate');
     this.updateSubscription();
+
   }
+  // componentDidUpdate(){
+  //   console.log('ArticleSelfcomponentDidUpdate');
+  // }
   render() {
     const { post } = this.state;
    

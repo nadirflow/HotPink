@@ -9,9 +9,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View, TouchableOpacity, FlatList, SafeAreaView, ImageBackground, Text, Image,BackHandler } from 'react-native'; 
-import {
-  Container, Left, Body, Right, Button
-} from 'native-base';
+import { Container, Left, Body, Right, Button,Spinner } from 'native-base';
 import Icon from 'react-native-fontawesome-pro';
 import Rate, { AndroidMarket } from 'react-native-rate';
 import { Colors } from '~/utils/colors';
@@ -21,25 +19,30 @@ import CHeader from "~/components/CHeader";
 import Services from '~/services';
 import CText from '~/components/CText';
 import CViewRow from "~/components/CViewRow";
-/* COMMON */
+/* STYLES */
+import styles from './style';
 import { cStyles } from '~/utils/styles';
+/* COMMON */
 import { Devices, Keys, Configs, Assets } from '~/config';
 import { layoutWidth } from '~/utils/layout_width';
 import ApiWoo from '~/services/apiWoo';
 import * as userActions from '~/redux/actions/user';
-import * as cartActions from '~/redux/actions/cart';
+import * as cartActions from '~/redux/actions/cart'; 
 import cart from '~/redux/reducers/cart';
 
 class UnlockSubscription extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      buttonLoading: false
+    }
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     console.log('UnlockSubscription====================================');
     console.log(this.props.cartKey);
     // clear Cart First
     this.props.cartActions.removeAllCart();
     Helpers.removeKeyStorage(Keys.AS_DATA_CART);
-    console.log('UnlockSubscription====================================');
+    // console.log('UnlockSubscription====================================');
   }
  
   componentWillMount() {
@@ -73,6 +76,7 @@ class UnlockSubscription extends React.PureComponent {
 
   /* RENDER */
   render() {
+    console.log('render');
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <CHeader
@@ -110,7 +114,14 @@ class UnlockSubscription extends React.PureComponent {
             <Text style={{ fontSize: Devices.fS(16), color: '#fff', marginBottom: 20, }}><Icon name='check-circle' style={{ marginRight: 10, }} color='#fff' size={16} type="solid" /> Lorem ipsum dolor sit amet, Consectetur adipiscing elit, sed do eiusmod tempor incididunt</Text>
           </View>
           <Text style={{ textAlign: 'center', fontSize: Devices.fS(14), color: '#fff' }}>Try 7 Days For Free</Text>
-          <TouchableOpacity onPress={() => this._invokeProductToCart()} style={{ backgroundColor: '#fff', width: '100%', paddingVertical: Devices.sH(1.5), borderRadius: 15, marginVertical: 5, }}><Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '700', color: '#A93A75' }}>CONTINUE</Text></TouchableOpacity>
+          {/* <TouchableOpacity onPress={() => this._invokeProductToCart()} style={{ backgroundColor: '#fff', width: '100%', paddingVertical: Devices.sH(1.5), borderRadius: 15, marginVertical: 5, }}><Text style={{ textAlign: 'center', fontSize: 18, fontWeight: '700', color: '#A93A75' }}>CONTINUE</Text></TouchableOpacity> */}
+          <Button block
+            style={[styles.con_btn, { backgroundColor: Colors.WHITE_COLOR, borderRadius:6, color:'#A93A75' }]}
+            disabled={this.state.buttonLoading}
+            onPress={() => this._invokeProductToCart()}>
+            {this.state.buttonLoading && <Spinner style={styles.spibuttonLoading} color={Colors.BLACK_COLOR} size={'small'} />}
+            {!this.state.buttonLoading && <CText style={[styles.txt_btn, {color:'#A93A75', fontWeight:'700', fontSize:Devices.fS(14)}]} i18nKey={'unlock_subscription_continue'} />}
+          </Button>
           <Text style={{ textAlign: 'center', fontSize: Devices.fS(14), color: '#fff' }}>$10.00 per month after FREE 7-day trial</Text>
           <Text style={{ textAlign: 'center', fontSize: Devices.fS(14), color: '#fff', marginTop: 15 }}>Subscription Terms: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.</Text>
@@ -119,7 +130,7 @@ class UnlockSubscription extends React.PureComponent {
     )
   }
   _invokeProductToCart = () => {
-    this.setState({ _loadmore: false, _loadForList: true }, () => {
+    this.setState({ _loadmore: false, _loadForList: true, buttonLoading:true }, () => {
       let params = {
         page: 1,
         category: Configs.subscribeCat,
