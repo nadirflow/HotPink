@@ -180,7 +180,7 @@ class SignIn extends React.Component {
     //   }
     // }
 
-    this.onGetSubscription();
+    await this.onGetSubscription();
 
 
     /** If done => Navigate to homepage */
