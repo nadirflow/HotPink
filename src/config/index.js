@@ -380,7 +380,7 @@ export const Assets = {
     splash: require('../../assets/images/logo/splash.png'),
     full_logo_vertical: require('../../assets/images/logo/full_logo_vertical.png'),
     full_logo_horizontal: require('../../assets/images/logo/full_logo_horizontal.png'),
-    image_failed: require('../../assets/images/image_failed.png'),
+    image_failed: require('../../assets/images/image_failed.gif'),
     image_slider_failed: require('../../assets/images/image_slider_failed.jpg'),
     image_share: require('../../assets/images/image_share.png'),
     image_coupon: require('../../assets/images/image_coupon.png'),

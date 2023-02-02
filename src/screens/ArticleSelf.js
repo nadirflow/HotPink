@@ -126,7 +126,9 @@ class ArticleSelf extends React.Component {
          onPressLeft_1={() => this.props.navigation.goBack()}
       />
         <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,    }}>
+          {post.content ?
             <View style={{paddingVertical:Devices.sH(5), flex:1, paddingHorizontal:Devices.sW(5)}}>
+            
               <ScrollView>
                 {/* <View style={{flexDirection:'row', }}>
                   <Image source={{uri: 'https://images.pexels.com/photos/4684249/pexels-photo-4684249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}} resizeMode="cover" style={{width:120, height:120, marginRight:(5),}} />
@@ -139,7 +141,7 @@ class ArticleSelf extends React.Component {
                  {Assets.image_failed && image ?
                   <Image source={{uri: image.sizes['woocommerce_thumbnail']}} style={{width:'100%', height:250, resizeMode: 'contain',  }} /> 
                  :
-                 <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
+                 <Image source={Assets.image_failed} style={{width:'100%', height:250, }} />  
                 } 
                 {
                 /* {
@@ -174,8 +176,11 @@ class ArticleSelf extends React.Component {
                     )}
                 </View>
               </ScrollView>
+           
             </View>
-          
+            :
+            <CLoadingPlaceholder />
+          }
         </ImageBackground>
       </>
     );
