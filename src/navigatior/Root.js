@@ -137,7 +137,6 @@ export class RootTab extends React.Component {
       <TabMain.Navigator
         initialRouteName={'Home'}
         headerMode={'none'}
-        
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName = 'home';

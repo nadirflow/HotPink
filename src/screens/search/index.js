@@ -285,7 +285,7 @@ class Search extends React.Component {
                   <View style={cStyles.row_align_center}>
                     <Icon name={'search'} size={Devices.fS(20)} color={Colors.PLACEHOLDER_COLOR} type={"regular"} />
                     <Input ref={ref => this._searchRef = ref}
-                      style={[styles.txt_search, {color:'#fff'}]}
+                      style={[styles.txt_search, {color:'#000'}]}
                       autoFocus={true}
                       placeholder={Languages[language].txt_home_search_bar}
                       placeholderTextColor={Colors.BLACK_COLOR}
