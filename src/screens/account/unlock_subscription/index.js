@@ -42,6 +42,7 @@ class UnlockSubscription extends React.PureComponent {
     // clear Cart First
     this.props.cartActions.removeAllCart();
     Helpers.removeKeyStorage(Keys.AS_DATA_CART);
+
     // console.log('UnlockSubscription====================================');
   }
  
@@ -218,6 +219,7 @@ class UnlockSubscription extends React.PureComponent {
     );
     
     this.props.navigation.navigate('Cart');
+    this.setState({ buttonLoading: false });
   }
 }
 
