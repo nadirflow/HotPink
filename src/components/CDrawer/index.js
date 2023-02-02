@@ -157,9 +157,9 @@ class CDrawer extends React.Component {
   /* RENDER */
   render() {
     return (
-      <Container>
+      <Container style={{backgroundColor: '#F9CBD1'}}>
         <ScrollView style={[styles.con_content, {backgroundColor: '#F9CBD1'} ]} showsVerticalScrollIndicator={false}>
-          <View>
+          {/* <View>
             <View style={styles.con_title_group}>
               <CText style={[cStyles.txt_title_group, {color:'#E83B55'}]} i18nKey={'categories'} upperCase />
             </View>
@@ -169,7 +169,7 @@ class CDrawer extends React.Component {
               renderHeader={this._renderHeaderAccordionCate}
               renderContent={this._renderContentAccordionCate}
             />
-          </View>
+          </View> */}
 
           <View style={styles.con_group_2}>
             <View style={styles.con_title_group}>
