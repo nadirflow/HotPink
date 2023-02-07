@@ -76,9 +76,9 @@ export const ViewService = ({
               <Icon name={'search'} size={Devices.fS(20)} color={Colors.WHITE_COLOR} type={"regular"} />
             </Item>
         }
-        iconRight_1={"shopping-cart"}
+        // iconRight_1={"shopping-cart"}
         iconRight_2={"sliders-v"}
-        onPressRight_1={onFunction.onPressCart}
+        // onPressRight_1={onFunction.onPressCart}
         onPressRight_2={onFunction.onPressRefine}
       />
 

@@ -104,7 +104,8 @@ export const ViewAccount = ({
         props={props}
         title={"account"}
         iconLeft_1={"none"}
-        iconRight_1={(props. user && props.user.role === Configs.USER_ROLE.STORE_MANAGER) ? "none" : "shopping-cart"}
+        // iconRight_1={(props. user && props.user.role === Configs.USER_ROLE.STORE_MANAGER) ? "none" : "shopping-cart"}
+        iconRight_1={"none"}
         onPressRight_1={onFunction.onPressCart}
       />
     <ScrollView>  

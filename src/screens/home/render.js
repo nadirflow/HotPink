@@ -222,10 +222,11 @@ export const ViewHome = ({
           </View>
         }
         iconLeft_1={'bars'}
-        iconRight_1={'shopping-cart'}
+        // iconRight_1={'shopping-cart'}
+        
         iconRight_2={'search'}
         onPressLeft_1={onFunction.onOpenDrawer}
-        onPressRight_1={onFunction.onPressCart}
+        // onPressRight_1={onFunction.onPressCart}
         onPressRight_2={onFunction.onFocusSearch}
       />
       <ImageBackground source={Assets.back} resizeMode="cover" style={{flex:1,}}>

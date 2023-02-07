@@ -21,7 +21,8 @@ import DOMPurify from 'dompurify';
 import WebView from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview';
 import { Base64 } from 'js-base64';
-
+import HTML from 'react-native-render-html';
+import { layoutWidth } from '~/utils/layout_width';
 
 
 class ArticleSelf extends React.Component {
@@ -161,17 +162,86 @@ class ArticleSelf extends React.Component {
                      : (
                       post.content && post.content.rendered ?
                       // <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', marginTop:Devices.sH(5)}} dangerouslySetInnerHTML={post.content.rendered} />
-                      <AutoHeightWebView
-                            
-                            originWhitelist={['*']}
-                            source={{ html: post.content.rendered }}
-                            onSizeUpdated={size => console.log(size.height)}
-                            style={{paddingHorizontal:Devices.sW(0), width:Devices.width, marginTop:Devices.sH(2)}}
-                            
-                            viewportContent={'width=device-width, user-scalable=no'}
-                            customStyle={" body{padding-left:20px; overflow:visible} *{font-szie:14px; color:#fff; padding-right:11.5px;, } li{font-szie:12px; color:#fff; margin-bottom:10px;} ul, ol{padding:0, }"}
-                            
-                        />
+                      
+                      <HTML
+                      html={post.content.rendered}
+                      imagesMaxWidth={Devices.sW(`${layoutWidth.width}%`)}
+                      staticContentMaxWidth={Devices.sW(`${layoutWidth.width}%`)}
+                      tagsStyles={{
+                        p: {
+                          color: '#fff',
+                          fontSize: cStyles.txt_base_item.fontSize,
+                          fontFamily: cStyles.txt_base_item.fontFamily,
+                          lineHeight: 25,
+                          textAlign: Configs.supportRTL ? "right" : "left"
+                        },
+                        h1: {
+                          color: '#fff',
+                          fontSize: cStyles.txt_title_group.fontSize,
+                          fontFamily: cStyles.txt_title_group.fontFamily,
+                          lineHeight: 25,
+                          textAlign: Configs.supportRTL ? "right" : "left"
+                        },
+                        h2: {
+                          color: '#fff',
+                          fontSize: cStyles.txt_title_item.fontSize,
+                          fontFamily: cStyles.txt_title_item.fontFamily,
+                          lineHeight: 25,
+                          textAlign: Configs.supportRTL ? "right" : "left"
+                        },
+                        li: {
+                          color: '#fff',
+                          fontSize: cStyles.txt_base_item.fontSize,
+                          fontFamily: cStyles.txt_base_item.fontFamily,
+                          lineHeight: 25,
+                          textAlign: Configs.supportRTL ? "right" : "left"
+                        },
+                        ul: {
+                          color: '#fff',
+                          fontSize: cStyles.txt_base_item.fontSize,
+                          fontFamily: cStyles.txt_base_item.fontFamily,
+                          lineHeight: 25,
+                          textAlign: Configs.supportRTL ? "right" : "left"
+                        },
+                      }}
+                      renderers={{
+                        iframe: (htmlAttribs, children, convertedCSSStyles, passProps) => {
+                          return (
+                            <View>
+                              <WebView
+                                source={{ uri: htmlAttribs.src }}
+                                style={styles.con_video}
+                              />
+                              {htmlAttribs.title && htmlAttribs.title !== "" &&
+                                <CText style={styles.txt_title_video} numberOfLines={3}>{htmlAttribs.title}</CText>
+                              }
+                            </View>
+                          )
+                        },
+                        figure: (htmlAttribs, children, convertedCSSStyles, passProps) => {
+                          if (children && children.length > 0) {
+                            for (let obj of children) {
+                              if (obj && obj.length > 0) {
+                                for (let obj1 of obj) {
+                                  if (obj1 && obj1.props && obj1.props.source && obj1.props.source.uri) {
+                                    return (
+                                      <View style={{ borderRadius: 10 }}>
+                                        <CImage
+                                          style={styles.img_content}
+                                          source={{ uri: obj1.props.source.uri }}
+                                          resizeMode={"contain"}
+                                        />
+                                      </View>
+                                    )
+                                  }
+                                }
+                              }
+                            }
+                          }
+                          return null
+                        }
+                      }}
+                    />
                       : <Text>No content available</Text>
                     )}
                 </View>
