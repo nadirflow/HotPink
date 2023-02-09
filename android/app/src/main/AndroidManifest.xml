@@ -52,9 +52,9 @@
 
       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
-      <provider android:authorities="com.facebook.app.FacebookContentProvider230164674773112"
+      <!-- <provider android:authorities="com.facebook.app.FacebookContentProvider230164674773112"
           android:name="com.facebook.FacebookContentProvider"
-          android:exported="true" />
+          android:exported="true" /> -->
 
       <!-- Add this line as part of new AdMob library process. Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
       <meta-data
