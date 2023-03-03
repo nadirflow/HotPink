@@ -86,7 +86,9 @@ export const ViewAccount = ({
     onPressProfile: () => { },
     onPressRow: () => { },
     onPressSignOut: () => { },
-    onPressSocial: () => { }
+    onPressSocial: () => { },
+    onAbout: () => { },
+    onDisclaimer: () => { }
   }
 }) => {
   let newFullName = "", avatar_url = Configs.avatarUrlDefault;
@@ -154,13 +156,50 @@ export const ViewAccount = ({
             />
           </View>
         }
-
-        <FlatList contentContainerStyle={[styles.con_list, { marginHorizontal: Devices.pH(layoutWidth.width) }]}
+        <View style={{marginTop:Devices.sH(3), paddingHorizontal:Devices.sW(2)}}>
+          <CText style={[cStyles.txt_title_group, {color: '#E83B55'}]}>Information</CText>
+          <TouchableOpacity Style={[styles.con_list, { marginHorizontal: Devices.pH(layoutWidth.width), }]} onPress={() => onFunction.onAbout()}>
+          <CViewRow style={[cStyles.pv_15, {borderBottomWidth:1, borderBottomColor:'#ccc',} ]} 
+                      
+                            leftComp={
+                              <Icon name={'address-card'}
+                                color={'#C73A66'}
+                                size={cStyles.ic_left_detail.size}
+                                type={cStyles.ic_left_detail.type} />
+                            }
+                            rightComp={
+                              <View style={styles.con_content_center_row}>
+                                <CText style={[styles.txt_row,
+                                Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20, {color: '#E83B55'}]}  >About Us</CText>
+                              </View>
+                            }
+                          />
+          </TouchableOpacity>
+          <TouchableOpacity Style={[styles.con_list, { marginHorizontal: Devices.pH(layoutWidth.width) }]} onPress={() => onFunction.onDisclaimer()}>
+          <CViewRow style={[cStyles.pv_15, {borderBottomWidth:1, borderBottomColor:'#ccc',}]}
+                      
+                            leftComp={
+                              <Icon name={'info'}
+                                color={'#C73A66'}
+                                size={cStyles.ic_left_detail.size}
+                                type={cStyles.ic_left_detail.type} />
+                            }
+                            rightComp={
+                              <View style={styles.con_content_center_row}>
+                                <CText style={[styles.txt_row,
+                                Configs.supportRTL ? cStyles.pr_20 : cStyles.pl_20, {color: '#E83B55'}]}  >Disclaimer</CText>
+                              </View>
+                            }
+                          />
+          </TouchableOpacity>
+        </View>
+        <FlatList contentContainerStyle={[ { marginHorizontal: Devices.pH(layoutWidth.width) }]}
           data={INIT_ROW_1}
           renderItem={({ item }) => {
             if (item.needLogin) {
               if (props.user) {
                 return (
+                  <>
                   <TouchableOpacity onPress={() => onFunction.onPressRow(item)}>
                     <CViewRow style={cStyles.pv_15} between
                       leftComp={
@@ -189,6 +228,10 @@ export const ViewAccount = ({
                       }
                     />
                   </TouchableOpacity>
+                  
+                  </>
+
+                 
                 )
               }
               return null;
@@ -229,7 +272,7 @@ export const ViewAccount = ({
           }}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={() => props.user && <View style={styles.con_separator_option} />}
-          ListHeaderComponent={<CText style={[cStyles.txt_title_group, {color: '#E83B55'}]} i18nKey={"information"} />}
+          // ListHeaderComponent={<CText style={[cStyles.txt_title_group, {color: '#E83B55'}]} i18nKey={"information"} />}
         />
 
 

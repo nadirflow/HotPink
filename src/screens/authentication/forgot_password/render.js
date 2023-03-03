@@ -33,7 +33,7 @@ export const ViewForgotPassword = ({
   state = null,
   props = null,
   onFunction = {
-    onPressBack: () => { },
+    
     onChangeCode: () => { },
     onChangeEmail: () => { },
     onChangePassword: () => { },
@@ -48,7 +48,7 @@ export const ViewForgotPassword = ({
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       
       <ImageBackground source={Assets.wel} resizeMode='cover' style={{flex:1,  paddingTop:25, }}>
-      <TopBar></TopBar>
+      
       <Container style={[cStyles.container_auth, {backgroundColor:''} ]}>
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>
           

@@ -38,6 +38,12 @@ class Account extends React.Component {
       user: this.props.user
     });
   }
+  _onAbout = () => {
+    this.props.navigation.navigate('AboutScreen');
+  }
+  _onDisclaimer = () => {
+    this.props.navigation.navigate('Disclaimer');
+  }
 
   _onPressRow = (data) => {
     if (data.routeName === "Phone") {
@@ -143,7 +149,9 @@ class Account extends React.Component {
           onPressProfile: this._onPressProfile,
           onPressRow: this._onPressRow,
           onPressSignOut: this._onPressSignOut,
-          onPressSocial: this._onPressSocial
+          onPressSocial: this._onPressSocial,
+          onDisclaimer: this._onDisclaimer,
+          onAbout: this._onAbout
         }}
       />
     )

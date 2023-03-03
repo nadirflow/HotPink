@@ -146,8 +146,8 @@ class Self extends React.Component {
         
           
             <View style={{paddingVertical:15, flex:1}}>
-              <Text style={{fontSize: Devices.fS(24), color:'#fff', fontWeight:'700'}}>Self</Text>
-              <Text style={{fontSize: Devices.fS(12), color:'#fff', fontWeight:'400'}}>Private Psychotherapy Practice </Text>
+              <Text style={[cStyles.txt_title_header, {fontSize: Devices.fS(24), color:'#fff', }]}>Self</Text>
+              <Text style={[ cStyles.txt_title_button, {fontSize: Devices.fS(12), color:'#fff',}]}>Private Psychotherapy Practice </Text>
               <View style={{justifyContent:'space-between', }}>
                 <FlatList
                   data={this.state.data}
@@ -165,8 +165,8 @@ class Self extends React.Component {
                                       <Image source={Assets.audio} resizeMode="contain" />
                                     </View>
                                     <View style={{width:'75%', paddingHorizontal:15,}}>
-                                        <Text style={{fontSize:Devices.fS(16), fontWeight:'700', color: '#C63A66'}}>{item.title.rendered}</Text>
-                                        <Text style={{fontSize:Devices.fS(10), fontWeight:'400', color: '#000'}}>{item.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '')}</Text>
+                                        <Text style={[cStyles.txt_title_header, {fontSize:Devices.fS(16), color: '#C63A66'}]}>{item.title.rendered}</Text>
+                                        <Text style={[cStyles.txt_no_data, {fontSize:Devices.fS(10), fontWeight:'400', color: '#000', textAlign: 'left'}]}>{item.excerpt.rendered.replace(/<(?:.|\n)*?>/gm, '')}</Text>
                                         <TouchableOpacity style={{backgroundColor:'#D53A5F', borderRadius:1, alignSelf:'flex-start', paddingHorizontal:5, paddingVertical:3, marginTop:0,}} onPress={() => this.props.navigation.navigate('AudioPlayer', {audioId: item.id})}>
                                           <Text style={{fontSize:Devices.fS(8), fontWeight:'400', color: '#fff'}}>Listen Now</Text>
                                         </TouchableOpacity>
@@ -202,7 +202,7 @@ class Self extends React.Component {
                         <Image source={Assets.image_failed} style={{width:'100%', height:80, }} />  
                       }
                          
-                        <Text style={{fontSize:Devices.fS(12), color:'#C73A66', fontWeight:'700', textAlign:'center'}}>{item.item.title.rendered}</Text>
+                        <Text style={[cStyles.txt_title_header, {fontSize:Devices.fS(10), color:'#C73A66',  textAlign:'center', marginTop:5,}]}>{item.item.title.rendered}</Text>
                       </TouchableOpacity>
                       );
 

@@ -87,7 +87,7 @@ export const ViewSignIn = ({
           
 
           <Form >
-            <Text style={{color:'#fff', fontSize:Devices.fS(22), fontWeight:'700', marginBottom:20,}}>Login</Text>
+            <Text style={{color:'#fff', fontSize:Devices.fS(22), fontFamily:Devices.zsBodyMetaBold, marginBottom:20,}}>Login</Text>
             
             {/** EMAIL INPUT */}
             
@@ -140,7 +140,7 @@ export const ViewSignIn = ({
               disabled={state._loading}
               onPress={onFunction.onPressLogin}>
               {state._loading && <Spinner style={styles.spi_loading} color={Colors.BLACK_COLOR} size={'small'} />}
-              {!state._loading && <CText style={[styles.txt_btn, {color:'#A93A75', fontWeight:'700', fontSize:Devices.fS(14)}]} i18nKey={'sign_in'} />}
+              {!state._loading && <CText style={[styles.txt_btn, {color:'#A93A75', fontFamily:Devices.zsBodyMetaBold, fontSize:Devices.fS(14)}]} i18nKey={'sign_in'} />}
             </Button>
 
             
@@ -189,7 +189,7 @@ export const ViewSignIn = ({
               block  transparent
               disabled={state._loading}
               onPress={onFunction.onPressSignUp}>
-              <CText style={[styles.txt_btn, {color:'#A93A75', fontWeight:'700', fontSize:Devices.fS(14)}]} i18nKey={'sign_up'} />
+              <CText style={[styles.txt_btn, {color:'#A93A75', fontFamily:Devices.zsBodyMetaBold, fontSize:Devices.fS(14)}]} i18nKey={'sign_up'} />
             </Button>
           </Form>
         </Content>

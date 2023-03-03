@@ -52,7 +52,7 @@ export const cStyles = {
 
 
   con_header: { backgroundColor: Colors.WHITE_COLOR },
-
+fontBold: {fontFamily: Devices.zsBodyBold},
   txt_no_data: { fontSize: Devices.fS(16), fontFamily: Devices.zsHeadlineMedium, color: Colors.BORDER_COLOR, marginTop: 10, textAlign: 'center' },
   txt_no_data_1: { fontSize: Devices.fS(16), fontFamily: Devices.zsHeadlineMedium, color: Colors.PLACEHOLDER_COLOR, marginTop: 10, textAlign: 'center' },
   txt_title_group_drawer: { fontSize: Devices.fS(22), fontFamily: Devices.zsHeadlineSemiBold, color: Colors.TEXT_COLOR, },

@@ -96,7 +96,7 @@ export const ViewSignUp = ({
         <Content style={cStyles.flex_full} contentContainerStyle={[cStyles.ph_20, styles.con_header]}>
           <Form >
             
-            <Text style={{color:'#fff', fontSize:Devices.fS(22), fontWeight:'700', marginBottom:20,}}>Sign Up</Text>
+            <Text style={{color:'#fff', fontSize:Devices.fS(22), fontFamily:Devices.zsBodyMetaBold, marginBottom:20,}}>Sign Up</Text>
             
               {/** FIRST NAME INPUT */}
               
@@ -265,7 +265,7 @@ export const ViewSignUp = ({
               disabled={state._loading}
               onPress={onFunction.onPressSignUp}>
               {state._loading && <Spinner style={styles.spi_loading} color={'#A93A75'} size={'small'} />}
-              <CText style={[styles.txt_btn, {color:'#A93A75', fontWeight:'700', fontSize:Devices.fS(14)}]} i18nKey={'sign_up'} />
+              <CText style={ {color:'#A93A75', fontFamily:Devices.zsBodyMetaBold, fontSize:Devices.fS(14)}} i18nKey={'sign_up'} />
             </Button>
 
             {/* <TouchableWithoutFeedback onPress={onFunction.onPressSignIn}>

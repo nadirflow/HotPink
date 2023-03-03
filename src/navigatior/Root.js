@@ -80,6 +80,8 @@ import LSArticle from '~/screens/LSArticle';
 import ChatScreen from '~/screens/ChatScreen';
 import welcome from '~/screens/authentication/welcome';
 import SplashScreen from 'react-native-splash-screen';
+import AboutScreen from '~/screens/AboutScreen';
+import Disclaimer from '~/screens/Disclaimer';
 
 
 /** INIT NAVIGATOR OF APP */
@@ -272,6 +274,8 @@ class RootMain extends React.Component {
           <StackMain.Screen name="ArticleSelf" component={ArticleSelf} />
           <StackMain.Screen name="LSArticle" component={LSArticle} />
           <StackMain.Screen name="ChatScreen" component={ChatScreen} />
+          <StackMain.Screen name="AboutScreen" component={AboutScreen} />
+          <StackMain.Screen name="Disclaimer" component={Disclaimer} />
         </StackMain.Navigator>
       </Root>
     )

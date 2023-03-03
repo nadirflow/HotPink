@@ -233,30 +233,30 @@ export const ViewHome = ({
         
           <View style={{flex:1, backgroundColor:'#fff', marginTop:Devices.sH(10), borderTopRightRadius:30, borderTopLeftRadius:30, }}>
             <ScrollView style={{   paddingHorizontal:Devices.sW(5), paddingTop:Devices.sH(3),}} contentContainerStyle={{flexGrow:1}}>
-              <Text style={{fontSize:Devices.fS(26), fontWeight:'700', color: '#E63B57'}}>Explore</Text>
-              <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color: '#E63B57'}}>Private Psychotherapy Practice </Text>
+              <CText style={[ cStyles.txt_title_header, {fontSize:Devices.fS(26),  color: '#E63B57', }]}>Explore</CText>
+              <CText style={{fontSize:Devices.fS(12), fontWeight:'400', color: '#E63B57'}}>Private Psychotherapy Practice </CText>
               <View style={{flexDirection:'row', alignContent:'space-between', justifyContent:'space-between', marginTop:Devices.sH(3), paddingBottom:Devices.sH(4)}}>
                 <View style={{width:Devices.sW('44%')}}>
                     <TouchableOpacity onPress={onFunction.onPressSelf}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im1} resizeMode="cover" style={{alignItems:'baseline',marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'flex-end', height:Devices.sH(25), borderRadius:10,}}>
-                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', }}>Self</Text>
+                        <CText style={[cStyles.txt_title_header, {fontSize:Devices.fS(20),  color: '#fff', }]}>Self</CText>
                       </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={onFunction.onPressLifeStyles}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im3} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(20), borderRadius:10,}}>
-                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Life Styles</Text>
+                        <CText style={[cStyles.txt_title_header, {fontSize:Devices.fS(20),  color: '#fff',  }]}>Life Styles</CText>
                       </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity >  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im4} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'center', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(16), borderRadius:10,}}>
-                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Upcoming Products</Text>
+                        <Text style={[cStyles.txt_title_header, {fontSize:Devices.fS(20),  color: '#fff', textAlign: 'center' }]}>Upcoming Products</Text>
                       </ImageBackground>
                     </TouchableOpacity>
                 </View>
                 <View style={{width:Devices.sW('44%')}}>
                     <TouchableOpacity onPress={onFunction.onPressPartner}>  
                       <ImageBackground imageStyle={{ borderRadius: 10}} source={Assets.im2} resizeMode="cover" style={{alignItems:'center', marginBottom:Devices.sH(1), justifyContent:'flex-end', paddingHorizontal:10, paddingVertical:10, alignContent:'center', height:Devices.sH(36), borderRadius:10,}}>
-                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Sex With Your Partner</Text>
+                        <Text style={[cStyles.txt_title_header, {fontSize:Devices.fS(20),  color: '#fff', textAlign: 'center' }]}>Sex With Your Partner</Text>
                       </ImageBackground>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={onFunction.onPressChat}>  
@@ -267,7 +267,7 @@ export const ViewHome = ({
                         size={20}
                         type="solid"
                         />
-                        <Text style={{fontSize:Devices.fS(20), fontWeight:'700', color: '#fff', textAlign:'center',}}>Talk With June</Text>
+                        <Text style={[cStyles.txt_title_header, {fontSize:Devices.fS(20),  color: '#fff', textAlign: 'center' }]}>Talk With June</Text>
                       </ImageBackground>
                     </TouchableOpacity>
                 </View>

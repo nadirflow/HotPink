@@ -102,7 +102,7 @@ export const ViewService = ({
           /> */}
           
           <View style={{justifyContent:'center', alignItems:'center', flex:1}}>
-            <Text style={{fontSize:Devices.fS(30), color:'#fff', fontWeight:'700', textAlign:'center'}}>Coming Soon</Text>
+            <Text style={[cStyles.txt_title_header,{fontSize:Devices.fS(30), color:'#fff',  textAlign:'center'}]}>Coming Soon</Text>
           </View>
           </ImageBackground>
         </>

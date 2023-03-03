@@ -158,6 +158,9 @@
 		<string>HelveticaNeue-Light.otf</string>
 		<string>HelveticaNeue-Medium.otf</string>
 		<string>HelveticaNeue.otf</string>
+		<string>LibreBaskerville-Bold.ttf</string>
+		<string>LibreBaskerville-Italic.ttf</string>
+		<string>LibreBaskerville-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

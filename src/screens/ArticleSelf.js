@@ -138,7 +138,7 @@ class ArticleSelf extends React.Component {
                   <Text style={{fontSize:Devices.fS(12), fontWeight:'400', color:'#fff', flexWrap:'wrap', overflow:'visible'}} numberOfLines={4}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, Curabitur et accumsan turpis. Donec efficitur ipsum quis orci tincidunt, </Text>
                   </View>
                 </View> */}
-                <Text style={{fontSize:Devices.fS(24), marginBottom:10, fontWeight:'700', color:'#fff'}}>{postTitle && postTitle.rendered ? postTitle.rendered : ''}</Text>
+                <Text style={[cStyles.txt_title_header,{fontSize:Devices.fS(24), marginBottom:10,  color:'#fff'}]}>{postTitle && postTitle.rendered ? postTitle.rendered : ''}</Text>
                  {Assets.image_failed && image ?
                   <Image source={{uri: image.sizes['woocommerce_thumbnail']}} style={{width:'100%', height:250, resizeMode: 'contain',  }} /> 
                  :
